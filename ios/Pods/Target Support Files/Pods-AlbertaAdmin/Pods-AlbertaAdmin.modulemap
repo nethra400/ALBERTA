@@ -1,0 +1,6 @@
+module Pods_AlbertaAdmin {
+  umbrella header "Pods-AlbertaAdmin-umbrella.h"
+
+  export *
+  module * { export * }
+}
