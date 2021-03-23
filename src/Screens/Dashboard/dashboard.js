@@ -14,6 +14,7 @@ import {ListItem} from 'react-native-elements';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import moment from 'moment-timezone';
 import LinearGradient from 'react-native-linear-gradient';
+import axios from 'axios';
 
 class Dashboard extends React.Component {
   state = {
@@ -56,55 +57,149 @@ class Dashboard extends React.Component {
       },
     ],
     showRealApp: false,
+    sname: null,
+    svoid: null,
+    ssale: null,
+    sdelete: null,
+    sid: null,
+    date: "",
+    stax: null,
+    paidout: null,
+    returns: null,
+    curTime: null,
+    refreshing: false,
+    isMoving: false,
+    pointsDelta: 0,
+    points: 0,
+    noSales: null,
+    dataSource: [],
+    physicalInventory: "",
+    reportPermision: ""
+
   };
 
   componentDidMount(){
+    AsyncStorage.getItem("No_Sales").then(noSales => {
+      if (noSales) {
+        //alert(noSales)
+        this.setState({ noSales: noSales });
+      }
+    });
+
+    AsyncStorage.getItem("Storename").then(datastore => {
+      if (datastore) {
+        //alert(datastore)
+        this.setState({ sname: datastore });
+      }
+    });
+
+    AsyncStorage.getItem("Sid").then(datasid => {
+      if (datasid) {
+        this.setState({ sid: datasid });
+      }
+    });
+
+    AsyncStorage.getItem("tax").then(datatax => {
+      if (datatax) {
+        this.setState({ stax: datatax });
+        //alert(datatax)
+      }
+    });
+    AsyncStorage.getItem("returns").then(datareturns => {
+      if (datareturns) {
+        this.setState({ returns: datareturns });
+      }
+    });
+    AsyncStorage.getItem("paid_out").then(datapaid_out => {
+      if (datapaid_out) {
+        this.setState({ paidout: datapaid_out });
+      }
+    });
+    AsyncStorage.getItem("void").then(datavoid => {
+      if (datavoid) {
+        //alert(datavoids)
+        this.setState({ svoid: datavoid });
+      }
+    });
+    AsyncStorage.getItem("sales").then(datasales => {
+      if (datasales) {
+        //alert(datastore)
+        this.setState({ ssale: datasales });
+      }
+    });
+    AsyncStorage.getItem("delete").then(datadelete => {
+      if (datadelete) {
+        //alert(datadelete)
+        this.setState({ sdelete: datadelete });
+      }
+    });
+
+    
     AsyncStorage.getItem('id').then(id => {
       AsyncStorage.getItem('Sid').then(Sid => {
 
-        if (id) {
-          fetch(  API_BASE_URL +`admin/get_by_main_menu_permission?id=${id}&sid=${Sid}`, {
-            method: 'GET',
-          })
-            .then(response => response.json())
-            .then(response => {
-              console.log(Sid)
+      axios.get( API_BASE_URL + `admin/get_by_main_menu_permission?id=${id}&sid=${Sid}` )
+      .then(responseJson=>{
+        // alert(responseJson)
+        console.log(responseJson)
+        // console.log(JSON.stringify(res));
+        this.setState({
+          dataSource:responseJson.data.data
+        })
+        alert(this.state.dataSource)
+      })
+      .catch(err =>{
+        console.log(err)
+      })
 
-              this.setState({
-                dataSource: "",
-                reportPermision: ""
-              })
-
-               // const arr1 = response.data.filter(d => d.vpermissionname == "REPORTS");
-                // if(arr1.length>0){
-                //   this.setState({
-                //    reportPermision:"REPORTS"
-                //   })
-              if(response.status == "success"){
-                // const arr1 = response.data.filter(d => d.vpermissionname == "REPORTS");
-                
-              this.setState({
-                dataSource: [...response.data],
-               // reportPermision : response.data[0].vpermissionname
-
-              });
-            }
-
-             if (!this.alertPresent) {
-              this.alertPresent = true;
-              if (response.message) {
-                  Alert.alert("", response.message, [{text: 'OK', onPress: () => { "" } }], { cancelable: false });
-              } else {
-                  this.alertPresent = false;
-              }
-          }
-            })
+    //     // if(id){
+    //       // axios.get( API_BASE_URL + `admin/get_by_main_menu_permission?id=${id}&sid=${Sid}` )
           
-            .catch(error => {
-              console.log(error);
-            });
+    //     // }
 
-        }
+    //     // if (id) {
+    //     //   fetch(  API_BASE_URL +`admin/get_by_main_menu_permission?id=${id}&sid=${Sid}`, {
+    //     //     method: 'GET',
+    //     //   })
+    //     //     // .then(response => response.json())
+    //     //     .then(response => {
+    //     //       console.log(Sid)
+
+    //     //       this.setState({
+    //     //         dataSource: "",
+    //     //         reportPermision: ""
+    //     //       })
+
+    //     //        // const arr1 = response.data.filter(d => d.vpermissionname == "REPORTS");
+    //     //         // if(arr1.length>0){
+    //     //         //   this.setState({
+    //     //         //    reportPermision:"REPORTS"
+    //     //         //   })
+    //     //       if(response.status == "success"){
+    //     //         // const arr1 = response.data.filter(d => d.vpermissionname == "REPORTS");
+                
+    //     //       this.setState({
+    //     //         dataSource: [...response.data],
+    //     //        // reportPermision : response.data[0].vpermissionname
+
+    //     //       });
+    //     //     }
+
+    //     //      if (!this.alertPresent) {
+    //     //       this.alertPresent = true;
+    //     //       if (response.message) {
+    //     //           Alert.alert("", response.message, [{text: 'OK', onPress: () => { "" } }], { cancelable: false });
+    //     //       } else {
+    //     //           this.alertPresent = false;
+    //     //       }
+    //     //   }
+    //     //     })
+          
+    //     //     .catch(error => {
+    //     //       console.log(error);
+    //     //     });
+
+    //     // }
       })
     });
   }
@@ -127,7 +222,7 @@ class Dashboard extends React.Component {
               fontSize: 20,
               fontWeight: 'bold',
             }}>
-            {item.salesCount}
+            {this.state.noSales}
           </Text>
         </View>
         <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
@@ -135,7 +230,7 @@ class Dashboard extends React.Component {
           <Text style={{color: 'white'}}>{item.transText}</Text>
         </View>
         <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-          <Text style={{color: 'white'}}>{item.taxCount}</Text>
+          <Text style={{color: 'white'}}>{this.state.stax}</Text>
           <Text style={{color: 'white'}}>{item.transCount}</Text>
         </View>
         <View style={{justifyContent: 'center', alignItems: 'center'}}>
@@ -197,7 +292,7 @@ class Dashboard extends React.Component {
                     justifyContent: 'space-around',
                     paddingTop: 10,
                   }}>
-                  <Text style={{color: 'white'}}>Store Name [Store Id]</Text>
+                  <Text style={{color: 'white'}}>{this.state.sname} [{this.state.sid}]</Text>
                   <FontAwesome name="bell" color={'white'} size={18} />
                 </View>
               </ImageBackground>
@@ -249,7 +344,7 @@ class Dashboard extends React.Component {
               )}
               {/* </View> */}
             </LinearGradient>
-            {/* <ScrollView> */}
+         
             <View
               style={{
                 flexDirection: 'row',
@@ -270,7 +365,7 @@ class Dashboard extends React.Component {
                   shadowRadius: 5,
                 }}>
                 <Text>Deleted Items</Text>
-                <Text>00</Text>
+                <Text>{this.state.sdelete}</Text>
               </View>
               <View
                 style={{
@@ -289,117 +384,44 @@ class Dashboard extends React.Component {
                 <Text>23</Text>
               </View>
             </View>
-            <View>
-            <TouchableOpacity>
-                <ListItem
-                  bottomDivider
-                  containerStyle={{
-                    borderRadius: 35,
-                    marginHorizontal: 10,
-                    marginVertical: 10,
-                  }}>
-                  <View style={{flexDirection: 'row'}}>
-                    <FontAwesome name="circle" color={'#3386D6'} size={32} />
-                    <Text
-                      style={{
-                        fontSize: 16,
-                        paddingVertical: 5,
-                        paddingHorizontal: 16,
-                      }}>
-                      Recieve Order
-                    </Text>
-                  </View>
-                </ListItem>
-              </TouchableOpacity>
-
-              <TouchableOpacity>
-                <ListItem
-                  bottomDivider
-                  containerStyle={{
-                    borderRadius: 35,
-                    marginHorizontal: 10,
-                    marginVertical: 5,
-                  }}>
-                  <View style={{flexDirection: 'row'}}>
-                    <FontAwesome name="circle" color={'#3386D6'} size={32} />
-                    <Text
-                      style={{
-                        fontSize: 16,
-                        paddingVertical: 5,
-                        paddingHorizontal: 16,
-                      }}>
-                      Print Label
-                    </Text>
-                  </View>
-                </ListItem>
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <ListItem
-                  bottomDivider
-                  containerStyle={{
-                    borderRadius: 35,
-                    marginHorizontal: 10,
-                    marginVertical: 5,
-                  }}>
-                  <View style={{flexDirection: 'row'}}>
-                    <FontAwesome name="circle" color={'#3386D6'} size={32} />
-                    <Text
-                      style={{
-                        fontSize: 16,
-                        paddingVertical: 5,
-                        paddingHorizontal: 16,
-                      }}>
-                      Promotions
-                    </Text>
-                  </View>
-                </ListItem>
-              </TouchableOpacity>
-
-              <TouchableOpacity>
-                <ListItem
-                  bottomDivider
-                  containerStyle={{
-                    borderRadius: 35,
-                    marginHorizontal: 10,
-                    marginVertical: 5,
-                  }}>
-                  <View style={{flexDirection: 'row'}}>
-                    <FontAwesome name="circle" color={'#3386D6'} size={32} />
-                    <Text
-                      style={{
-                        fontSize: 16,
-                        paddingVertical: 5,
-                        paddingHorizontal: 16,
-                      }}>
-                      Physical Inventory
-                    </Text>
-                  </View>
-                </ListItem>
-              </TouchableOpacity>
-
-              <TouchableOpacity>
-                <ListItem
-                  bottomDivider
-                  containerStyle={{
-                    borderRadius: 35,
-                    marginHorizontal: 10,
-                    marginVertical: 5,
-                  }}>
-                  <View style={{flexDirection: 'row'}}>
-                    <FontAwesome name="circle" color={'#3386D6'} size={32} />
-                    <Text
-                      style={{
-                        fontSize: 16,
-                        paddingVertical: 5,
-                        paddingHorizontal: 16,
-                      }}>
-                      Tutorials
-                    </Text>
-                  </View>
-                </ListItem>
-              </TouchableOpacity>
-            </View>
-            {/* </ScrollView> */}
+            
+           <View>
+             {
+             this.state.dataSource.map((val,index)=>{
+                return(
+                  <TouchableOpacity>
+                  <ListItem
+                  key={index}
+                    bottomDivider
+                    containerStyle={{
+                      borderRadius: 35,
+                      marginHorizontal: 10,
+                      marginVertical: 5,
+                    }}>
+                    <View style={{flexDirection: 'row'}}>
+                      <FontAwesome name="circle" color={'#3386D6'} size={32} />
+                      <Text
+                        style={{
+                          fontSize: 16,
+                          paddingVertical: 5,
+                          paddingHorizontal: 16,
+                        }}>
+                        {val.vpermissionname}
+                      </Text>
+                    </View>
+                  </ListItem>
+                </TouchableOpacity>
+                )
+             })
+            
+            //  <Text>{this.state.dataSource.data.}</Text>
+          //  <Text>No data Found</Text>
+          // null
+           
+             }
+             
+      
+           </View>
           </View>
         </ScrollView>
       </SafeAreaView>

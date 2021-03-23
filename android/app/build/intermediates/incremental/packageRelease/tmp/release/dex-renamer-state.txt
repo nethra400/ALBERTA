@@ -1,4 +1,0 @@
-#Thu Feb 18 21:29:58 IST 2021
-base.0=/Users/arohatech/Documents/mobileApps/Manish_Alberta/AlbertaAdmin/android/app/build/intermediates/dex/release/mergeDexRelease/out/classes.dex
-renamed.0=classes.dex
-path.0=classes.dex

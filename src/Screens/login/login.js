@@ -4,14 +4,15 @@ import {
   Text,
   View,
   TouchableOpacity,
-  AsyncStorage,
   TextInput,
   Alert,
   Image,
   ScrollView,
   Keyboard,
   Switch,
+  AsyncStorage
 } from 'react-native';
+// import AsyncStorage from '@react-native-community/async-storage';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {Button} from 'react-native-elements';
 // import {Switch} from 'react-native-paper';
@@ -21,6 +22,7 @@ import Loading from 'react-native-whc-loading';
 import axios from 'axios';
 import moment from 'moment-timezone';
 // import { Switch } from 'react-native-switch';
+import TabNav from "../Navigation/TabNav";
 
 export default class welcome extends Component {
   constructor() {
@@ -99,7 +101,7 @@ export default class welcome extends Component {
   };
 
   onLoginPressed = () => {
-    API_URL = LOGIN_BASE_URL + 'authenticate_new';
+   const API_URL = LOGIN_BASE_URL + 'authenticate_new';
 
     fetch(API_URL, {
       method: 'POST',
@@ -153,6 +155,7 @@ export default class welcome extends Component {
   };
 
   loginWithToken = () => {
+    console.log(AsyncStorage.getItem('token'))
     const {AUTH, isSwitchEnabled} = this.state;
     if (AUTH) {
       // AsyncStorage.setItem('AUTH','1')
@@ -176,58 +179,61 @@ export default class welcome extends Component {
         let date = moment().format('MM-DD-YYYY');
         axios
           .get(LOGIN_BASE_URL1 + `${encodeURIComponent(data)}&date=${date}`)
-          .then((response) => console.log(response))
+          // .then((response) => responseJson)
           .then((responseJson) => {
-            if (res.error) {
-              this.sessionButton();
-            }
-            if (responseJson.user.email) {
-              AsyncStorage.setItem('fname', responseJson.user.fname);
-              AsyncStorage.setItem('lname', responseJson.user.lname);
-              AsyncStorage.setItem('emailid', responseJson.user.email);
+            console.log(responseJson)
+            // console.log(responseJson.error);
+            // if (responseJson.error) {
+            //   this.sessionButton();
+            // }
+            if (responseJson.data.user.email) {
+              AsyncStorage.setItem('fname', responseJson.data.user.fname);
+              AsyncStorage.setItem('lname', responseJson.data.user.lname);
+              AsyncStorage.setItem('emailid', responseJson.data.user.email);
               AsyncStorage.setItem(
                 'userId',
-                JSON.stringify(responseJson.user.iuserid),
+                JSON.stringify(responseJson.data.user.iuserid),
               );
-              AsyncStorage.setItem('id', JSON.stringify(responseJson.user.id));
-              //   AsyncStorage.setItem("userId", JSON.stringify(responseJson.user.id));
+              AsyncStorage.setItem('id', JSON.stringify(responseJson.data.user.id));
+              //   AsyncStorage.setItem("userId", JSON.stringify(responseJson.data.user.id));
               AsyncStorage.setItem(
                 'Storename',
-                responseJson.user.stores[0].name,
+                responseJson.data.user.stores[0].name,
               );
               AsyncStorage.setItem(
                 'Sid',
-                JSON.stringify(responseJson.user.stores[0].SID),
+                JSON.stringify(responseJson.data.user.stores[0].SID),
               );
               AsyncStorage.setItem(
                 'void',
-                JSON.stringify(responseJson.user.stores[0].voids),
+                JSON.stringify(responseJson.data.user.stores[0].voids),
               );
-              AsyncStorage.setItem('sales', responseJson.user.stores[0].sales);
+              AsyncStorage.setItem('sales', responseJson.data.user.stores[0].sales);
               AsyncStorage.setItem(
                 'delete',
-                JSON.stringify(responseJson.user.stores[0].deletes),
+                JSON.stringify(responseJson.data.user.stores[0].deletes),
               );
               // AsyncStorage.setItem(
               //   "role_name",
-              //   responseJson.user.user_role
+              //   responseJson.data.user.user_role
               // );
-              AsyncStorage.setItem('role_name', responseJson.user.user_role);
-              AsyncStorage.setItem('tax', responseJson.user.stores[0].tax);
+              AsyncStorage.setItem('role_name', responseJson.data.user.user_role);
+              AsyncStorage.setItem('tax', responseJson.data.user.stores[0].tax);
               AsyncStorage.setItem(
                 'paid_out',
-                responseJson.user.stores[0].paid_out,
+                responseJson.data.user.stores[0].paid_out,
               );
               AsyncStorage.setItem(
                 'returns',
-                responseJson.user.stores[0].returns,
+                responseJson.data.user.stores[0].returns,
               );
               AsyncStorage.setItem(
                 'No_Sales',
-                responseJson.user.stores[0].No_Sales,
+                responseJson.data.user.stores[0].No_Sales,
               );
-              showcategary = responseJson.user.stores[0].isnewdatabase;
-              this.Gonext();
+              showcategary = responseJson.data.user.stores[0].isnewdatabase;
+              // this.Gonext();
+              this.props.navigation.navigate('Dashboard')
             }
 
             Keyboard.dismiss();
@@ -240,28 +246,29 @@ export default class welcome extends Component {
   };
 
   Gonext = () => {
-    AsyncStorage.getItem('id').then((id) => {
-      AsyncStorage.getItem('Sid').then((Sid) => {
+    AsyncStorage.getItem('id').then(id => {
+      AsyncStorage.getItem('Sid').then(Sid => {
         if (id) {
-          fetch(
-            API_BASE_URL +
-              `admin/get_by_main_nav_menu_permission?id=${id}&sid=${Sid}`,
-            {
-              method: 'GET',
-            },
-          )
-            .then((response) => response.json())
-            .then((response) => {
-              this.setState({
-                dataSource: [...response.data],
-              });
-              // let data = this.state.dataSource;
+          fetch(API_BASE_URL + `admin/get_by_main_nav_menu_permission?id=${id}&sid=${Sid}`, {
+            method: 'GET', 
+          }) 
+            .then(response => response.json())
+            .then(response => {
+               this.setState({
+                 dataSource: [...response.data],
+               });
+              let data = this.state.dataSource;
+
+              if(true == data.some(item => (item.vpermissionname == "NOTIFICATIONS")) &&  true == data.some(item => (item.vpermissionname == "REPORTS")) ){
+                
+                this.props.navigation.navigate("TabNav");
+              } 
             })
-            .catch((error) => {
+            .catch(error => {
               console.log(error);
             });
         }
-      });
+      })
     });
   };
 
