@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/arohatech/Documents/mobileApps/Manish_Alberta/AlbertaAdmin/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-pt-rPT/values-pt-rPT.xml",
+            "outputFile": "/Users/arohatech/Documents/mobileApps/Manish_Alberta/AlbertaAdmin/PushtoGit/AlbertaAdmin/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-pt-rPT/values-pt-rPT.xml",
             "map": [
                 {
                     "source": "/Users/arohatech/.gradle/caches/transforms-2/files-2.1/57a7755ec7f8569f8e81b10deb53e9cc/core-1.1.0/res/values-pt-rPT/values-pt-rPT.xml",

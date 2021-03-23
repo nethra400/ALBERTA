@@ -1,0 +1,10 @@
+echo 'export PATH="/usr/local/opt/ruby/bin:/Users/arohatech/.rubies/ruby-3.0.0/lib/ruby/gems/3.0.0/bin:$PATH"' >> ~/.zshrc
+
+ /Users/arohatech/.rubies/ruby-3.0.0/lib/ruby/gems/3.0.0/cache
+
+  /Users/arohatech/.rubies/ruby-3.0.0/lib/ruby/gems/3.0.0
+
+  /Users/arohatech/.rubies/ruby-3.0.0/lib/ruby/gems/3.0.0
+
+org.reactjs.native.example.AlbertaAdmin
+

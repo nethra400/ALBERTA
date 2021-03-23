@@ -10,18 +10,17 @@ import {
   Image,
   ScrollView,
   Keyboard,
-  Switch
+  Switch,
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {Button} from 'react-native-elements';
 // import {Switch} from 'react-native-paper';
 import ToggleSwitch from 'toggle-switch-react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Loading from "react-native-whc-loading";
+import Loading from 'react-native-whc-loading';
 import axios from 'axios';
-import moment from 'moment-timezone'
+import moment from 'moment-timezone';
 // import { Switch } from 'react-native-switch';
-
 
 export default class welcome extends Component {
   constructor() {
@@ -29,207 +28,242 @@ export default class welcome extends Component {
 
     this.state = {
       // isSwitchOn: 'false',
-      email:'',
-      password:'',
-      isSwitchEnabled:false,
+      email: '',
+      password: '',
+      isSwitchEnabled: false,
       AUTH: false,
       dataSource: [],
-      vpermissionnameArray:[],
-      hidePassword:true
+      vpermissionnameArray: [],
+      hidePassword: true,
     };
   }
 
   forceUpdate() {
-    
-      AsyncStorage.getItem('savedPassword').then(
-          save => {
-              if (save) {
-                  this.props.navigation.navigate('saveUsername')
-
-              }
-          });
-  }
-
-  componentDidMount() {
-    // this.navigationSubscription = 
-    this.props.navigation.addListener(
-      'focus',
-      payload => {
-        this.forceUpdate();
+    AsyncStorage.getItem('savedPassword').then((save) => {
+      if (save) {
+        this.props.navigation.navigate('saveUsername');
       }
-    );
-    
+    });
   }
 
-//   componentWillUnmount() {
-//     this.navigationSubscription.remove();
-// }
+  // componentDidMount() {
+  //   // this.navigationSubscription =
+  //   this.props.navigation.addListener('focus', (payload) => {
+  //     this.forceUpdate();
+  //   });
+  // }
 
- 
+  //   componentWillUnmount() {
+  //     this.navigationSubscription.remove();
+  // }
 
-
-  handleSwitch = () =>{
-    const {isSwitchEnabled} = this.state 
+  handleSwitch = () => {
+    const {isSwitchEnabled} = this.state;
     this.setState({
-      isSwitchEnabled:!isSwitchEnabled
-    })
-  }
+      isSwitchEnabled: !isSwitchEnabled,
+    });
+  };
 
-  handleLogin = () =>{
-    const {email,password,emailError} = this.state
+  handleLogin = () => {
+    const {email, password, emailError} = this.state;
     // alert('hello')
     // alert(this.state.password);
     Keyboard.dismiss();
 
     let errors = true;
-    let errorMsgs = {}
+    let errorMsgs = {};
 
-    if(!email){
-      errorMsgs.emailError = "Please Enter Email";
-      errors=false
+    if (!email) {
+      errorMsgs.emailError = 'Please Enter Email';
+      errors = false;
     }
 
-    if(!password){
-      errorMsgs.pwdError = "Please Enter Password";
-      errors=false
+    if (!password) {
+      errorMsgs.pwdError = 'Please Enter Password';
+      errors = false;
     }
 
     // if((this.state.AUTH && this.state.isSwitchEnabled)){
     //   alert("Please Select One")
     // }
 
-    if(!errors){
+    if (!errors) {
       this.setState({
-        emailError:errorMsgs.emailError,
-        pwdError:errorMsgs.pwdError
-      })
+        emailError: errorMsgs.emailError,
+        pwdError: errorMsgs.pwdError,
+      });
       return;
+    } else {
+      this.onLoginPressed();
     }
-    else{
-      this.onLoginPressed()
-    }
+  };
 
-  }
-  
   onLoginPressed = () => {
-    
-    API_URL = LOGIN_BASE_URL + "authenticate_new";
-
-
+    API_URL = LOGIN_BASE_URL + 'authenticate_new';
 
     fetch(API_URL, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         email: this.state.email,
-        password: this.state.password
-      })
+        password: this.state.password,
+      }),
     })
-      .then(response => response.json())
-      .then(responseJson => {
+      .then((response) => response.json())
+      .then((responseJson) => {
         // this.refs.loading.show(false);
         if (responseJson.error) {
           // this.setState({ msg: "Username or password not match" });
-          this.setState({ msg: responseJson.error});
-         
+          this.setState({msg: responseJson.error});
         } else if (responseJson.token) {
-          alert(responseJson.token)
-          // alert('hello')
+          alert(responseJson.token);
           // this.props.navigation.navigate('Dashboard')
-          AsyncStorage.setItem("token", responseJson.token);
+          AsyncStorage.setItem('token', responseJson.token);
           this.loginWithToken();
-          
         }
-        
-      }
-      )
-      .catch(error => {
+      })
+      .catch((error) => {
         console.error(error);
       });
   };
 
   sessionButton = () => {
     Alert.alert(
-      "",
-      "Session expired Please login again",
+      '',
+      'Session expired Please login again',
       [
         {
-          text: "Cancel",
-          onPress: () => console.log("Cancel Pressed"),
-          style: "cancel"
+          text: 'Cancel',
+          onPress: () => console.log('Cancel Pressed'),
+          style: 'cancel',
         },
         {
-          text: "OK",
-          onPress: () => this.session()
-        }
+          text: 'OK',
+          onPress: () => this.session(),
+        },
       ],
       {
-        cancelable: false
-      }
+        cancelable: false,
+      },
     );
     return true;
   };
 
-  loginWithToken = () =>{
-    const { AUTH,isSwitchEnabled } = this.state;
-    if(AUTH){
+  loginWithToken = () => {
+    const {AUTH, isSwitchEnabled} = this.state;
+    if (AUTH) {
       // AsyncStorage.setItem('AUTH','1')
-      AsyncStorage.getItem('token').then(data=>{
-        if(data){
-          AsyncStorage.setItem('AuthPassword',data)
+      AsyncStorage.getItem('token').then((data) => {
+        if (data) {
+          AsyncStorage.setItem('AuthPassword', data);
         }
-      })
-    }
-
-    else if(isSwitchEnabled){
+      });
+    } else if (isSwitchEnabled) {
       // alert("hello")
-      AsyncStorage.getItem('token').then(data=>{
-        if(data){
-          AsyncStorage.setItem('savedPassword',data)
-          alert(data)
+      AsyncStorage.getItem('token').then((data) => {
+        if (data) {
+          AsyncStorage.setItem('savedPassword', data);
+          // alert(data);
         }
-       
-      })
+      });
     }
 
-    AsyncStorage.getItem('token').then(data=>{
-      if(data){
-        let date = moment()
+    AsyncStorage.getItem('token').then((data) => {
+      if (data) {
+        let date = moment().format('MM-DD-YYYY');
+        axios
+          .get(LOGIN_BASE_URL1 + `${encodeURIComponent(data)}&date=${date}`)
+          .then((response) => console.log(response))
+          .then((responseJson) => {
+            if (res.error) {
+              this.sessionButton();
+            }
+            if (responseJson.user.email) {
+              AsyncStorage.setItem('fname', responseJson.user.fname);
+              AsyncStorage.setItem('lname', responseJson.user.lname);
+              AsyncStorage.setItem('emailid', responseJson.user.email);
+              AsyncStorage.setItem(
+                'userId',
+                JSON.stringify(responseJson.user.iuserid),
+              );
+              AsyncStorage.setItem('id', JSON.stringify(responseJson.user.id));
+              //   AsyncStorage.setItem("userId", JSON.stringify(responseJson.user.id));
+              AsyncStorage.setItem(
+                'Storename',
+                responseJson.user.stores[0].name,
+              );
+              AsyncStorage.setItem(
+                'Sid',
+                JSON.stringify(responseJson.user.stores[0].SID),
+              );
+              AsyncStorage.setItem(
+                'void',
+                JSON.stringify(responseJson.user.stores[0].voids),
+              );
+              AsyncStorage.setItem('sales', responseJson.user.stores[0].sales);
+              AsyncStorage.setItem(
+                'delete',
+                JSON.stringify(responseJson.user.stores[0].deletes),
+              );
+              // AsyncStorage.setItem(
+              //   "role_name",
+              //   responseJson.user.user_role
+              // );
+              AsyncStorage.setItem('role_name', responseJson.user.user_role);
+              AsyncStorage.setItem('tax', responseJson.user.stores[0].tax);
+              AsyncStorage.setItem(
+                'paid_out',
+                responseJson.user.stores[0].paid_out,
+              );
+              AsyncStorage.setItem(
+                'returns',
+                responseJson.user.stores[0].returns,
+              );
+              AsyncStorage.setItem(
+                'No_Sales',
+                responseJson.user.stores[0].No_Sales,
+              );
+              showcategary = responseJson.user.stores[0].isnewdatabase;
+              this.Gonext();
+            }
 
-        .format("MM-DD-YYYY");
-        axios.get(LOGIN_BASE_URL1 + `${encodeURIComponent(data)}&date=${date}`)
-        .then(res=>{
-          if(res.error){
-            this.sessionButton()
-          }
-          if(res.data.user.email){
-            // alert(res);
-            
-            AsyncStorage.setItem("fname", res.data.user.fname);
-              AsyncStorage.setItem("lname", res.data.user.lname);
-              AsyncStorage.setItem("emailid", res.data.user.email);
-            // alert(JSON.stringify(res.data.user.email))
-            // this.props.navigation.navigate('Dashboard')
-            this.Gonext();
-          }
-          Keyboard.dismiss()
-        })
-        .catch(err=>{
-          alert(err)
-        })
+            Keyboard.dismiss();
+          })
+          .catch((err) => {
+            alert(err);
+          });
       }
-    })
+    });
+  };
 
-    
-  }
-
-  Gonext = () =>{
-    this.props.navigation.navigate('Dashboard')
-  }
-
+  Gonext = () => {
+    AsyncStorage.getItem('id').then((id) => {
+      AsyncStorage.getItem('Sid').then((Sid) => {
+        if (id) {
+          fetch(
+            API_BASE_URL +
+              `admin/get_by_main_nav_menu_permission?id=${id}&sid=${Sid}`,
+            {
+              method: 'GET',
+            },
+          )
+            .then((response) => response.json())
+            .then((response) => {
+              this.setState({
+                dataSource: [...response.data],
+              });
+              // let data = this.state.dataSource;
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        }
+      });
+    });
+  };
 
   render() {
     return (
@@ -251,31 +285,27 @@ export default class welcome extends Component {
             Built by Retailers,for Retailers
           </Text>
         </View>
-        
 
         <View style={styles.loginContainer}>
           <View style={styles.textBoxContainer}>
             <TextInput
-            style={styles.textBox1}
+              style={styles.textBox1}
               underlineColorAndroid="transparent"
               placeholder="Email"
-                placeholderTextColor="#3386D6"
-                // returnKeyType="next"
-                keyboardType="default"
-                autoCapitalize="none"
-                autoCorrect={true}
-                onChangeText={email => this.setState({ email,emailError:'' })}
-
+              placeholderTextColor="#3386D6"
+              // returnKeyType="next"
+              keyboardType="default"
+              autoCapitalize="none"
+              autoCorrect={true}
+              onChangeText={(email) => this.setState({email, emailError: ''})}
             />
             <View style={styles.PhoneNumberView}>
               {/* <FontAwesome name="map-pin" size={16} color="#469BF6" /> */}
             </View>
-            
           </View>
           <View>
-                <Text style={styles.errors}>{this.state.emailError}</Text>
-              </View>
-          
+            <Text style={styles.errors}>{this.state.emailError}</Text>
+          </View>
 
           <View style={styles.textBoxContainer}>
             <TextInput
@@ -285,18 +315,18 @@ export default class welcome extends Component {
               secureTextEntry={this.state.hidePassword}
               keyboardType="default"
               placeholderTextColor={'#3386D6'}
-              onChangeText={password => this.setState({ password ,pwdError:""})}
+              onChangeText={(password) =>
+                this.setState({password, pwdError: ''})
+              }
             />
             <View style={styles.PhoneNumberView}>
               <FontAwesome name="remove" size={16} color="#469BF6" />
             </View>
-            
-            
           </View>
           <View>
-                <Text style={styles.errors}>{this.state.pwdError}</Text>
-              </View>
-          
+            <Text style={styles.errors}>{this.state.pwdError}</Text>
+          </View>
+
           <View style={{display: 'flex'}}>
             <Button
               titleStyle={{color: '#fff', fontSize: 14}}
@@ -308,15 +338,19 @@ export default class welcome extends Component {
               containerStyle={{margin: 3}}
               //type="outline"
               title="Login"
-              onPress={()=>this.handleLogin()}
+              onPress={() => this.handleLogin()}
             />
           </View>
-          <View style={{display:'flex',flexDirection:'row',justifyContent:'flex-start'}}>
-           
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'flex-start',
+            }}>
             <ToggleSwitch
-            // value={this.state.isSwitchEnabled}
+              // value={this.state.isSwitchEnabled}
               isOn={this.state.isSwitchEnabled}
-              onColor='blue'
+              onColor="blue"
               offColor="white"
               trackOffStyle={{
                 borderRightWidth: 5,
@@ -331,7 +365,7 @@ export default class welcome extends Component {
               label="Save Username"
               labelStyle={{color: '#fff', fontWeight: '900'}}
               size="medium"
-              onToggle={()=>this.handleSwitch()}
+              onToggle={() => this.handleSwitch()}
             />
             <ToggleSwitch
               isOn={this.state.AUTH}
@@ -340,10 +374,10 @@ export default class welcome extends Component {
               label="Use FaceId"
               labelStyle={{color: '#fff', fontWeight: '900'}}
               size="medium"
-              onToggle={()=>this.setState({AUTH:!this.state.AUTH})}
+              onToggle={() => this.setState({AUTH: !this.state.AUTH})}
             />
           </View>
-         
+
           {/* <View style={{display: 'flex', flexDirection: 'row', marginTop: 20}}>
             <ToggleSwitch
               isOn={false}
@@ -430,8 +464,8 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 20,
   },
   errors: {
-    color: "red",
-    alignItems: "flex-start",
+    color: 'red',
+    alignItems: 'flex-start',
     marginLeft: 46,
   },
 });
