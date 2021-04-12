@@ -3,7 +3,6 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import {
   View,
   Text,
-  AsyncStorage,
   ImageBackground,
   ScrollView,
   SafeAreaView,
@@ -15,6 +14,7 @@ import AppIntroSlider from 'react-native-app-intro-slider';
 import moment from 'moment-timezone';
 import LinearGradient from 'react-native-linear-gradient';
 import axios from 'axios';
+import AsyncStorage from "@react-native-community/async-storage";
 
 class Dashboard extends React.Component {
   state = {
@@ -79,78 +79,45 @@ class Dashboard extends React.Component {
   };
 
   componentDidMount(){
-    AsyncStorage.getItem("No_Sales").then(noSales => {
-      if (noSales) {
-        //alert(noSales)
-        this.setState({ noSales: noSales });
-      }
-    });
+  
 
-    AsyncStorage.getItem("Storename").then(datastore => {
-      if (datastore) {
-        //alert(datastore)
-        this.setState({ sname: datastore });
-      }
-    });
+    AsyncStorage.getItem("user_and_store_details")
+      .then((userAndStoreDetails) => {
+        const {userDetails,
+          storeDetails} = JSON.parse(userAndStoreDetails);
+          const {id} = userDetails
+        
+          const { tax,Sid ,Storename}  = storeDetails
+        // alert(sDetails)
+        this.setState({
+          stax:tax,
+          sid:Sid,
+          sname:Storename
+          
+        })
 
-    AsyncStorage.getItem("Sid").then(datasid => {
-      if (datasid) {
-        this.setState({ sid: datasid });
-      }
-    });
-
-    AsyncStorage.getItem("tax").then(datatax => {
-      if (datatax) {
-        this.setState({ stax: datatax });
-        //alert(datatax)
-      }
-    });
-    AsyncStorage.getItem("returns").then(datareturns => {
-      if (datareturns) {
-        this.setState({ returns: datareturns });
-      }
-    });
-    AsyncStorage.getItem("paid_out").then(datapaid_out => {
-      if (datapaid_out) {
-        this.setState({ paidout: datapaid_out });
-      }
-    });
-    AsyncStorage.getItem("void").then(datavoid => {
-      if (datavoid) {
-        //alert(datavoids)
-        this.setState({ svoid: datavoid });
-      }
-    });
-    AsyncStorage.getItem("sales").then(datasales => {
-      if (datasales) {
-        //alert(datastore)
-        this.setState({ ssale: datasales });
-      }
-    });
-    AsyncStorage.getItem("delete").then(datadelete => {
-      if (datadelete) {
-        //alert(datadelete)
-        this.setState({ sdelete: datadelete });
-      }
-    });
-
-    
-    AsyncStorage.getItem('id').then(id => {
-      AsyncStorage.getItem('Sid').then(Sid => {
-
-      axios.get( API_BASE_URL + `admin/get_by_main_menu_permission?id=${id}&sid=${Sid}` )
+        axios.get( API_BASE_URL + `admin/get_by_main_menu_permission?id=${id}&sid=${Sid}` )
       .then(responseJson=>{
         // alert(responseJson)
         console.log(responseJson)
         // console.log(JSON.stringify(res));
         this.setState({
-          dataSource:responseJson.data.data
+          dataSource:responseJson.data.data,
+          
         })
-        alert(this.state.dataSource)
+        // alert(this.state.dataSource)
       })
       .catch(err =>{
         console.log(err)
       })
+
+       
+      })
+    
+    AsyncStorage.getItem('id').then(id => {
+      AsyncStorage.getItem('Sid').then(Sid => {
+
+    
 
     //     // if(id){
     //       // axios.get( API_BASE_URL + `admin/get_by_main_menu_permission?id=${id}&sid=${Sid}` )
@@ -251,25 +218,7 @@ class Dashboard extends React.Component {
   };
 
   render() {
-    AsyncStorage.getItem("No_Sales").then(noSales => {
-      if (noSales) {
-        //alert(noSales)
-        this.setState({ noSales: noSales });
-      }
-    });
-
-    AsyncStorage.getItem("Storename").then(datastore => {
-      if (datastore) {
-        //alert(datastore)
-        this.setState({ sname: datastore });
-      }
-    });
-
-    AsyncStorage.getItem("Sid").then(datasid => {
-      if (datasid) {
-        this.setState({ sid: datasid });
-      }
-    });
+  
     return (
       <SafeAreaView>
         <ScrollView>
@@ -331,7 +280,6 @@ class Dashboard extends React.Component {
                 shadowOpacity: 0.5,
                 elevation: 3,
               }}>
-              {/* <View > */}
               {!this.state.showRealApp && (
                 <AppIntroSlider
                   renderItem={this._renderItem}
@@ -342,10 +290,9 @@ class Dashboard extends React.Component {
                   bottomButton={true}
                 />
               )}
-              {/* </View> */}
             </LinearGradient>
          
-            <View
+            {/* <View
               style={{
                 flexDirection: 'row',
                 justifyContent: 'space-around',
@@ -383,7 +330,7 @@ class Dashboard extends React.Component {
                 <Text>Non Scanned Items</Text>
                 <Text>23</Text>
               </View>
-            </View>
+            </View> */}
             
            <View>
              {
@@ -391,7 +338,7 @@ class Dashboard extends React.Component {
                 return(
                   <TouchableOpacity>
                   <ListItem
-                  key={index}
+                    keyExtractor={(item, index) => index.toString()}
                     bottomDivider
                     containerStyle={{
                       borderRadius: 35,

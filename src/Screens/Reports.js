@@ -50,10 +50,13 @@ export default class Reports extends Component{
                 <View>
           
                       {
-                          this.state.data.map((val)=>{
+                          this.state.data.map((val,index)=>{
                               return(
                                 <TouchableOpacity>
                                 <ListItem
+                                // key = {index}
+                                keyExtractor={(item, index) => index.toString()}
+                                
                                   bottomDivider
                                   containerStyle={{
                                     borderRadius: 35,

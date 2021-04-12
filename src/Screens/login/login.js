@@ -10,9 +10,8 @@ import {
   ScrollView,
   Keyboard,
   Switch,
-  AsyncStorage
 } from 'react-native';
-// import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from "@react-native-community/async-storage";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {Button} from 'react-native-elements';
 // import {Switch} from 'react-native-paper';
@@ -121,8 +120,8 @@ export default class welcome extends Component {
           // this.setState({ msg: "Username or password not match" });
           this.setState({msg: responseJson.error});
         } else if (responseJson.token) {
-          alert(responseJson.token);
-          // this.props.navigation.navigate('Dashboard')
+          // alert(responseJson.token);
+          this.props.navigation.navigate('Dashboard')
           AsyncStorage.setItem('token', responseJson.token);
           this.loginWithToken();
         }
@@ -181,59 +180,88 @@ export default class welcome extends Component {
           .get(LOGIN_BASE_URL1 + `${encodeURIComponent(data)}&date=${date}`)
           // .then((response) => responseJson)
           .then((responseJson) => {
+            // alert()
             console.log(responseJson)
             // console.log(responseJson.error);
             // if (responseJson.error) {
             //   this.sessionButton();
             // }
             if (responseJson.data.user.email) {
-              AsyncStorage.setItem('fname', responseJson.data.user.fname);
-              AsyncStorage.setItem('lname', responseJson.data.user.lname);
-              AsyncStorage.setItem('emailid', responseJson.data.user.email);
-              AsyncStorage.setItem(
-                'userId',
-                JSON.stringify(responseJson.data.user.iuserid),
-              );
-              AsyncStorage.setItem('id', JSON.stringify(responseJson.data.user.id));
-              //   AsyncStorage.setItem("userId", JSON.stringify(responseJson.data.user.id));
-              AsyncStorage.setItem(
-                'Storename',
-                responseJson.data.user.stores[0].name,
-              );
-              AsyncStorage.setItem(
-                'Sid',
-                JSON.stringify(responseJson.data.user.stores[0].SID),
-              );
-              AsyncStorage.setItem(
-                'void',
-                JSON.stringify(responseJson.data.user.stores[0].voids),
-              );
-              AsyncStorage.setItem('sales', responseJson.data.user.stores[0].sales);
-              AsyncStorage.setItem(
-                'delete',
-                JSON.stringify(responseJson.data.user.stores[0].deletes),
-              );
+              const { fname, lname, email, iuserid, id, stores, user_role } = responseJson.data.user
+              const { name, SID, voids, sales, deletes, tax, paid_out, returns} = stores[0]
+
+              const userDetails = {
+                fname, lname, 
+                'userid': iuserid, 
+                id,
+                "emailid": email,
+                "role_name": user_role
+              }
+
+              const storeDetails = {
+                "Storename": name,
+                "Sid": SID,
+                "void": voids,
+                "delete": deletes,
+                "sales": sales,
+                "tax":tax,
+                "paid_out":paid_out,
+                'returns':returns
+              }
+
+              const userAndStoreDetails = {
+                userDetails,
+                storeDetails
+              }
+
+              AsyncStorage.setItem('user_and_store_details', JSON.stringify(userAndStoreDetails))
+              // AsyncStorage.setItem('fname', responseJson.data.user.fname);
+              // AsyncStorage.setItem('lname', responseJson.data.user.lname);
+              // AsyncStorage.setItem('emailid', responseJson.data.user.email);
               // AsyncStorage.setItem(
-              //   "role_name",
-              //   responseJson.data.user.user_role
+              //   'userId',
+              //   JSON.stringify(responseJson.data.user.iuserid),
               // );
-              AsyncStorage.setItem('role_name', responseJson.data.user.user_role);
-              AsyncStorage.setItem('tax', responseJson.data.user.stores[0].tax);
-              AsyncStorage.setItem(
-                'paid_out',
-                responseJson.data.user.stores[0].paid_out,
-              );
-              AsyncStorage.setItem(
-                'returns',
-                responseJson.data.user.stores[0].returns,
-              );
-              AsyncStorage.setItem(
-                'No_Sales',
-                responseJson.data.user.stores[0].No_Sales,
-              );
-              showcategary = responseJson.data.user.stores[0].isnewdatabase;
-              // this.Gonext();
-              this.props.navigation.navigate('Dashboard')
+              // AsyncStorage.setItem('id', JSON.stringify(responseJson.data.user.id));
+              // //   AsyncStorage.setItem("userId", JSON.stringify(responseJson.data.user.id));
+              // AsyncStorage.setItem(
+              //   'Storename',
+              //   responseJson.data.user.stores[0].name,
+              // );
+              // AsyncStorage.setItem(
+              //   'Sid',
+              //   JSON.stringify(responseJson.data.user.stores[0].SID),
+              // );
+              // AsyncStorage.setItem(
+              //   'void',
+              //   JSON.stringify(responseJson.data.user.stores[0].voids),
+              // );
+              // AsyncStorage.setItem('sales', responseJson.data.user.stores[0].sales);
+              // AsyncStorage.setItem(
+              //   'delete',
+              //   JSON.stringify(responseJson.data.user.stores[0].deletes),
+              // );
+              // // AsyncStorage.setItem(
+              // //   "role_name",
+              // //   responseJson.data.user.user_role
+              // // );
+              // AsyncStorage.setItem('role_name', responseJson.data.user.user_role);
+              // AsyncStorage.setItem('tax', responseJson.data.user.stores[0].tax);
+              // AsyncStorage.setItem(
+              //   'paid_out',
+              //   responseJson.data.user.stores[0].paid_out,
+              // );
+              // AsyncStorage.setItem(
+              //   'returns',
+              //   responseJson.data.user.stores[0].returns,
+              // );
+              // AsyncStorage.setItem(
+              //   'No_Sales',
+              //   responseJson.data.user.stores[0].No_Sales,
+              // );
+              // showcategary = responseJson.data.user.stores[0].isnewdatabase;
+              // // this.Gonext();
+              // this.props.navigation.navigate('Dashboard')
             }
 
             Keyboard.dismiss();
