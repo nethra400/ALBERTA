@@ -35,7 +35,8 @@ class Dashboard extends React.Component {
     slides: [
       {
         key: 1,
-        headerText: moment().format('MM-DD-YYYY'),
+        // headerText: moment().format('MM-DD-YYYY'),
+        headerText:moment().format('MMMM DD YYYY, h:mm A'),
         salesText: 'Sales',
         salesCount: '$00.000,00',
         taxText: 'Tax',
@@ -85,14 +86,17 @@ class Dashboard extends React.Component {
       .then((userAndStoreDetails) => {
         const {userDetails,
           storeDetails} = JSON.parse(userAndStoreDetails);
+          // alert(userAndStoreDetails)
           const {id} = userDetails
         
-          const { tax,Sid ,Storename}  = storeDetails
+          const { tax,Sid ,Storename,sales,deletes }  = storeDetails;
         // alert(sDetails)
         this.setState({
           stax:tax,
           sid:Sid,
-          sname:Storename
+          sname:Storename,
+          noSales:sales,
+          sdelete:deletes
           
         })
 
@@ -173,12 +177,12 @@ class Dashboard extends React.Component {
 
   _renderItem = ({item}) => {
     return (
-      <View>
+      <View style={{marginTop:10}}>
         <Text style={{color: 'white', alignSelf: 'center'}}>
           {item.headerText}
         </Text>
         {/* <Image source={item.image} /> */}
-        <View>
+        <View style={{marginTop:10}}>
           <Text style={{color: 'white', alignSelf: 'center'}}>
             {item.salesText}
           </Text>
@@ -188,8 +192,9 @@ class Dashboard extends React.Component {
               alignSelf: 'center',
               fontSize: 20,
               fontWeight: 'bold',
+              
             }}>
-            {this.state.noSales}
+            ${this.state.noSales}
           </Text>
         </View>
         <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
@@ -217,12 +222,40 @@ class Dashboard extends React.Component {
     this.props.navigation.navigate('login');
   };
 
+  handleClick = (item) =>{
+    // alert("hello");
+    // console.log(item);
+    let data=JSON.stringify(item);
+    let data1=JSON.parse(data);
+    if(data1.vpermissionname == "RECEIVE ORDER"){
+      this.props.navigation.navigate("ReceivingOrder")
+    }
+    else if(data1.vpermissionname == "PRINT LABEL"){
+      this.props.navigation.navigate('PrintLabel')
+    }
+
+    else if (data1.vpermissionname == "Promotion"){
+      this.props.navigation.navigate('Promotions')
+    }
+    else if(data1.vpermissionname == "Physical Inventory"){
+      this.props.navigation.navigate('physicalInventory')
+    }
+    else if(data1.vpermissionname == "Tutorials"){
+      this.props.navigation.navigate('Tutorials')
+    }
+    else{
+      this.props.navigation.navigate("Dashboard")
+    }
+  }
+
   render() {
   
     return (
       <SafeAreaView>
-        <ScrollView>
+         <ScrollView>
+        
           <View>
+         
             {/* <View><Text>{'hello'}</Text></View> */}
 
             {/* <Button 
@@ -287,16 +320,17 @@ class Dashboard extends React.Component {
                   showSkipButton={false}
                   showDoneButton={false}
                   showNextButton={false}
-                  bottomButton={true}
+                  // bottomButton={true}
                 />
               )}
             </LinearGradient>
          
-            {/* <View
+             <View
               style={{
                 flexDirection: 'row',
                 justifyContent: 'space-around',
                 padding: 10,
+                marginTop:10
               }}>
               <View
                 style={{
@@ -306,7 +340,7 @@ class Dashboard extends React.Component {
                   paddingVertical: 20,
                   shadowColor: '#000',
                   shadowOffset: {width: 0, height: 1},
-                  shadowOpacity: 0.5,
+                  shadowOpacity: 0.2,
                   shadowRadius: 2,
                   elevation: 3,
                   shadowRadius: 5,
@@ -322,7 +356,7 @@ class Dashboard extends React.Component {
                   paddingVertical: 20,
                   shadowColor: '#000',
                   shadowOffset: {width: 0, height: 1},
-                  shadowOpacity: 0.5,
+                  shadowOpacity: 0.2,
                   shadowRadius: 2,
                   elevation: 3,
                   shadowRadius: 5,
@@ -330,13 +364,14 @@ class Dashboard extends React.Component {
                 <Text>Non Scanned Items</Text>
                 <Text>23</Text>
               </View>
-            </View> */}
-            
-           <View>
+            </View> 
+           
+           {/* <View> */}
              {
              this.state.dataSource.map((val,index)=>{
                 return(
-                  <TouchableOpacity>
+                  <View >
+                  <TouchableOpacity onPress={()=>this.handleClick(val)}>
                   <ListItem
                     keyExtractor={(item, index) => index.toString()}
                     bottomDivider
@@ -358,6 +393,7 @@ class Dashboard extends React.Component {
                     </View>
                   </ListItem>
                 </TouchableOpacity>
+                </View>
                 )
              })
             
@@ -368,9 +404,11 @@ class Dashboard extends React.Component {
              }
              
       
-           </View>
+           {/* </View> */}
+           {/* </ScrollView> */}
           </View>
-        </ScrollView>
+          </ScrollView>
+       
       </SafeAreaView>
     );
   }

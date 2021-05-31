@@ -104,6 +104,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>RCTYouTube.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>RNCAsyncStorage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -249,6 +254,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>YoutubePlayer-in-WKWebView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>boost-for-react-native.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -260,6 +270,11 @@
 			<false/>
 		</dict>
 		<key>libevent.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>react-native-camera.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

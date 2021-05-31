@@ -63,6 +63,7 @@ export default class welcome extends Component {
             <Text style={styles.welcomeText1}>Mangage Your Business! </Text>
             <View style={{display: 'flex'}}>
               <Button
+              style={{marginTop:50}}
                 titleStyle={{color: '#3386D6', fontSize: 14}}
                 buttonStyle={{
                   padding: 12,
@@ -80,7 +81,7 @@ export default class welcome extends Component {
             <View>
               <Image
                 source={require('../../assets/images/promotion.jpeg')}
-                style={{width: 250, height: 250, alignSelf: 'center'}}
+                style={{width: 250, height: 250, alignSelf: 'center',marginTop:30}}
               />
             </View>
 
@@ -104,31 +105,41 @@ export default class welcome extends Component {
               <Text style={styles.welcomeText1}>Follow Us!</Text>
             </View>
             <View style={styles.bottomView}>
+              <View style={{marginLeft:10}}>
               <Facebook
                 color="white"
                 size={24}
                 textstyle={{alignItems: 'center', alignContent: 'center'}}
               />
+              </View>
+              <View style={{marginLeft:10}}>
               <Instagram
                 size={24}
                 color="white"
                 textstyle={{alignItems: 'center', alignContent: 'center'}}
               />
+              </View>
+              <View style={{marginLeft:10}}>
               <Twitter
                 size={24}
                 color="white"
                 textstyle={{alignItems: 'center', alignContent: 'center'}}
               />
+              </View>
+               <View style={{marginLeft:10}}>
               <Youtube
                 size={24}
                 color="white"
                 textstyle={{alignItems: 'center', alignContent: 'center'}}
               />
+              </View>
+               <View style={{marginLeft:10}}>
               <LinkedIn
                 size={24}
                 color="white"
                 textstyle={{alignItems: 'center', alignContent: 'center'}}
               />
+              </View>
 
               {/* <Icon name="facebook" size={30} color="white" style = {[styles.iconBackground,{backgroundColor:"#3b5998"}]}   />
               <Icon name="instagram" size={35} color="white" style = {[styles.iconBackground,{backgroundColor:"#8a3ab9"}]}/>
@@ -145,18 +156,18 @@ export default class welcome extends Component {
 
 const styles = StyleSheet.create({
   welcomeTextView: {
-    marginTop: 50,
+    marginTop: 120,
   },
 
   welcomeText: {
     color: 'white',
     fontWeight: '500',
-    fontSize: 22,
+    fontSize: 26,
     alignSelf: 'center',
     marginBottom: 5,
   },
   welcomeText1: {
-    margin: 1,
+    margin: 4,
     color: '#fff',
     fontSize: 18,
     alignSelf: 'center',
@@ -167,6 +178,8 @@ const styles = StyleSheet.create({
     alignContent: 'space-between',
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop:30,
+    // marginLeft:50
   },
   iconBackground: {
     color: 'white',

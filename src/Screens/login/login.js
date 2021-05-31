@@ -202,7 +202,7 @@ export default class welcome extends Component {
                 "Storename": name,
                 "Sid": SID,
                 "void": voids,
-                "delete": deletes,
+                "deletes": deletes,
                 "sales": sales,
                 "tax":tax,
                 "paid_out":paid_out,
@@ -303,7 +303,7 @@ export default class welcome extends Component {
   render() {
     return (
       <ScrollView style={{backgroundColor: '#3386D6'}}>
-        <View style={{marginTop: 100}}>
+        <View style={{marginTop: 180}}>
           <Image
             source={require('../../assets/images/Alberta_Logo1.png')}
             style={{width: '100%', height: 150, resizeMode: 'contain'}}
@@ -381,6 +381,7 @@ export default class welcome extends Component {
               display: 'flex',
               flexDirection: 'row',
               justifyContent: 'flex-start',
+              marginTop:20,
             }}>
             <ToggleSwitch
               // value={this.state.isSwitchEnabled}

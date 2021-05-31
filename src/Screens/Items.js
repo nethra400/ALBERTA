@@ -21,6 +21,28 @@ export default class Items extends Component{
        
     ]
     }
+
+    handlePress = (item) =>{
+      const {data} = this.state
+      let data1=JSON.stringify(item);
+      let data2=JSON.parse(data1);
+      // alert("hello")
+      // alert(data2)
+      if(data2.name == "Add/Edit Item"){
+        this.props.navigation.navigate("AddItem")
+      }
+      else if(data2.name == "Change Price"){
+        this.props.navigation.navigate("ChangePrice")
+      }
+      else if(data2.name == "Update Quantity"){
+        this.props.navigation.navigate("UpdateQty")
+      }
+      // else (data2.name == "Upload Picture") 
+      //   this.props.navigation.navigate("UploadPic")
+      
+    
+    }
+
     render(){
         return(
            <SafeAreaView>
@@ -36,17 +58,43 @@ export default class Items extends Component{
                     paddingVertical: 10,
                     paddingHorizontal:20
                   }}>
-                  <Text style={{color: 'white'}}>Items</Text>
+                  <Text style={{color: 'white'}} onPress={()=>this.props.navigation.navigate('Dashboard')}>Items</Text>
                   
                 </View>
               </ImageBackground>
             </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-around',
+                padding: 10,
+                width:"100%"
+              }}>
+              <View
+                style={{
+                  backgroundColor: '#fff',
+                  borderRadius: 80,
+                  justifyContent:'center',
+                  paddingHorizontal: 130,
+                  paddingVertical: 40,
+                  marginTop:20,
+                  shadowColor: '#000',
+                  shadowOffset: {width: 0, height: 1},
+                  shadowOpacity: 0.2,
+                  shadowRadius: 1,
+                  elevation: 3,
+                  shadowRadius: 5,
+                }}>
+                <Text style={{fontSize:20,padding:5}}>Total Items</Text>
+                <Text style={{fontSize:16,padding:5,marginLeft:20}}>00,000</Text>
+              </View>
+              </View>
                 <View>
           
                       {
                           this.state.data.map((val,index)=>{
                               return(
-                                <TouchableOpacity>
+                                <TouchableOpacity onPress={()=>this.handlePress(val)}>
                                 <ListItem
                                 // key = {index}
                                 keyExtractor={(item, index) => index.toString()}

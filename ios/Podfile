@@ -11,7 +11,6 @@ target 'AlbertaAdmin' do
 
   use_flipper!({ 'Flipper' => '0.78.0' })
 
-  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-async-storage/async-storage'
 
   target 'AlbertaAdminTests' do
     inherit! :complete

@@ -1,8 +1,9 @@
 import React,{Component  } from "react";
-import { View,Text,SafeAreaView , ImageBackground,} from "react-native";
+import { View,Text,SafeAreaView , ImageBackground} from "react-native";
 import {ListItem} from 'react-native-elements';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import {Button} from 'react-native-elements';
 
 export default class Settings extends Component{
     state={
@@ -20,7 +21,7 @@ export default class Settings extends Component{
     render(){
         return(
            <SafeAreaView>
-                <View>
+                {/* <View> */}
                 <View style={{width: '100%'}}>
               <ImageBackground
                 source={require('../assets/images/header.jpeg')}
@@ -33,7 +34,7 @@ export default class Settings extends Component{
                     paddingVertical: 10,
                     paddingHorizontal:20
                   }}>
-                  <Text style={{color: 'white'}}>Settings</Text>
+                  <Text style={{color: 'white'}} onPress={()=>this.props.navigation.navigate('Dashboard')}>Settings</Text>
                   
                 </View>
               </ImageBackground>
@@ -71,7 +72,26 @@ export default class Settings extends Component{
 
 
             </View>
+           
+            {/* </View> */}
+            <View style={{display: 'flex'}}>
+              <Button
+              style={{marginTop:10}}
+                titleStyle={{color: '#fff', fontSize: 16}}
+                buttonStyle={{
+                  padding: 12,
+                  backgroundColor: '#3386D6',
+                  borderRadius: 25,
+                }}
+                containerStyle={{margin: 20}}
+                //type="outline"
+                title="Logout"
+                onPress={() => {
+                  this.props.navigation.navigate('Dashboard');
+                }}
+              />
             </View>
+           
            </SafeAreaView>
         )
     }

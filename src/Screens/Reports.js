@@ -11,7 +11,7 @@ export default class Reports extends Component{
             name:"current 25 Transactions"
         },
         {
-            name:"End of Shif report"
+            name:"End of Shift report"
         },
         {
             name:"End of day report"
@@ -20,12 +20,29 @@ export default class Reports extends Component{
             name:"sales history report"
         },
         {
-            name:"item Movement"
+            name:"Item Movement"
         },
         {
             name:"Tax Report"
         }
     ]
+    }
+
+    handleClick = (item) =>{
+      let data1 = JSON.stringify(item);
+      let data2 = JSON.parse(data1)
+      if(data2.name == "current 25 Transactions"){
+        this.props.navigation.navigate('currTrans')
+      }
+      else if(data2.name == 'End of Shift report'){
+      this.props.navigation.navigate('Eos')
+      }
+      else if(data2.name == 'End of Day report'){
+        this.props.navigation.navigate('Eod')
+      }
+      else if(data2.name == 'Item Movement')
+        this.props.navigation.navigate('ItemMov')
+      
     }
     render(){
         return(
@@ -42,7 +59,7 @@ export default class Reports extends Component{
                     paddingVertical: 10,
                     paddingHorizontal:20
                   }}>
-                  <Text style={{color: 'white'}}>Reports</Text>
+                  <Text style={{color: 'white'}} onPress={()=>this.props.navigation.navigate('Dashboard')}>Reports</Text>
                   
                 </View>
               </ImageBackground>
@@ -52,7 +69,7 @@ export default class Reports extends Component{
                       {
                           this.state.data.map((val,index)=>{
                               return(
-                                <TouchableOpacity>
+                                <TouchableOpacity onPress={()=>this.handleClick(val)}>
                                 <ListItem
                                 // key = {index}
                                 keyExtractor={(item, index) => index.toString()}

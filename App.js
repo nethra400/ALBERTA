@@ -24,9 +24,29 @@ import Splash from "./src/Screens/splashscreen";
 import login from './src/Screens/login/login';
 import Dashboard from "./src/Screens/Dashboard/dashboard";
 import Container from "./src/Screens/container";
+import ReceivingOrder from "./src/Screens/Dashboard/receivingOrder";
+import PrintLabel from "./src/Screens/Dashboard/printLabel";
+import Promotions from "./src/Screens/Dashboard/promotions";
+import AddNewReceivingOrder from "./src/Screens/Dashboard/addNewRecievingorder";
+import SelectItem from "./src/Screens/Dashboard/selectItem";
+import ItemInformation from "./src/Screens/Dashboard/itemInformation";
+import OrderInformation from "./src/Screens/Dashboard/orderInformation";
+import Tutorials from "./src/Screens/Dashboard/tutorials";
+import ReactNativeYouTubeExample from "./src/Screens/Dashboard/Flip";
+import AddPrintLabel from "./src/Screens/Dashboard/addPrintLabel";
 
 import saveUsername from "./src/Screens/login/usePassword";
 import TabNav from "./src/Screens/Navigation/TabNav";
+import currTrans from "./src/Screens/Reports/currTrans";
+import Eos from "./src/Screens/Reports/eos";
+import Eod from "./src/Screens/Reports/eod";
+import ItemMov from "./src/Screens/Reports/itemMov";
+
+
+import AddItem from "./src/Screens/addItem";
+import ChangePrice from "./src/Screens/changePrice";
+import UpdateQty from "./src/Screens/updatwQty";
+import UploadPic from "./src/Screens/uploadPic";
 // import MatTabNav from "./src/Screens/Navigation/MatTabNav";
 // import FingerPrint from "./src/Screens/login/faceId";
 // import Logo from './src/assets/logo/Logo';
@@ -77,7 +97,24 @@ function MyStack() {
         <Stack.Screen name="Container" component={Container} />
          <Stack.Screen name="Dashboard" component={TabNav}
         options={{title:null,headerShown:false}} />
-        
+        <Stack.Screen name="ReceivingOrder" component={ReceivingOrder} options={{title:null,headerShown:false}}/>
+        <Stack.Screen name="PrintLabel" component={PrintLabel} options={{title:null,headerShown:false}}/>
+        <Stack.Screen name="Promotions" component={Promotions} options={{title:null,headerShown:false}} />
+        <Stack.Screen name="AddItem" component={AddItem} options={{title:null,headerShown:false}}/>
+        <Stack.Screen name="ChangePrice" component={ChangePrice} options={{title:null,headerShown:false}}/>
+        <Stack.Screen name="UpdateQty" component={UpdateQty} options={{title:null,headerShown:false}}/>
+        <Stack.Screen name="UploadPic" component={UploadPic} options={{title:null,headerShown:false}}/>
+        <Stack.Screen name="currTrans" component={currTrans} options={{title:null,headerShown:false}} />
+        <Stack.Screen name="Eos" component={Eos} options={{title:null,headerShown:false}} />
+        <Stack.Screen name="Eod" component={Eod} options={{title:null,headerShown:false}} />
+        <Stack.Screen name="ItemMov" component={ItemMov} options={{title:null,headerShown:false}} />
+        <Stack.Screen name="AddNewReceivingOrder" component={AddNewReceivingOrder} options={{title:null,headerShown:false}} />
+        <Stack.Screen name="SelectItem" component={SelectItem} options={{title:null,headerShown:false}} />
+        <Stack.Screen name="ItemInformation" component={ItemInformation} options={{title:null,headerShown:false}} />
+        <Stack.Screen name="OrderInformation" component={OrderInformation} options={{title:null,headerShown:false}} />
+        <Stack.Screen name="Tutorials" component={Tutorials} options={{title:null,headerShown:false}} />
+        <Stack.Screen name="ReactNativeYouTubeExample" component={ReactNativeYouTubeExample} options={{title:null,headerShown:true}} />
+        <Stack.Screen name="AddPrintLabel" component={AddPrintLabel} options={{title:null,headerShown:true}} />
        
         {/* <Stack.Screen name="FingerPrint" component={ FingerPrint }
         options={{title:null,headerShown:false}} /> */}
