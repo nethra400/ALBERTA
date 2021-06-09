@@ -41,12 +41,19 @@ import currTrans from "./src/Screens/Reports/currTrans";
 import Eos from "./src/Screens/Reports/eos";
 import Eod from "./src/Screens/Reports/eod";
 import ItemMov from "./src/Screens/Reports/itemMov";
+import ReportsView from "./src/Screens/Reports/weeklyMonthlyYearly";
 
 
 import AddItem from "./src/Screens/addItem";
-import ChangePrice from "./src/Screens/changePrice";
+import ItemChangePrice from "./src/Screens/ItemChangePrice";
+import ChangePrice from "./src/Screens/ChangePrice";
 import UpdateQty from "./src/Screens/updatwQty";
 import UploadPic from "./src/Screens/uploadPic";
+import NPLBlankResponse from "./src/Screens/NPLBlankResponse";
+import NPLAddItem from "./src/Screens/NPLAddItem";
+import AddNewItem from "./src/Screens/AddNewItem";
+import UpdateQuantity from "./src/Screens/UpdateQuantity";
+import UpadteImage from "./src/Screens/UpdateImage";
 // import MatTabNav from "./src/Screens/Navigation/MatTabNav";
 // import FingerPrint from "./src/Screens/login/faceId";
 // import Logo from './src/assets/logo/Logo';
@@ -101,12 +108,13 @@ function MyStack() {
         <Stack.Screen name="PrintLabel" component={PrintLabel} options={{title:null,headerShown:false}}/>
         <Stack.Screen name="Promotions" component={Promotions} options={{title:null,headerShown:false}} />
         <Stack.Screen name="AddItem" component={AddItem} options={{title:null,headerShown:false}}/>
+        <Stack.Screen name="ItemChangePrice" component={ItemChangePrice} options={{title:null,headerShown:false}}/>
         <Stack.Screen name="ChangePrice" component={ChangePrice} options={{title:null,headerShown:false}}/>
         <Stack.Screen name="UpdateQty" component={UpdateQty} options={{title:null,headerShown:false}}/>
-        <Stack.Screen name="UploadPic" component={UploadPic} options={{title:null,headerShown:false}}/>
+        <Stack.Screen name="UploadPic" component={UploadPic} options={{title:null,headerShown:true}}/>
         <Stack.Screen name="currTrans" component={currTrans} options={{title:null,headerShown:false}} />
-        <Stack.Screen name="Eos" component={Eos} options={{title:null,headerShown:false}} />
-        <Stack.Screen name="Eod" component={Eod} options={{title:null,headerShown:false}} />
+        <Stack.Screen name="Eos" component={Eos} options={{title:null,headerShown:true}} />
+        <Stack.Screen name="Eod" component={Eod} options={{title:null,headerShown:true}} />
         <Stack.Screen name="ItemMov" component={ItemMov} options={{title:null,headerShown:false}} />
         <Stack.Screen name="AddNewReceivingOrder" component={AddNewReceivingOrder} options={{title:null,headerShown:false}} />
         <Stack.Screen name="SelectItem" component={SelectItem} options={{title:null,headerShown:false}} />
@@ -114,7 +122,13 @@ function MyStack() {
         <Stack.Screen name="OrderInformation" component={OrderInformation} options={{title:null,headerShown:false}} />
         <Stack.Screen name="Tutorials" component={Tutorials} options={{title:null,headerShown:false}} />
         <Stack.Screen name="ReactNativeYouTubeExample" component={ReactNativeYouTubeExample} options={{title:null,headerShown:true}} />
-        <Stack.Screen name="AddPrintLabel" component={AddPrintLabel} options={{title:null,headerShown:true}} />
+        <Stack.Screen name="AddPrintLabel" component={AddPrintLabel} options={{title:null,headerShown:false}} />
+        <Stack.Screen name="NPLBlankResponse" component={NPLBlankResponse} options={{title:null,headerShown:true}} />
+        <Stack.Screen name="NPLAddItem" component={NPLAddItem} options={{title:null,headerShown:true}} />
+        <Stack.Screen name="AddNewItem" component={AddNewItem} options={{title:null,headerShown:false}} />
+        <Stack.Screen name="UpdateQuantity" component={UpdateQuantity} options={{title:null,headerShown:false}} />
+        <Stack.Screen name="ReportsView" component={ReportsView} options={{title:null,headerShown:false}} />
+        <Stack.Screen name="UpadteImage" component={UpadteImage} options={{title:null,headerShown:true}} />
        
         {/* <Stack.Screen name="FingerPrint" component={ FingerPrint }
         options={{title:null,headerShown:false}} /> */}

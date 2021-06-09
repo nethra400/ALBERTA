@@ -22,55 +22,29 @@ export default class currTrans extends Component {
   state = {
     data: [],
     smsView: false,
-    data1: [
-      {
-        qty: 1,
-        name: 'Item Name @ $000 Discount $00.0',
-        amount: '$000.00',
-      },
-      {
-        qty: 1,
-        name: 'Item Name @ $000 Discount $00.0',
-        amount: '$000.00',
-      },
-      {
-        qty: 1,
-        name: 'Item Name @ $000 Discount $00.0',
-        amount: '$000.00',
-      },
-      {
-        qty: 1,
-        name: 'Item Name @ $000 Discount $00.0',
-        amount: '$000.00',
-      },
-      {
-        qty: 1,
-        name: 'Item Name @ $000 Discount $00.0',
-        amount: '$000.00',
-      },
-    ],
-    data2: [
-      ,
-      {
-        name: 'register',
-        amt: '101',
-      },
-      {
-        name: 'subtotal',
-        amt: '$000.0',
-      },
-      {
-        name: 'tax',
-        amt: '$000.0',
-      },
-      {
-        name: 'total',
-        amt: '$000.0',
-      },
-    ],
+    register: "",
+    sales: "",
+    tax: "",
+    discountAmount: "",
+    nnettotal: "",
+    vstorename: "",
+    SalesTenderDetail: [],
+    User: [],
+    SalesDetail: [],
+    salesData: [],
+    isLoading: true,
+    SalesReturnDetail: [],
+    SalesReturnDetailValue: [],
+    SalesGranTotal: [],
+    total: "",
+    Tender_Total: '',
+    tender_detail: []
+
   };
 
-  handleClick = () => {
+  handleClick = (val) => {
+    // alert(JSON.stringify(val));
+    AsyncStorage.setItem('SalesId', JSON.stringify(val.SalesId));
     this.setState({
       smsView: true,
     });
@@ -85,13 +59,13 @@ export default class currTrans extends Component {
           .then((response) => response.json())
           .then((responseJson) => {
             //this.refs.loading.show(false);
-            let ds = new ListView.DataSource({
-              rowHasChanged: (r1, r2) => r1 !== r2,
-            });
+            // let ds = new ListView.DataSource({
+            //   rowHasChanged: (r1, r2) => r1 !== r2,
+            // });
             this.setState(
               {
                 isLoading: false,
-                data: ds.cloneWithRows(responseJson.table_data),
+                data: responseJson.table_data,
               },
               function () {
                 // In this block you can do something with new state.
@@ -104,6 +78,63 @@ export default class currTrans extends Component {
           });
       }
     });
+
+
+    AsyncStorage.getItem('token').then((data) => {
+      AsyncStorage.getItem('Sid').then((SID) => {
+          AsyncStorage.getItem('SalesId').then((SalesId) => {
+              // alert(SalesId)
+              if (data) {
+                  fetch(API_BASE_URL + `admin/getTransactionDetail_new?token=${encodeURIComponent(data)}&sid=${SID}&salesId=${SalesId}`, {
+                      method: 'GET',
+
+                  }).then((response) => response.json())
+                      .then((responseJson) => {
+                          
+                         
+                          // alert(responseJson.Sales[0].isalesid)
+
+                          // AsyncStorage.setItem('discountAmount',responseJson.Sales[0].ndiscountamt)
+                          // AsyncStorage.setItem('sales',responseJson.Sales[0].nsaletotalamt)
+                          // AsyncStorage.setItem('tax',responseJson.Sales[0].nnettotal)
+                          // AsyncStorage.setItem('register',responseJson.Sales[0].iuserid)
+                          // AsyncStorage.setItem('User',responseJson.SalesTenderDetail)
+                          // AsyncStorage.setItem('salesData',responseJson.SalesDetail)
+
+
+
+
+                          this.setState(
+
+                              {
+                                  isLoading: false,
+                                  discountAmount: responseJson.Sales[0].ndiscountamt,
+                                  vstorename: responseJson.Sales[0].vstorename,
+                                  sales: responseJson.Sales[0].nsubtotal,
+                                  tax: responseJson.Sales[0].ntaxtotal,
+                                  register: responseJson.Sales[0].iuserid,
+                                  User: responseJson.SalesTenderDetail,
+                                  salesData: responseJson.SalesDetail,
+                                  nnettotal: responseJson.Sales[0].nnettotal,
+                                  SalesReturnDetail: responseJson.SalesReturnDetail,
+                                  SalesReturnDetailValue: responseJson.SalesReturnDetailValue,
+                                  SalesGranTotal: responseJson.SalesGranTotal,
+                                  total: responseJson.total,
+                                  Tender_Total: responseJson.Tender_Total,
+                                  tender_detail: responseJson.tender_detail
+                              })
+
+
+
+
+                      })
+                      .catch((error) => {
+                          alert(responseJson.error);
+                      });
+              }
+          });
+      })
+  })
   }
 
   render() {
@@ -125,7 +156,7 @@ export default class currTrans extends Component {
             return (
               <View>
                 {
-                  <TouchableOpacity onPress={() => this.handleClick()}>
+                  <TouchableOpacity onPress={() => this.handleClick(val)}>
                     <ListItem
                       // key={index}
                       keyExtractor={(item, index) => index.toString()}
@@ -147,7 +178,7 @@ export default class currTrans extends Component {
                               // paddingVertical: 2,
                               paddingHorizontal: 16,
                             }}>
-                            {val.id}
+                            {val.SalesId}
                           </Text>
                           <Text
                             style={{
@@ -155,7 +186,7 @@ export default class currTrans extends Component {
                               // paddingVertical: 2,
                               paddingHorizontal: 16,
                             }}>
-                            {val.date}
+                            {val.Date}
                           </Text>
                         </View>
                         <View
@@ -170,7 +201,7 @@ export default class currTrans extends Component {
                               paddingHorizontal: 16,
                               paddingLeft: 140,
                             }}>
-                            {val.label}
+                            {val.SaleAmount}
                           </Text>
                         </View>
                       </View>
@@ -184,7 +215,7 @@ export default class currTrans extends Component {
         <Dialog
           flex="1"
           height={700}
-          width={300}
+          width={350}
           dialogStyle={{}}
           visible={this.state.smsView}
           onTouchOutside={() => {
@@ -216,7 +247,7 @@ export default class currTrans extends Component {
                   style={{
                     backgroundColor: '#fff',
                     borderRadius: 5,
-                    paddingHorizontal: 35,
+                    paddingHorizontal: 25,
                     paddingVertical: 20,
                     shadowColor: '#000',
                     shadowOffset: {width: 0, height: 1},
@@ -232,15 +263,15 @@ export default class currTrans extends Component {
                   <View
                     style={{
                       flexDirection: 'row',
-                      justifyContent: 'space-evenly',
-                      ARHINTOP: 5,
+                      justifyContent: 'space-between',
+                      marginTop: 5,
                     }}>
                     <Text style={{color: '#3386D6'}}>Qty</Text>
                     <Text style={{color: '#3386D6'}}>Item name</Text>
                     <Text style={{color: '#3386D6'}}>Amount</Text>
                   </View>
                   <View>
-                    {this.state.data1.map((val) => {
+                    {this.state.salesData.map((val) => {
                       return (
                         <View>
                           {
@@ -260,28 +291,34 @@ export default class currTrans extends Component {
                                 <View
                                   style={{
                                     flexDirection: 'row',
-                                    flexWrap: 'wrap',
+                                    // flexWrap: 'wrap',
+                                    justifyContent: 'space-between',
                                   }}>
                                   <Text
                                     style={{
                                       fontSize: 12,
-                                      paddingHorizontal: 5,
+                                      // paddingHorizontal: 5,
                                     }}>
-                                    {val.qty}
+                                    {val.iunitqty}
                                   </Text>
                                   <Text
                                     style={{
                                       fontSize: 12,
+                                      width:100,
+                                      marginLeft:50,
                                       paddingHorizontal: 5,
                                     }}>
-                                    {val.name}
+                                    {val.vitemname}
                                   </Text>
+                                  
                                   <Text
                                     style={{
                                       fontSize: 12,
+                                      width:100,
+                                      marginLeft:40,
                                       paddingHorizontal: 5,
                                     }}>
-                                    {val.amount}
+                                    {val.nextunitprice}
                                   </Text>
                                 </View>
                               </ListItem>
@@ -310,24 +347,47 @@ export default class currTrans extends Component {
                     style={{justifyContent: 'center', alignItems: 'center'}}>
                     <Text>SALES </Text>
                   </View>
-                  {this.state.data2.map((val) => {
-                    return (
-                      <View>
-                        {
+                  
+                   <View
+                            style={{
+                              justifyContent: 'space-between',
+                              flexDirection: 'row',
+                            }}>
+                            <Text style={{marginRight: 20, fontSize: 12}}>
+                              {"Register"}
+                            </Text>
+                            <Text style={{fontSize: 12}}>{this.state.register}</Text>
+                          </View>
                           <View
                             style={{
                               justifyContent: 'space-between',
                               flexDirection: 'row',
                             }}>
                             <Text style={{marginRight: 20, fontSize: 12}}>
-                              {val.name}
+                              {"Sub Total"}
                             </Text>
-                            <Text style={{fontSize: 12}}>{val.amt}</Text>
+                            <Text style={{fontSize: 12}}>{this.state.sales}</Text>
                           </View>
-                        }
-                      </View>
-                    );
-                  })}
+                          <View
+                            style={{
+                              justifyContent: 'space-between',
+                              flexDirection: 'row',
+                            }}>
+                            <Text style={{marginRight: 20, fontSize: 12}}>
+                              {"Tax"}
+                            </Text>
+                            <Text style={{fontSize: 12}}>{this.state.tax}</Text>
+                          </View>
+                          <View
+                            style={{
+                              justifyContent: 'space-between',
+                              flexDirection: 'row',
+                            }}>
+                            <Text style={{marginRight: 20, fontSize: 12}}>
+                              {"Total"}
+                            </Text>
+                            <Text style={{fontSize: 12}}>{this.state.nnettotal}</Text>
+                          </View>
                 </View>
 
                 <View
@@ -348,24 +408,51 @@ export default class currTrans extends Component {
                     style={{justifyContent: 'center', alignItems: 'center'}}>
                     <Text>TENDER</Text>
                   </View>
-                  {this.state.data2.map((val) => {
-                    return (
                       <View>
-                        {
+                        
                           <View
                             style={{
                               justifyContent: 'space-between',
                               flexDirection: 'row',
                             }}>
                             <Text style={{marginRight: 20, fontSize: 12}}>
-                              {val.name}
+                            Grand Total
                             </Text>
-                            <Text style={{fontSize: 12}}>{val.amt}</Text>
+                            <Text style={{fontSize: 12}}>{this.state.total}</Text>
                           </View>
-                        }
+                          <View
+                            style={{
+                              justifyContent: 'space-between',
+                              flexDirection: 'row',
+                            }}>
+                            <Text style={{marginRight: 20, fontSize: 12}}>
+                            Cash
+                            </Text>
+                            <Text style={{fontSize: 12}}>{this.state.total}</Text>
+                          </View>
+                          <View
+                            style={{
+                              justifyContent: 'space-between',
+                              flexDirection: 'row',
+                            }}>
+                            <Text style={{marginRight: 20, fontSize: 12}}>
+                            Credit
+                            </Text>
+                            <Text style={{fontSize: 12}}>{this.state.total}</Text>
+                          </View>
+                          <View
+                            style={{
+                              justifyContent: 'space-between',
+                              flexDirection: 'row',
+                            }}>
+                            <Text style={{marginRight: 20, fontSize: 12}}>
+                            Change
+                            </Text>
+                            <Text style={{fontSize: 12}}>{this.state.total}</Text>
+                          </View>
+                        
                       </View>
-                    );
-                  })}
+                   
                 </View>
               </View>
             </View>

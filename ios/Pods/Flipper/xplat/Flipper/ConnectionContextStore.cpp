@@ -10,7 +10,6 @@
 #include <folly/portability/SysStat.h>
 #include <fstream>
 #include <iostream>
-#include <sstream>
 #include "CertificateUtils.h"
 #include "Log.h"
 

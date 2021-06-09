@@ -7,7 +7,8 @@ import {
     TouchableOpacity,
     SafeAreaView,
     Image,
-    ScrollView
+    ScrollView,
+    ImageBackground
 } from "react-native";
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import Entypo from "react-native-vector-icons/Entypo";
@@ -17,6 +18,7 @@ import Foundation from "react-native-vector-icons/Foundation";
 import LinearGradient from "react-native-linear-gradient";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import AntDesignn from "react-native-vector-icons/FontAwesome";
+import {ListItem} from 'react-native-elements';
 import CardView from "react-native-cardview";
 
 export default class Tutorials extends Component {
@@ -48,354 +50,239 @@ export default class Tutorials extends Component {
 
     render() {
         return (
-            <ScrollView style={{ flex: 1, color: "#fff" }}>
+            <SafeAreaView style={{ flex: 1}}>
                 <View style={styles.container}>
-                    <View style={{ alignItems: "center", padding: 10 }}>
-                        <Text style={{ fontSize: 25, fontWeight: "700", color: "#3386D6" }}>
-                            Tutorials
-            </Text>
-                    </View>
+                <View style={{width: '100%'}}>
+              <ImageBackground
+                source={require('../../assets/images/header.jpeg')}
+                style={{position: 'relative', height: 80, paddingTop: 20}}>
+                <View
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'flex-start',
+                    paddingVertical: 10,
+                    paddingHorizontal:20
+                  }}>
+                  <Text style={{color: 'white'}} onPress={()=>this.props.navigation.navigate('Dashboard')}>Tutorials</Text>
+                  
+                </View>
+              </ImageBackground>
+            </View>
 
                     <View style={{ flexDirection: "column", margin: 10 }}>
+                    <TouchableOpacity  onPress={() =>
+                                this.props.navigation.navigate("ReactNativeYouTubeExample", {
+                                    myUrl: "TDY7oOuY6sg"
+                                })
+                            }>
+                  <ListItem
+                    keyExtractor={(item, index) => index.toString()}
+                    bottomDivider
+                    containerStyle={{
+                      borderRadius: 35,
+                      marginHorizontal: 10,
+                      marginVertical: 5,
+                    }}>
+                    <View style={{flexDirection: 'row'}}>
+                      <FontAwesome name="circle" color={'#3386D6'} size={32} />
+                      <Text
+                        style={{
+                          fontSize: 16,
+                          paddingVertical: 5,
+                          paddingHorizontal: 16,
+                        }}>
+                        Basic POS Settings
+                      </Text>
+                    </View>
+                  </ListItem>
+                </TouchableOpacity>
+
+                      
 
                         <TouchableOpacity
                             onPress={() =>
                                 this.props.navigation.navigate("ReactNativeYouTubeExample", {
-                                    myUrl: "TDY7oOuY6sg"
-                                })
-                            }
-                        >
-                            <CardView
-                                cardElevation={4}
-                                cardMaxElevation={4}
-                                cornerRadius={10}
-                                style={styles.card1}
-                            >
-                                <LinearGradient
-                                    colors={[
-                                        "#f58120",
-                                        "#f4771f",
-                                        "#f36c20",
-                                        "#f26221",
-                                        "#f05623"
-                                    ]}
-                                    style={styles.card2}
-                                >
-                                    <View style={{ flexDirection: "row" }}>
-                                        <Text
-                                            style={{
-                                                width: "80%",
-                                                color: "#f2f2f2",
-                                                fontSize: 20,
-                                                fontWeight: "700",
-                                                marginLeft: "40%",
-                                                justifyContent: "center"
-                                            }}
-                                        >
-                                            Basic POS Settings
-                    </Text>
-                                        <FontAwesome
-                                            name="play"
-                                            size={30}
-                                            color="#f2f2f2"
-                                            style={{ width: "30%" }}
-                                        />
-                                    </View>
-                                </LinearGradient>
-                            </CardView>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity
-                            onPress={() =>
-                                this.props.navigation.navigate("Flip", {
                                     myUrl: "vCI3cpbHX-4"
                                 })
                             }
                         >
-                            <CardView
-                                cardElevation={4}
-                                cardMaxElevation={4}
-                                cornerRadius={10}
-                                style={styles.card1}
-                            >
-                                <LinearGradient
-                                    colors={[
-                                        "#f58120",
-                                        "#f4771f",
-                                        "#f36c20",
-                                        "#f26221",
-                                        "#f05623"
-                                    ]}
-                                    style={styles.card2}
-                                >
-                                    <View style={{ flexDirection: "row" }}>
-                                        <Text
-                                            style={{
-                                                width: "80%",
-                                                color: "#f2f2f2",
-                                                fontSize: 20,
-                                                fontWeight: "700",
-                                                marginLeft: "40%",
-                                                justifyContent: "center"
-                                            }}
-                                        >
-                                            User Tutorial
-                    </Text>
-                                        <FontAwesome
-                                            name="play"
-                                            size={30}
-                                            color="#f2f2f2"
-                                            style={{ width: "30%" }}
-                                        />
-                                    </View>
-                                </LinearGradient>
-                            </CardView>
+                           <ListItem
+                    keyExtractor={(item, index) => index.toString()}
+                    bottomDivider
+                    containerStyle={{
+                      borderRadius: 35,
+                      marginHorizontal: 10,
+                      marginVertical: 5,
+                    }}>
+                    <View style={{flexDirection: 'row'}}>
+                      <FontAwesome name="circle" color={'#3386D6'} size={32} />
+                      <Text
+                        style={{
+                          fontSize: 16,
+                          paddingVertical: 5,
+                          paddingHorizontal: 16,
+                        }}>
+                       User Tutorial
+                      </Text>
+                    </View>
+                  </ListItem>
                         </TouchableOpacity>
 
                         <TouchableOpacity
                             onPress={() =>
-                                this.props.navigation.navigate("Flip", {
+                                this.props.navigation.navigate("ReactNativeYouTubeExample", {
                                     myUrl: "1xoePbgoUSQ"
                                 })
                             }
                         >
-                            <CardView
-                                cardElevation={4}
-                                cardMaxElevation={4}
-                                cornerRadius={10}
-                                style={styles.card1}
-                            >
-                                <LinearGradient
-                                    colors={[
-                                        "#f58120",
-                                        "#f4771f",
-                                        "#f36c20",
-                                        "#f26221",
-                                        "#f05623"
-                                    ]}
-                                    style={styles.card2}
-                                >
-                                    <View style={{ flexDirection: "row" }}>
-                                        <Text
-                                            style={{
-                                                width: "80%",
-                                                color: "#f2f2f2",
-                                                fontSize: 20,
-                                                fontWeight: "700",
-                                                marginLeft: "40%",
-                                                justifyContent: "center"
-                                            }}
-                                        >
-                                            Vendor Tutorial
-                    </Text>
-                                        <FontAwesome
-                                            name="play"
-                                            size={30}
-                                            color="#f2f2f2"
-                                            style={{ width: "30%" }}
-                                        />
-                                    </View>
-                                </LinearGradient>
-                            </CardView>
+                           <ListItem
+                    keyExtractor={(item, index) => index.toString()}
+                    bottomDivider
+                    containerStyle={{
+                      borderRadius: 35,
+                      marginHorizontal: 10,
+                      marginVertical: 5,
+                    }}>
+                    <View style={{flexDirection: 'row'}}>
+                      <FontAwesome name="circle" color={'#3386D6'} size={32} />
+                      <Text
+                        style={{
+                          fontSize: 16,
+                          paddingVertical: 5,
+                          paddingHorizontal: 16,
+                        }}>
+                        Vendor Tutorial
+                      </Text>
+                    </View>
+                  </ListItem>
                         </TouchableOpacity>
 
                         <TouchableOpacity
                             onPress={() =>
-                                this.props.navigation.navigate("Flip", {
+                                this.props.navigation.navigate("ReactNativeYouTubeExample", {
                                     myUrl: "3hEwh6U2h84"
                                 })
                             }
                         >
-                            <CardView
-                                cardElevation={4}
-                                cardMaxElevation={4}
-                                cornerRadius={10}
-                                style={styles.card1}
-                            >
-                                <LinearGradient
-                                    colors={[
-                                        "#f58120",
-                                        "#f4771f",
-                                        "#f36c20",
-                                        "#f26221",
-                                        "#f05623"
-                                    ]}
-                                    style={styles.card2}
-                                >
-                                    <View style={{ flexDirection: "row" }}>
-                                        <Text
-                                            style={{
-                                                width: "80%",
-                                                color: "#f2f2f2",
-                                                fontSize: 20,
-                                                fontWeight: "700",
-                                                marginLeft: "40%",
-                                                justifyContent: "center"
-                                            }}
-                                        >
-                                            Item Tutorial
-                    </Text>
-                                        <FontAwesome
-                                            name="play"
-                                            size={30}
-                                            color="#f2f2f2"
-                                            style={{ width: "30%" }}
-                                        />
-                                    </View>
-                                </LinearGradient>
-                            </CardView>
+                            <ListItem
+                    keyExtractor={(item, index) => index.toString()}
+                    bottomDivider
+                    containerStyle={{
+                      borderRadius: 35,
+                      marginHorizontal: 10,
+                      marginVertical: 5,
+                    }}>
+                    <View style={{flexDirection: 'row'}}>
+                      <FontAwesome name="circle" color={'#3386D6'} size={32} />
+                      <Text
+                        style={{
+                          fontSize: 16,
+                          paddingVertical: 5,
+                          paddingHorizontal: 16,
+                        }}>
+                        Item Tutorial
+                      </Text>
+                    </View>
+                  </ListItem>
                         </TouchableOpacity>
 
                         <TouchableOpacity
                             onPress={() =>
-                                this.props.navigation.navigate("Flip", {
+                                this.props.navigation.navigate("ReactNativeYouTubeExample", {
                                     myUrl: "h6P-gOZBs74"
                                 })
                             }
                         >
-                            <CardView
-                                cardElevation={4}
-                                cardMaxElevation={4}
-                                cornerRadius={10}
-                                style={styles.card1}
-                            >
-                                <LinearGradient
-                                    colors={[
-                                        "#f58120",
-                                        "#f4771f",
-                                        "#f36c20",
-                                        "#f26221",
-                                        "#f05623"
-                                    ]}
-                                    style={styles.card2}
-                                >
-                                    <View style={{ flexDirection: "row" }}>
-                                        <Text
-                                            style={{
-                                                width: "80%",
-                                                color: "#f2f2f2",
-                                                fontSize: 20,
-                                                fontWeight: "700",
-                                                marginLeft: "40%",
-                                                justifyContent: "center"
-                                            }}
-                                        >
-                                            Advance Item Tutorial
-                    </Text>
-                                        <FontAwesome
-                                            name="play"
-                                            size={30}
-                                            color="#f2f2f2"
-                                            style={{ width: "30%" }}
-                                        />
-                                    </View>
-                                </LinearGradient>
-                            </CardView>
+                            <ListItem
+                    keyExtractor={(item, index) => index.toString()}
+                    bottomDivider
+                    containerStyle={{
+                      borderRadius: 35,
+                      marginHorizontal: 10,
+                      marginVertical: 5,
+                    }}>
+                    <View style={{flexDirection: 'row'}}>
+                      <FontAwesome name="circle" color={'#3386D6'} size={32} />
+                      <Text
+                        style={{
+                          fontSize: 16,
+                          paddingVertical: 5,
+                          paddingHorizontal: 16,
+                        }}>
+                        Advance Item Tutorial
+                      </Text>
+                    </View>
+                  </ListItem>
                         </TouchableOpacity>
 
                         <TouchableOpacity
                             onPress={() =>
-                                this.props.navigation.navigate("Flip", {
+                                this.props.navigation.navigate("ReactNativeYouTubeExample", {
                                     myUrl: "LtHw57w8bzM"
                                 })
                             }
                         >
-                            <CardView
-                                cardElevation={4}
-                                cardMaxElevation={4}
-                                cornerRadius={10}
-                                style={styles.card1}
-                            >
-                                <LinearGradient
-                                    colors={[
-                                        "#f58120",
-                                        "#f4771f",
-                                        "#f36c20",
-                                        "#f26221",
-                                        "#f05623"
-                                    ]}
-                                    style={styles.card2}
-                                >
-                                    <View style={{ flexDirection: "row" }}>
-                                        <Text
-                                            style={{
-                                                width: "80%",
-                                                color: "#f2f2f2",
-                                                fontSize: 20,
-                                                fontWeight: "700",
-                                                marginLeft: "40%",
-                                                justifyContent: "center"
-                                            }}
-                                        >
-                                            Item Labeling
-                    </Text>
-                                        <FontAwesome
-                                            name="play"
-                                            size={30}
-                                            color="#f2f2f2"
-                                            style={{ width: "30%" }}
-                                        />
-                                    </View>
-                                </LinearGradient>
-                            </CardView>
+                           <ListItem
+                    keyExtractor={(item, index) => index.toString()}
+                    bottomDivider
+                    containerStyle={{
+                      borderRadius: 35,
+                      marginHorizontal: 10,
+                      marginVertical: 5,
+                    }}>
+                    <View style={{flexDirection: 'row'}}>
+                      <FontAwesome name="circle" color={'#3386D6'} size={32} />
+                      <Text
+                        style={{
+                          fontSize: 16,
+                          paddingVertical: 5,
+                          paddingHorizontal: 16,
+                        }}>
+                        Item Labeling
+                      </Text>
+                    </View>
+                  </ListItem>
                         </TouchableOpacity>
 
                         <TouchableOpacity
                             onPress={() =>
-                                this.props.navigation.navigate("Flip", {
+                                this.props.navigation.navigate("ReactNativeYouTubeExample", {
                                     myUrl: "oJt8SzR9zqg"
                                 })
                             }
                         >
-                            <CardView
-                                cardElevation={4}
-                                cardMaxElevation={4}
-                                cornerRadius={10}
-                                style={styles.card1}
-                            >
-                                <LinearGradient
-                                    colors={[
-                                        "#f58120",
-                                        "#f4771f",
-                                        "#f36c20",
-                                        "#f26221",
-                                        "#f05623"
-                                    ]}
-                                    style={styles.card2}
-                                >
-                                    <View style={{ flexDirection: "row" }}>
-                                        <Text
-                                            style={{
-                                                width: "80%",
-                                                color: "#f2f2f2",
-                                                fontSize: 20,
-                                                fontWeight: "700",
-                                                marginLeft: "40%",
-                                                justifyContent: "center"
-                                            }}
-                                        >
-                                            Purchase Orders
-                    </Text>
-                                        <FontAwesome
-                                            name="play"
-                                            size={30}
-                                            color="#f2f2f2"
-                                            style={{ width: "30%" }}
-                                        />
-                                    </View>
-                                </LinearGradient>
-                            </CardView>
+                           <ListItem
+                    keyExtractor={(item, index) => index.toString()}
+                    bottomDivider
+                    containerStyle={{
+                      borderRadius: 35,
+                      marginHorizontal: 10,
+                      marginVertical: 5,
+                    }}>
+                    <View style={{flexDirection: 'row'}}>
+                      <FontAwesome name="circle" color={'#3386D6'} size={32} />
+                      <Text
+                        style={{
+                          fontSize: 16,
+                          paddingVertical: 5,
+                          paddingHorizontal: 16,
+                        }}>
+                       Purchase orders
+                      </Text>
+                    </View>
+                  </ListItem>
                         </TouchableOpacity>
                     </View>
                 </View>
-            </ScrollView>
+            </SafeAreaView>
         );
     }
 }
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#fff"
+        // backgroundColor: "#ccc"
     },
     card1: {
         // backgroundColor: '#16a0db',

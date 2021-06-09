@@ -53,7 +53,7 @@ class AddNewReceivingOrder extends Component {
                 serverData: responseJson.vendor_data,
               });
               //   alert(JSON.stringify(responseJson))
-              alert(JSON.stringify(this.state.serverData));
+              // alert(JSON.stringify(this.state.serverData));
             })
             .catch((error) => {
               console.error(error);
@@ -110,10 +110,10 @@ class AddNewReceivingOrder extends Component {
                 // this.refs.loading.close();
 
                 if (responseJson.status == 'error') {
-                //   Alert.alert('', responseJson.error, [
-                //     {text: 'OK', onPress: () => this.componentDidMount()},
-                //   ]);
-                    alert(responseJson.error)
+                  //   Alert.alert('', responseJson.error, [
+                  //     {text: 'OK', onPress: () => this.componentDidMount()},
+                  //   ]);
+                  alert(responseJson.error);
                   return;
                 }
                 if (responseJson.status == 'success') {
@@ -122,11 +122,11 @@ class AddNewReceivingOrder extends Component {
                     JSON.stringify(responseJson.iroid),
                   );
 
-                //   Alert.alert('', responseJson.msg, [
-                //     {text: 'OK', onPress: () => this.goToRecivingOrderScreen()},
-                //   ]);
-                alert(responseJson.msg)
-                this.props.navigation.navigate('SelectItem')
+                  //   Alert.alert('', responseJson.msg, [
+                  //     {text: 'OK', onPress: () => this.goToRecivingOrderScreen()},
+                  //   ]);
+                  alert(responseJson.msg);
+                  this.props.navigation.navigate('SelectItem');
                 }
                 if (responseJson.error) {
                   Alert.alert('', responseJson.error, [{text: 'OK'}]);
@@ -143,7 +143,7 @@ class AddNewReceivingOrder extends Component {
   render() {
     return (
       <View>
-       {/* <SafeAreaView> */}
+        {/* <SafeAreaView> */}
         <View style={{width: '100%'}}>
           <ImageBackground
             source={require('../../assets/images/header.jpeg')}
@@ -159,13 +159,15 @@ class AddNewReceivingOrder extends Component {
               }}>
               <Text
                 style={{color: 'white', marginTop: 10}}
-                onPress={() => this.props.navigation.navigate('ReceivingOrder')}>
+                onPress={() =>
+                  this.props.navigation.navigate('ReceivingOrder')
+                }>
                 Receiving Order
               </Text>
             </View>
           </ImageBackground>
         </View>
-        <View style={{margin:10}}>
+        <View style={{margin: 10}}>
           <SearchableDropdown
             // onTextChange={this.a}
             selectedItems={this.state.selectedItems}
@@ -190,14 +192,14 @@ class AddNewReceivingOrder extends Component {
               padding: 15,
               borderWidth: 1,
               borderColor: '#fff',
-              backgroundColor:'#fff',
-              borderRadius:30,
-         
-    shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.1,
-    shadowRadius: 0.2,
-    elevation: 2,
+              backgroundColor: '#fff',
+              borderRadius: 30,
+
+              shadowColor: '#000',
+              shadowOffset: {width: 0, height: 2},
+              shadowOpacity: 0.1,
+              shadowRadius: 0.2,
+              elevation: 2,
               // backgroundColor: '#FAF7F6',
             }}
             itemStyle={{
@@ -227,10 +229,9 @@ class AddNewReceivingOrder extends Component {
             //reset textInput Value with true and false state
             underlineColorAndroid="transparent"
             //To remove the underline from the android input
-            
           />
         </View>
-        <View style={{margin:10}}>
+        <View style={{margin: 10}}>
           <TextInput
             style={styles.textBox1}
             returnKeyType="done"
@@ -247,9 +248,9 @@ class AddNewReceivingOrder extends Component {
               this.setState({invoiceNo})
             }></TextInput>
         </View>
-        <View style={{margin:10}}>
+        <View style={{margin: 10}}>
           <DatePicker
-          style={{width:'100%',borderRadius:30}}
+            style={{width: '100%', borderRadius: 30}}
             showIcon={false}
             // style={{width: '85%'}}
             date={this.state.date}
@@ -263,7 +264,7 @@ class AddNewReceivingOrder extends Component {
             }}
           />
         </View>
-        <View >
+        <View>
           <Button
             style={{marginTop: 10}}
             titleStyle={{color: '#fff', fontSize: 16}}
@@ -282,7 +283,7 @@ class AddNewReceivingOrder extends Component {
             }}
           />
         </View>
-       {/* </SafeAreaView> */}
+        {/* </SafeAreaView> */}
       </View>
     );
   }

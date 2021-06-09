@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
     Platform, StyleSheet, Text, View, TouchableOpacity, Image, Keyboard,
-    TextInput, Dimensions, Vibration, ScrollView, Alert, ActivityIndicator
+    TextInput, Dimensions, Vibration, ScrollView, Alert, ActivityIndicator,ImageBackground,SafeAreaView
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import CardView from 'react-native-cardview';
@@ -53,7 +53,8 @@ export default class AddPrintLabel extends Component {
                     serverData: responseJson.item_data,
                     //adding the new data in Data Source of the SearchableDropdown
                   });
-                  // alert(JSON.stringify(this.state.serverData));
+                //   alert(JSON.stringify(this.state.serverData));
+                //   this.props.navigation.navigate('PrintLabel')
                 })
                 .catch((error) => {
                   console.error(error);
@@ -190,6 +191,7 @@ export default class AddPrintLabel extends Component {
                                     responseJson.success,
                                     [
                                         { text: 'OK', onPress: () => this.cancelAlert() },
+                                        // this.props.navigation.navigate('PrintLabel')
                                     ]
                                 )
                                 return;
@@ -272,8 +274,10 @@ export default class AddPrintLabel extends Component {
                                                         }
                                                     }
                                                     //if (this.state.barcode != '') this.Nextscreen();
+                                                    
                                                 )
                                                 //if (this.state.barcode != '') this.Nextscreen();
+                                                // this.props.navigation.navigate('PrintLabel')
                                             } else {
 
                                                 AsyncStorage.getItem('UPCAR').then(
@@ -286,6 +290,7 @@ export default class AddPrintLabel extends Component {
                                                             //if (this.state.barcode != '') this.Nextscreen();
                                                         }
                                                         //if (this.state.barcode != '') this.Nextscreen();
+                                                        // this.props.navigation.navigate('PrintLabel')
                                                     }
                                                 )
 
@@ -326,6 +331,7 @@ export default class AddPrintLabel extends Component {
                                             }
                                         }
                                     )
+                                    // this.props.navigation.navigate('PrintLabel')
 
                                 } else {
 
@@ -339,7 +345,9 @@ export default class AddPrintLabel extends Component {
                                                 //if (this.state.barcode != '') this.Nextscreen();
                                             }
                                         }
+                                        
                                     )
+                                    // this.props.navigation.navigate('PrintLabel')
 
                                 }
                             }
@@ -481,22 +489,35 @@ export default class AddPrintLabel extends Component {
         }
         return (
 
+            <SafeAreaView style={styles.container}>
 
-            <View style={styles.container}>
+            <View >
 
                 {/* <NavigationEvents onDidFocus={() => this.componentDidMount()} /> */}
 
-                <View style={{ marginTop: 5, alignContent: 'center', alignItems: 'center' }}>
-                    <Text style={{ fontSize: 25, fontWeight: '700', color: '#3386D6', bottom: 5 }}>Add Barcode </Text>
-                    <TouchableOpacity
-                        style={styles.btncontainer}
-                        onPress={this.gotoBarCodeList}
-                    >
-                        <Text style={styles.btntext}>Barcode List</Text>
-                    </TouchableOpacity>
-                </View>
+                <View style={{width: '100%'}}>
+          <ImageBackground
+            source={require('../../assets/images/header.jpeg')}
+            style={{position: 'relative', height: 80, paddingTop: 20}}>
+            <View
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'flex-start',
+                paddingVertical: 10,
+                paddingHorizontal: 20,
+              }}>
+              <Text
+                style={{color: 'white'}}
+                onPress={() => this.props.navigation.navigate('PrintLabel')}>
+                Print Label
+              </Text>
+            </View>
+          </ImageBackground>
+        </View>
+        <View style={{marginTop:10}}>
 
-                <View style={{ margin: 5 }}>
+                <View style={{ margin: 10 }}>
 
 
                     <SearchableDropdown
@@ -519,47 +540,50 @@ export default class AddPrintLabel extends Component {
                         }
 
 
-                        containerStyle={{ padding: 0 }}
+                        containerStyle={{padding: 0}}
                         //suggestion container style
                         textInputStyle={{
-                            alignSelf: "stretch",
-                            height: 40,
-                            width: "90%",
-                            marginStart: 10,
-                            borderRadius: 3,
-                            backgroundColor: '#636466',
-                            marginBottom: 10,
-                            color: '#fff',
-                            fontSize: 15,
-                            paddingHorizontal: 20,
+                          //inserted text style
+                          padding: 15,
+                          borderWidth: 1,
+                          borderColor: '#ccc',
+                          backgroundColor: '#fff',
+                          borderRadius: 30,
+            
+                          shadowColor: '#000',
+                          shadowOffset: {width: 0, height: 2},
+                          shadowOpacity: 0.1,
+                          shadowRadius: 0.2,
+                          elevation: 2,
+                          // backgroundColor: '#FAF7F6',
                         }}
                         itemStyle={{
-                            //single dropdown item style
-                            padding: 10,
-                            marginTop: 2,
-                            backgroundColor: '#3386D6',
-                            borderColor: '#bbb',
-                            borderWidth: 1,
+                          //single dropdown item style
+                          padding: 10,
+                          marginTop: 2,
+                          backgroundColor: '#FAF9F8',
+                          borderColor: '#bbb',
+                          borderWidth: 1,
                         }}
                         itemTextStyle={{
-                            //text style of a single dropdown item
-                            color: 'white',
+                          //text style of a single dropdown item
+                          color: '#222',
                         }}
                         itemsContainerStyle={{
-                            //items container style you can pass maxHeight
-                            //to restrict the items dropdown hieght
-                            maxHeight: '70%',
+                          //items container style you can pass maxHeight
+                          //to restrict the items dropdown hieght
+                          maxHeight: '80%',
                         }}
                         items={this.state.serverData}
                         //mapping of item array
                         defaultIndex={0}
                         //default selected item index
-                        placeholder="Enter Item Name"
-                        placeholderTextColor="white"
+                        placeholder="Vendor"
                         //place holder for the search input
-                        resetValue={true}
+                        resetValue={false}
                         //reset textInput Value with true and false state
                         underlineColorAndroid="transparent"
+                        //To remove the underline from the android input
 
 
                     //To remove the underline from the android input
@@ -570,14 +594,16 @@ export default class AddPrintLabel extends Component {
 
                 <View style={{ margin: 5 }}>
                     <TextInput
+                     style={styles.textBox1}
+                     returnKeyType="done"
+                     keyboardType="default"
+                     autoCapitalize="none"
+                     editable={true}
+                     placeholder="Enter Barcode"
+                     value={this.state.invoiceNo}
+                     autoCorrect={false}
                         ref={input => { this.barcode = input }}
-                        style={styles.input}
-                        placeholder="Enter Barcode"
-                        placeholderTextColor='white'
-                        returnKeyType="done"
-                        keyboardType="default"
-                        autoCapitalize="none"
-                        autoCorrect={false}
+                        
                         value={this.state.barcode}
                         onChangeText={barcode => this.setState({ barcode })}
                         onSubmitEditing={() => this.screen()} />
@@ -620,9 +646,11 @@ export default class AddPrintLabel extends Component {
 
 
                 </CardView>
+                </View>
 
                 <Loading ref="loading" />
             </View>
+            </SafeAreaView>
 
         );
     }
@@ -714,7 +742,27 @@ const styles = {
 
 
         color: "#fff"
-    }
+    },
+    textBox1: {
+        height: 45,
+        backgroundColor: 'red',
+        paddingRight: 8,
+        paddingLeft: 18,
+        width: '100%',
+        borderWidth: 0.8,
+        shadowColor: '#000',
+        shadowOffset: {width: 0, height: 2},
+        shadowOpacity: 0.1,
+        shadowRadius: 1,
+        elevation: 2,
+        backgroundColor: '#fff',
+        marginBottom: 10,
+        borderTopLeftRadius: 20,
+        borderBottomLeftRadius: 20,
+        borderTopRightRadius: 20,
+        borderBottomRightRadius: 20,
+        borderColor:'#bbb'
+      },
 };
 
 

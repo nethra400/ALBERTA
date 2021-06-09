@@ -32,13 +32,13 @@ export default class Items extends Component{
         this.props.navigation.navigate("AddItem")
       }
       else if(data2.name == "Change Price"){
-        this.props.navigation.navigate("ChangePrice")
+        this.props.navigation.navigate("ItemChangePrice")
       }
       else if(data2.name == "Update Quantity"){
         this.props.navigation.navigate("UpdateQty")
       }
-      // else (data2.name == "Upload Picture") 
-      //   this.props.navigation.navigate("UploadPic")
+      else (data2.name == "Upload Picture") 
+        this.props.navigation.navigate("UploadPic")
       
     
     }

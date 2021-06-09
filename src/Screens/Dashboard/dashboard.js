@@ -233,6 +233,26 @@ class Dashboard extends React.Component {
     else if(data1.vpermissionname == "PRINT LABEL"){
       this.props.navigation.navigate('PrintLabel')
     }
+    else if(data1.vpermissionname == "QUICK REPORT"){
+      this.props.navigation.navigate('Reports')
+    }
+    else if(data1.vpermissionname == "REPORTS"){
+      this.props.navigation.navigate('Reports')
+    }
+    else if(data1.vpermissionname == "ADD/EDIT ITEM"){
+      this.props.navigation.navigate('Items')
+    }
+
+    else if(data1.vpermissionname == "CHANGE PRICE"){
+      this.props.navigation.navigate('Items')
+    }
+    else if(data1.vpermissionname == "UPDATE QUANTITY"){
+      this.props.navigation.navigate('Items')
+    }
+
+    else if(data1.vpermissionname == "NOTIFICATIONS"){
+      this.props.navigation.navigate('Audit')
+    }
 
     else if (data1.vpermissionname == "Promotion"){
       this.props.navigation.navigate('Promotions')

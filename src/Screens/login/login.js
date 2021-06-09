@@ -215,6 +215,7 @@ export default class welcome extends Component {
               }
 
               AsyncStorage.setItem('user_and_store_details', JSON.stringify(userAndStoreDetails))
+              AsyncStorage.setItem('Sid', JSON.stringify(storeDetails.Sid))
               // AsyncStorage.setItem('fname', responseJson.data.user.fname);
               // AsyncStorage.setItem('lname', responseJson.data.user.lname);
               // AsyncStorage.setItem('emailid', responseJson.data.user.email);

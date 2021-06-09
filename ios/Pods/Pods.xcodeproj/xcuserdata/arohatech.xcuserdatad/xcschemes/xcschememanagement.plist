@@ -64,32 +64,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Folly.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>OpenSSL-Universal.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-AlbertaAdmin-AlbertaAdminTests.xcscheme</key>
+		<key>Pods-AlbertaAdmin_v2-AlbertaAdmin_v2Tests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-AlbertaAdmin-tvOS.xcscheme</key>
+		<key>Pods-AlbertaAdmin_v2.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-AlbertaAdmin-tvOSTests.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-AlbertaAdmin.xcscheme</key>
+		<key>RCT-Folly.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -120,6 +110,11 @@
 			<false/>
 		</dict>
 		<key>RNExitApp.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RNFS.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -229,6 +224,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>React-perflogger.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>React-runtimeexecutor.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>React.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -275,6 +280,16 @@
 			<false/>
 		</dict>
 		<key>react-native-camera.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>react-native-image-picker.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>react-native-image-resizer.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

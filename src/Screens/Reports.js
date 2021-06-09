@@ -24,6 +24,9 @@ export default class Reports extends Component{
         },
         {
             name:"Tax Report"
+        },
+        {
+          name:"Weekly/monthly/Yearly Report"
         }
     ]
     }
@@ -37,11 +40,14 @@ export default class Reports extends Component{
       else if(data2.name == 'End of Shift report'){
       this.props.navigation.navigate('Eos')
       }
-      else if(data2.name == 'End of Day report'){
+      else if(data2.name == 'End of day report'){
         this.props.navigation.navigate('Eod')
       }
-      else if(data2.name == 'Item Movement')
+      else if(data2.name == 'Item Movement'){
         this.props.navigation.navigate('ItemMov')
+      }
+      else if(data2.name == "Weekly/monthly/Yearly Report")
+      this.props.navigation.navigate('ReportsView')
       
     }
     render(){
@@ -59,7 +65,7 @@ export default class Reports extends Component{
                     paddingVertical: 10,
                     paddingHorizontal:20
                   }}>
-                  <Text style={{color: 'white'}} onPress={()=>this.props.navigation.navigate('Dashboard')}>Reports</Text>
+                  <Text style={{color: 'white'}} onPress={()=>this.props.navigation.navigate('Dashboard')}>Weekly/Monthly/Yearly Report</Text>
                   
                 </View>
               </ImageBackground>
