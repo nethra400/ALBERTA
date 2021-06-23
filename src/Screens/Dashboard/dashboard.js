@@ -79,6 +79,57 @@ class Dashboard extends React.Component {
 
   };
 
+  refreshTiles = () => {
+    // this.props.navigation.navigate("PhysChooseItem")
+    AsyncStorage.getItem("token").then(data => {
+      AsyncStorage.getItem('userid').then(userId => {
+        AsyncStorage.getItem('Sid').then(Sid => {
+  
+          if (userId) {
+             fetch(API_BASE_URL + `admin/get_sku_user?sid=${Sid}&user_id=${userId}&token=${data}`, {
+            //  fetch(`https://devportal.albertapayments.com/api/admin/get_sku_user?sku=1&sid=1001&user_id=4&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjQsImlzcyI6Imh0dHBzOlwvXC9kZXZwb3J0YWwuYWxiZXJ0YXBheW1lbnRzLmNvbVwvYXV0aGVudGljYXRlX25ldyIsImlhdCI6MTU4MjYyODI1NCwiZXhwIjoxNTg1MjIwMjU0LCJuYmYiOjE1ODI2MjgyNTQsImp0aSI6IjRmNGNhMGMyYTJjYzQ5NDMzMGRmOWRiNjIzODQ4Y2I2In0.xoxoFWsI1zw3X3jMRlCgwcF2bIJj9eNn-wRHTpw0qqQ`, {
+              method: 'GET',
+            })
+              .then(response => response.json())
+              .then(response => {
+            
+                
+               // alert(JSON.stringify(response))
+                if(response.status == "success"){
+                  AsyncStorage.setItem("ipiid", JSON.stringify(response.data[0].ipiid))
+                  AsyncStorage.setItem("user_id", JSON.stringify(response.data[0].user_id))
+                  // this.setState({
+                  //   physicalInventory : "Active"
+                  // })
+                  this.props.navigation.navigate("PhysChooseItem")
+  
+                }
+                if(response.Failed){
+                  // alert("no permisiion found")
+                  alert(response.Failed)
+               //   AsyncStorage.setItem("ipiid", JSON.stringify(response.data[0].ipiid))
+                  // this.setState({
+                  //   physicalInventory : "Hide"
+                  // })
+  
+                }
+              
+              })
+              .catch(error => {
+                console.log(error);
+              });
+  
+          }
+        })
+      })
+      });
+      
+   
+
+ 
+    
+  }
+
   componentDidMount(){
   
 
@@ -192,20 +243,21 @@ class Dashboard extends React.Component {
               alignSelf: 'center',
               fontSize: 20,
               fontWeight: 'bold',
+              paddingTop:10
               
             }}>
             ${this.state.noSales}
           </Text>
         </View>
         <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-          <Text style={{color: 'white'}}>{item.taxText}</Text>
-          <Text style={{color: 'white'}}>{item.transText}</Text>
+          <Text style={{color: 'white',marginTop:5}}>{item.taxText}</Text>
+          <Text style={{color: 'white',marginTop:5}}>{item.transText}</Text>
         </View>
         <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-          <Text style={{color: 'white'}}>{this.state.stax}</Text>
-          <Text style={{color: 'white'}}>{item.transCount}</Text>
+          <Text style={{color: 'white',marginTop:5}}>{this.state.stax}</Text>
+          <Text style={{color: 'white',marginTop:5}}>{item.transCount}</Text>
         </View>
-        <View style={{justifyContent: 'center', alignItems: 'center'}}>
+        <View style={{justifyContent: 'center', alignItems: 'center',marginTop:20}}>
           <Text style={{color: 'white'}}>{item.footerText}</Text>
         </View>
         <Text>{item.text}</Text>
@@ -258,7 +310,10 @@ class Dashboard extends React.Component {
       this.props.navigation.navigate('Promotions')
     }
     else if(data1.vpermissionname == "Physical Inventory"){
-      this.props.navigation.navigate('physicalInventory')
+      // this.props.navigation.navigate('physicalInventory')
+      this.refreshTiles();
+      // this.props.navigation.navigate("PhysChooseItem")
+      
     }
     else if(data1.vpermissionname == "Tutorials"){
       this.props.navigation.navigate('Tutorials')
@@ -271,8 +326,9 @@ class Dashboard extends React.Component {
   render() {
   
     return (
-      <SafeAreaView>
-         <ScrollView>
+      // <View >
+      <View style={{width:'100%',height:'100%'}}>
+         <View>
         
           <View>
          
@@ -293,9 +349,9 @@ class Dashboard extends React.Component {
                     flexDirection: 'row',
                     justifyContent: 'space-around',
                     paddingTop: 10,
-                  }}>
-                  <Text style={{color: 'white'}}>{this.state.sname} [{this.state.sid}]</Text>
-                  <FontAwesome name="bell" color={'white'} size={18} />
+                  }} >
+                  <Text onPress={()=>this.props.navigation.navigate('Storetableview')} style={{color: 'white',paddingTop:20}}>{this.state.sname} [{this.state.sid}]</Text>
+                  <FontAwesome style={{paddingTop:20}} name="bell" color={'white'} size={18} />
                 </View>
               </ImageBackground>
             </View>
@@ -324,7 +380,7 @@ class Dashboard extends React.Component {
               style={{
                 display: 'flex',
                 padding: 10,
-                height: 180,
+                height: 200,
                 width: '80%',
                 marginLeft: 40,
                 marginTop: -100,
@@ -335,6 +391,7 @@ class Dashboard extends React.Component {
               }}>
               {!this.state.showRealApp && (
                 <AppIntroSlider
+                // style={{paddingVertical:15}}
                   renderItem={this._renderItem}
                   data={this.state.slides}
                   showSkipButton={false}
@@ -366,7 +423,7 @@ class Dashboard extends React.Component {
                   shadowRadius: 5,
                 }}>
                 <Text>Deleted Items</Text>
-                <Text>{this.state.sdelete}</Text>
+                <Text style={{textAlign:'center'}}>{this.state.sdelete}</Text>
               </View>
               <View
                 style={{
@@ -382,11 +439,11 @@ class Dashboard extends React.Component {
                   shadowRadius: 5,
                 }}>
                 <Text>Non Scanned Items</Text>
-                <Text>23</Text>
+                <Text style={{textAlign:'center'}}>23</Text>
               </View>
             </View> 
            
-           {/* <View> */}
+           <ScrollView>
              {
              this.state.dataSource.map((val,index)=>{
                 return(
@@ -424,12 +481,13 @@ class Dashboard extends React.Component {
              }
              
       
-           {/* </View> */}
+           </ScrollView>
            {/* </ScrollView> */}
           </View>
-          </ScrollView>
+          </View>
        
-      </SafeAreaView>
+      </View>
+      // </View>
     );
   }
 }

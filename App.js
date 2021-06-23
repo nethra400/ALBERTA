@@ -34,6 +34,16 @@ import OrderInformation from "./src/Screens/Dashboard/orderInformation";
 import Tutorials from "./src/Screens/Dashboard/tutorials";
 import ReactNativeYouTubeExample from "./src/Screens/Dashboard/Flip";
 import AddPrintLabel from "./src/Screens/Dashboard/addPrintLabel";
+import PromTile from './src/Screens/Dashboard/PromTile'
+import PromStockBuyN from './src/Screens/Dashboard/PromStockBuyN'
+import PromStockAddItem from './src/Screens/Dashboard/PromStockAddItem'
+import PromStockItemList from './src/Screens/Dashboard/PromStockItemList'
+import PromOpen from './src/Screens/Dashboard/PromOpen'
+import PromTime from './src/Screens/Dashboard/PromTime'
+import PhyChooseItem from "./src/Screens/Dashboard/PhysChooseItem";
+import PhyItemInformation from "./src/Screens/Dashboard/PhysItemInforma";
+import PhysItemList from "./src/Screens/Dashboard/PhysItemList";
+import PhysUserList from "./src/Screens/Dashboard/PhysUserList";
 
 import saveUsername from "./src/Screens/login/usePassword";
 import TabNav from "./src/Screens/Navigation/TabNav";
@@ -54,6 +64,8 @@ import NPLAddItem from "./src/Screens/NPLAddItem";
 import AddNewItem from "./src/Screens/AddNewItem";
 import UpdateQuantity from "./src/Screens/UpdateQuantity";
 import UpadteImage from "./src/Screens/UpdateImage";
+
+import Storetableview from "./src/Screens/Storetableview";
 // import MatTabNav from "./src/Screens/Navigation/MatTabNav";
 // import FingerPrint from "./src/Screens/login/faceId";
 // import Logo from './src/assets/logo/Logo';
@@ -106,7 +118,7 @@ function MyStack() {
         options={{title:null,headerShown:false}} />
         <Stack.Screen name="ReceivingOrder" component={ReceivingOrder} options={{title:null,headerShown:false}}/>
         <Stack.Screen name="PrintLabel" component={PrintLabel} options={{title:null,headerShown:false}}/>
-        <Stack.Screen name="Promotions" component={Promotions} options={{title:null,headerShown:false}} />
+        <Stack.Screen name="Promotions" component={Promotions} options={{title:null,headerShown:true}} />
         <Stack.Screen name="AddItem" component={AddItem} options={{title:null,headerShown:false}}/>
         <Stack.Screen name="ItemChangePrice" component={ItemChangePrice} options={{title:null,headerShown:false}}/>
         <Stack.Screen name="ChangePrice" component={ChangePrice} options={{title:null,headerShown:false}}/>
@@ -129,6 +141,17 @@ function MyStack() {
         <Stack.Screen name="UpdateQuantity" component={UpdateQuantity} options={{title:null,headerShown:false}} />
         <Stack.Screen name="ReportsView" component={ReportsView} options={{title:null,headerShown:false}} />
         <Stack.Screen name="UpadteImage" component={UpadteImage} options={{title:null,headerShown:true}} />
+        <Stack.Screen name="PromTile" component={PromTile} options={{title:null,headerShown:true}} />
+        <Stack.Screen name="PromStockBuyN" component={PromStockBuyN} options={{title:null,headerShown:true}} />
+        <Stack.Screen name="PromStockAddItem" component={PromStockAddItem} options={{title:null,headerShown:true}} />
+        <Stack.Screen name="PromStockItemList" component={PromStockItemList} options={{title:null,headerShown:true}} />
+        <Stack.Screen name="PromOpen" component={PromOpen} options={{title:null,headerShown:true}} />
+        <Stack.Screen name="PromTime" component={PromTime} options={{title:null,headerShown:true}} />
+        <Stack.Screen name="PhysChooseItem" component={PhyChooseItem} options={{title:null,headerShown:true}} />
+        <Stack.Screen name="PhyItemInformation" component={PhyItemInformation} options={{title:null,headerShown:true}} />
+        <Stack.Screen name="PhysItemList" component={PhysItemList} options={{title:null,headerShown:true}} />
+        <Stack.Screen name="PhysUserList" component={PhysUserList} options={{title:null,headerShown:true}} />
+        <Stack.Screen name="Storetableview" component={Storetableview} options={{title:null,headerShown:true}} />
        
         {/* <Stack.Screen name="FingerPrint" component={ FingerPrint }
         options={{title:null,headerShown:false}} /> */}

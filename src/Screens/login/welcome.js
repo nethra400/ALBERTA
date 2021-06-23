@@ -9,6 +9,7 @@ import {
   Alert,
   Image,
   ScrollView,
+  SafeAreaView
 } from 'react-native';
 import {Button} from 'react-native-elements';
 import {
@@ -55,7 +56,7 @@ export default class welcome extends Component {
 
   render() {
     return (
-      <ScrollView style={{backgroundColor: '#3386D6'}}>
+      <SafeAreaView style={{backgroundColor: '#3386D6'}}>
         <View style={{backgroundColor: '#3386D6'}}>
           <View style={styles.welcomeTextView}>
             <Text style={styles.welcomeText}>Welcome</Text>
@@ -149,14 +150,14 @@ export default class welcome extends Component {
             </View>
           </View>
         </View>
-      </ScrollView>
+      </SafeAreaView>
     );
   }
 }
 
 const styles = StyleSheet.create({
   welcomeTextView: {
-    marginTop: 120,
+    marginTop: 80,
   },
 
   welcomeText: {
@@ -173,12 +174,12 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   bottomView: {
-    flex: 1,
+    // flex: 1,
     flexDirection: 'row',
     alignContent: 'space-between',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop:30,
+    marginTop:10,
     // marginLeft:50
   },
   iconBackground: {

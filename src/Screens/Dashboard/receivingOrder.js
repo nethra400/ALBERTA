@@ -140,7 +140,7 @@ class ReceivingOrder extends Component{
           {
               this.state.dataSource.map((val,index)=>{
                   return(
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=>this.props.navigation.navigate('OrderInformation')}>
                     <ListItem
                     // key = {index}
                     keyExtractor={(item, index) => index.toString()}

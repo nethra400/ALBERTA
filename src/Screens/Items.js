@@ -37,8 +37,9 @@ export default class Items extends Component{
       else if(data2.name == "Update Quantity"){
         this.props.navigation.navigate("UpdateQty")
       }
-      else (data2.name == "Upload Picture") 
+      else if(data2.name == "Upload Picture") {
         this.props.navigation.navigate("UploadPic")
+      }
       
     
     }

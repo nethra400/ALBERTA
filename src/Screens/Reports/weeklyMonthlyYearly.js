@@ -62,29 +62,7 @@ export default class ReportsView extends Component {
   }
 
   handleMonthly = () => {
-    // AsyncStorage.getItem("Sid").then(data => {
-    //     if (data) {
-    //       STORE_ID = data;
-    //       API_URL = API_BASE_URL + "get_last_4weeks_transactions/" + STORE_ID;
-    //       return fetch(API_URL)
-    //         .then(response => response.json())
-    //         .then(responseJson => {
-    //           console.log(responseJson);
-    //           this.setState(
-    //             {
-    //               isLoading: false,
-    //             //   tableHead: responseJson.table_title,
-    //               tableData: responseJson.table_data,
-    //               chartData: responseJson.chart_data
-    //             },
-    //             function () { }
-    //           );
-    //         })
-    //         .catch(error => {
-    //           console.error(error);
-    //         });
-    //     }
-    //   });
+
       this.getChartData("get_last_4weeks_transactions/")
   };
   handleYearly = () => {
