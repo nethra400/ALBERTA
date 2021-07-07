@@ -394,7 +394,7 @@ export default class Promotions extends Component {
                             width: '35%', alignItems: 'center', justifyContent: 'center',
                             backgroundColor: "#3386D6", height: 60
                         }}>
-                            <Text style={{ fontWeight: '300', fontSize: 16, color: '#fff', fontWeight: "bold" }}>Promotion Name
+                            <Text style={{ fontWeight: '300', fontSize: 16, color: '#fff', fontWeight: "bold" }}>Promotions Name
 </Text>
                         </View>
 
@@ -411,7 +411,7 @@ export default class Promotions extends Component {
                             width: '20%', alignItems: 'center', justifyContent: 'center',
                             backgroundColor: "#3386D6", height: 60,
                         }}>
-                            <Text style={{ fontWeight: '300', fontSize: 16, color: '#fff', flexDirection: 'row', fontWeight: "bold" }}>Status
+                            <Text style={{ fontWeight: '300', fontSize: 16, color: '#fff', flexDirection: 'row', fontWeight: "bold" }}>Statuss
                         </Text>
                         </View>
 
