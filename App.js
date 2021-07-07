@@ -56,7 +56,7 @@ import ReportsView from "./src/Screens/Reports/weeklyMonthlyYearly";
 
 import AddItem from "./src/Screens/addItem";
 import ItemChangePrice from "./src/Screens/ItemChangePrice";
-import ChangePrice from "./src/Screens/ChangePrice";
+import ChangePrice from "./src/Screens/changePrice";
 import UpdateQty from "./src/Screens/updatwQty";
 import UploadPic from "./src/Screens/uploadPic";
 import NPLBlankResponse from "./src/Screens/NPLBlankResponse";

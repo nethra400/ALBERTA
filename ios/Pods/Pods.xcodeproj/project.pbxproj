@@ -13924,7 +13924,7 @@
 			buildConfigurationList = 4DDDF04818AB3F104D9DFFA43908C22B /* Build configuration list for PBXNativeTarget "FBReactNativeSpec" */;
 			buildPhases = (
 				6612F058641F6D6A56336A5B30DA2442 /* Headers */,
-				57196694763CC8DF5B4BD0C40C3E88C3 /* [CP-User] Generate Specs */,
+				57DA2A0386F08AD89F8A605F2ECE1488 /* [CP-User] Generate Specs */,
 				BC71516139751433589AF75402B463EF /* Sources */,
 				4EE3C21CCD2158F502F731F6600B600A /* Frameworks */,
 			);
@@ -14349,23 +14349,23 @@
 			shellPath = /bin/sh;
 			shellScript = "COMPATIBILITY_HEADER_PATH=\"${BUILT_PRODUCTS_DIR}/Swift Compatibility Header/${PRODUCT_MODULE_NAME}-Swift.h\"\nMODULE_MAP_PATH=\"${BUILT_PRODUCTS_DIR}/${PRODUCT_MODULE_NAME}.modulemap\"\n\nditto \"${DERIVED_SOURCES_DIR}/${PRODUCT_MODULE_NAME}-Swift.h\" \"${COMPATIBILITY_HEADER_PATH}\"\nditto \"${PODS_ROOT}/Headers/Public/YogaKit/YogaKit.modulemap\" \"${MODULE_MAP_PATH}\"\nditto \"${PODS_ROOT}/Headers/Public/YogaKit/YogaKit-umbrella.h\" \"${BUILT_PRODUCTS_DIR}\"\nprintf \"\\n\\nmodule ${PRODUCT_MODULE_NAME}.Swift {\\n  header \\\"${COMPATIBILITY_HEADER_PATH}\\\"\\n  requires objc\\n}\\n\" >> \"${MODULE_MAP_PATH}\"\n";
 		};
-		57196694763CC8DF5B4BD0C40C3E88C3 /* [CP-User] Generate Specs */ = {
+		57DA2A0386F08AD89F8A605F2ECE1488 /* [CP-User] Generate Specs */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"/Users/arohatech/Documents/mobileApps/Manish_Alberta/AlbertaAdmin/PushtoGit/AlbertaAdmin_v2/node_modules/react-native/scripts/../Libraries",
+				"/Users/rameshjp/AlbertaAdmin/node_modules/react-native/scripts/../Libraries",
 			);
 			name = "[CP-User] Generate Specs";
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/codegen-FBReactNativeSpec.log",
-				"/Users/arohatech/Documents/mobileApps/Manish_Alberta/AlbertaAdmin/PushtoGit/AlbertaAdmin_v2/node_modules/react-native/scripts/../React/FBReactNativeSpec/FBReactNativeSpec/FBReactNativeSpec.h",
-				"/Users/arohatech/Documents/mobileApps/Manish_Alberta/AlbertaAdmin/PushtoGit/AlbertaAdmin_v2/node_modules/react-native/scripts/../React/FBReactNativeSpec/FBReactNativeSpec/FBReactNativeSpec-generated.mm",
+				"/Users/rameshjp/AlbertaAdmin/node_modules/react-native/scripts/../React/FBReactNativeSpec/FBReactNativeSpec/FBReactNativeSpec.h",
+				"/Users/rameshjp/AlbertaAdmin/node_modules/react-native/scripts/../React/FBReactNativeSpec/FBReactNativeSpec/FBReactNativeSpec-generated.mm",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -o pipefail\n\nbash -l -c 'SRCS_DIR=/Users/arohatech/Documents/mobileApps/Manish_Alberta/AlbertaAdmin/PushtoGit/AlbertaAdmin_v2/node_modules/react-native/scripts/../Libraries CODEGEN_MODULES_OUTPUT_DIR=/Users/arohatech/Documents/mobileApps/Manish_Alberta/AlbertaAdmin/PushtoGit/AlbertaAdmin_v2/node_modules/react-native/scripts/../React/FBReactNativeSpec/FBReactNativeSpec CODEGEN_MODULES_LIBRARY_NAME=FBReactNativeSpec /Users/arohatech/Documents/mobileApps/Manish_Alberta/AlbertaAdmin/PushtoGit/AlbertaAdmin_v2/node_modules/react-native/scripts/generate-specs.sh' 2>&1 | tee \"${SCRIPT_OUTPUT_FILE_0}\"";
+			shellScript = "set -o pipefail\n\nbash -l -c 'SRCS_DIR=/Users/rameshjp/AlbertaAdmin/node_modules/react-native/scripts/../Libraries CODEGEN_MODULES_OUTPUT_DIR=/Users/rameshjp/AlbertaAdmin/node_modules/react-native/scripts/../React/FBReactNativeSpec/FBReactNativeSpec CODEGEN_MODULES_LIBRARY_NAME=FBReactNativeSpec /Users/rameshjp/AlbertaAdmin/node_modules/react-native/scripts/generate-specs.sh' 2>&1 | tee \"${SCRIPT_OUTPUT_FILE_0}\"";
 		};
 		E37E28609841BD23025C7241D09F678F /* [CP] Copy XCFrameworks */ = {
 			isa = PBXShellScriptBuildPhase;
