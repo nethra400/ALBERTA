@@ -56,7 +56,7 @@ export default class AddNewItem extends React.Component {
            
     //            headerRight: (<View  style={{ marginRight: 0 }}>
     //       <TouchableOpacity onPress={()=>params.onPressMethod()}>
-    //       <MaterialIcons name="save" size={35} color="#f15a2c" />  
+    //       <MaterialIcons name="save" size={35} color="#3386D6" />  
     //       </TouchableOpacity>
            
     //        </View>)
@@ -853,31 +853,26 @@ export default class AddNewItem extends React.Component {
         // this.state.tax3 = "N"
         const { tax3 } = this.state
         return (
-            <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
-                 <View style={{width: '100%'}}>
-            <ImageBackground
-              source={require('../assets/images/header.jpeg')}
-              style={{position: 'relative', height: 100, paddingTop: 20}}>
-              <View
-                style={{
-                  // display: 'flex',
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  // paddingVertical: 10,
-                  paddingHorizontal: 20,
-                }}>
-                <Text
-                  style={{color: 'white', marginTop: 10}}
-                  onPress={() =>
-                    this.props.navigation.navigate('Items')
-                  }>
-                  Add/Edit Item
-                </Text>
-              </View>
-            </ImageBackground>
-          </View>
             <View style={styles.MainContainer}>
+                 <View style={{width: '100%',marginTop:100}}>
+                    <ImageBackground
+                        source={require('../assets/images/header.jpeg')}
+                        style={{position: 'relative', height: 100, paddingTop: 20}}>
+                        <View
+                            style={{
+                               // display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'flex-start',
+                    paddingVertical: 10,
+                    paddingHorizontal:20,
+                    marginTop:15
+                            }}>
+                            <FontAwesome style={{marginRight:10}} name="caret-left" color={'#fff'} size={26} onPress={()=>this.props.navigation.navigate('Items')} />
+                            <Text style={{color: 'white',fontSize:15,paddingVertical:3}}  onPress={()=>this.props.navigation.navigate('Items')}>Add/Edit Item</Text>
+                        </View>
+                    </ImageBackground>
+                </View>
+            <View style={{marginTop:10}}>
                 {/* <KeyboardAwareScrollView> */}
                   
                     <ScrollView style={{marginTop:10}}>
@@ -906,7 +901,7 @@ export default class AddNewItem extends React.Component {
                             >
                                 <TextInput
                                     // style={styles.input}
-                                    returnKeyType="next"
+                                    // returnKeyType="next"
                                     keyboardType="default"
                                     autoCapitalize="none"
                                     autoCorrect={false}
@@ -938,7 +933,7 @@ export default class AddNewItem extends React.Component {
                             >
                                 <TextInput
                                     // style={styles.input}
-                                    returnKeyType="next"
+                                    // returnKeyType="next"
                                     keyboardType="default"
                                     autoCapitalize="none"
                                     autoCorrect={false}
@@ -966,7 +961,7 @@ export default class AddNewItem extends React.Component {
                             >
                                 <TextInput
                                     // style={styles.input}
-                                    returnKeyType="done"
+                                    // returnKeyType="done"
                                     keyboardType="default"
                                     autoCapitalize="none"
                                     onSubmitEditing={() => this.keyboardHidefunction()}  
@@ -1035,20 +1030,16 @@ export default class AddNewItem extends React.Component {
                         </View>
                         <View style={styles.logocontainer}>
                                         <View
-                                           style={{
-                                            alignItems: 'flex-end',
-                                            paddingHorizontal: 5,
-                                            paddingVertical: 10,
-                                          }}
+                                            style={{
+                                                width: "40%"
+                                            }}
                                         >
                                             <Text style={styles.setDepartmentTextSize}>Unit <Text style ={styles.setStarTextSize}>*</Text></Text>
                                         </View>
                                         <View
-                                            style={{
-                                                alignItems: 'flex-end',
-                                                paddingHorizontal: 30,
-                                                paddingVertical: 10,
-                                              }}
+                                          style={{
+                                            width:'60%'
+                                             }}
                                         >
                                             <Dropdown
                                                 label=""
@@ -1075,23 +1066,19 @@ export default class AddNewItem extends React.Component {
                                     
                         <View style={styles.logocontainer}>
                             <View
-                               style={{
-                                alignItems: 'flex-end',
-                                paddingHorizontal: 5,
-                                paddingVertical: 10,
-                              }}
+                                style={{
+                                    width:'40%'
+                                     }}
                             >
                                 <Text style={styles.setDepartmentTextSize}> Department <Text style ={styles.setStarTextSize}>*</Text> </Text>
                             </View>
                             <View
                                style={{
-                                alignItems: 'flex-end',
-                                paddingHorizontal: 30,
-                                paddingVertical: 10,
-                              }}
+                                width:'60%'
+                                 }}
                             >
                                 <Dropdown
-                                    label="Select Department"
+                                    label=""
                                     data={this.state.data}
                                     value={this.state.vdepartmentname}
                                     selectedValue={this.state.deptHolder}
@@ -1107,25 +1094,21 @@ export default class AddNewItem extends React.Component {
                         </View>
                         <View style={styles.logocontainer}>
                             <View
-                               style={{
-                                alignItems: 'flex-end',
-                                paddingHorizontal: 5,
-                                paddingVertical: 10,
-                              }}
+                              style={{
+                                width:'40%'
+                                 }}
                             >
                                 <Text style={styles.setDepartmentTextSize}> Category <Text style ={styles.setStarTextSize}>*</Text></Text>
                             </View>
                             <View
-                                 style={{
-                                    alignItems: 'flex-end',
-                                    paddingHorizontal: 30,
-                                    paddingVertical: 10,
-                                  }}
+                                style={{
+                                    width:'60%'
+                                     }}
                             >
 
                                 {
                                     <Dropdown
-                                        label="Select Category"
+                                        label=""
                                         data={this.state.catdata}
                                         value={this.state.vcategoryname}
                                       //  selectedValue={label}
@@ -1150,23 +1133,19 @@ export default class AddNewItem extends React.Component {
 
                         {showcategary ? <View style={styles.logocontainer}>
                             <View
-                               style={{
-                                alignItems: 'flex-end',
-                                paddingHorizontal: 5,
-                                paddingVertical: 10,
-                              }}
+                                style={{
+                                    width:'40%'
+                                     }}
                             >
                                 <Text style={styles.setDepartmentTextSize}> Sub category </Text>
                             </View>
                             <View
                                   style={{
-                                    alignItems: 'flex-end',
-                                    paddingHorizontal: 30,
-                                    paddingVertical: 10,
-                                  }}
+                                    width:'60%'
+                                     }}
                             >
                                 <Dropdown
-                                    label="Select Sub-Category"
+                                    label=""
                                     data={this.state.subcategortdata}
                                     // value={this.state.vsubcategoryname}
                                     value={this.state.vsubcategoryname}
@@ -1189,24 +1168,20 @@ export default class AddNewItem extends React.Component {
                         <View style={styles.logocontainer}>
                             <View
                                style={{
-                                alignItems: 'flex-end',
-                                paddingHorizontal: 5,
-                                paddingVertical: 10,
-                              }}
+                                width:'40%'
+                                 }}
                             >
                                 <Text style={styles.setDepartmentTextSize}> Supplier <Text style ={styles.setStarTextSize}>*</Text> </Text>
                             </View>
                             <View
-                                style={{
-                                    alignItems: 'flex-end',
-                                    paddingHorizontal: 30,
-                                    paddingVertical: 10,
-                                  }}
+                                 style={{
+                                    width:'60%'
+                                     }}
                             >
 
                                 {
                                     <Dropdown
-                                        label="Select Supplier"
+                                        label=""
                                         data={this.state.supdata}
                                         value={this.state.vcompanyname}
                                         itemTextStyle="bold"
@@ -1343,7 +1318,7 @@ export default class AddNewItem extends React.Component {
                                 <View flexDirection="row">
                                     <CheckBox
                                         checkedIcon={
-                                            <Entypo name="checksquare" size={15} color="#f15a2c">
+                                            <Entypo name="checksquare" size={15} color="#3386D6">
 
                                             </Entypo>
                                         }
@@ -1367,7 +1342,7 @@ export default class AddNewItem extends React.Component {
                                             <Entypo
                                                 name="checksquare"
                                                 size={15}
-                                                color="#f15a2c"
+                                                color="#3386D6"
                                                 marginLeft="0%"
                                                 marginTop="0%"
                                             />
@@ -1391,7 +1366,7 @@ export default class AddNewItem extends React.Component {
                                                     <Entypo
                                                         name="checksquare"
                                                         size={15}
-                                                        color="#f15a2c"
+                                                        color="#3386D6"
                                                         marginLeft="0%"
                                                         marginEnd="1%"
                                                     />
@@ -1419,19 +1394,15 @@ export default class AddNewItem extends React.Component {
                         <View style={styles.logocontainer}>
                             <View
                                style={{
-                                alignItems: 'flex-end',
-                                paddingHorizontal: 5,
-                                paddingVertical: 10,
-                              }}
+                                width:'40%'
+                                 }}
                             >
                                 <Text style={styles.setDepartmentTextSize}>Tax</Text>
                             </View>
                             <View
                                   style={{
-                                    alignItems: 'flex-end',
-                                    paddingHorizontal: 30,
-                                    paddingVertical: 10,
-                                  }}
+                                    width:'60%'
+                                     }}
                             >
                                 <Dropdown
                                     label=""
@@ -1457,19 +1428,15 @@ export default class AddNewItem extends React.Component {
                         <View style={styles.logocontainer}>
                                         <View
                                           style={{
-                                            alignItems: 'flex-end',
-                                            paddingHorizontal: 5,
-                                            paddingVertical: 10,
-                                          }}
+                                            width:'40%'
+                                             }}
                                         >
                                             <Text style={styles.setDepartmentTextSize}>Size</Text>
                                         </View>
                                         <View
                                               style={{
-                                                alignItems: 'flex-end',
-                                                paddingHorizontal: 30,
-                                                paddingVertical: 10,
-                                              }}
+                                                width:'60%'
+                                                 }}
                                         >
                                             <Dropdown
                                                 label=""
@@ -1497,19 +1464,15 @@ export default class AddNewItem extends React.Component {
                                     <View style={styles.logocontainer}>
                                         <View
                                            style={{
-                                            alignItems: 'flex-end',
-                                            paddingHorizontal: 5,
-                                            paddingVertical: 10,
-                                          }}
+                                            width:'40%'
+                                             }}
                                         >
                                             <Text style={styles.setDepartmentTextSize}>Manufacturer</Text>
                                         </View>
                                         <View
-                                              style={{
-                                                alignItems: 'flex-end',
-                                                paddingHorizontal: 30,
-                                                paddingVertical: 10,
-                                              }}
+                                             style={{
+                                                width:'60%'
+                                                 }}
                                         >
                                             <Dropdown
                                                 label=""
@@ -1578,25 +1541,21 @@ export default class AddNewItem extends React.Component {
                         </View> */}
                         <View style={styles.logocontainer}>
                             <View
-                               style={{
-                                alignItems: 'flex-end',
-                                paddingHorizontal: 5,
-                                paddingVertical: 10,
-                              }}
+                              style={{
+                                width:'40%'
+                                 }}
                             >
                                 <Text style={styles.setTextSize}> Age Verification </Text>
                             </View>
                             <View
-                                 style={{
-                                    alignItems: 'flex-end',
-                                    paddingHorizontal: 30,
-                                    paddingVertical: 10,
-                                  }}
+                                  style={{
+                                    width:'60%'
+                                     }}
                             >
 
                                 {
                                     <Dropdown
-                                        label="Select AgeVerification"
+                                        label=""
                                         data={this.state.ageverificationArray}
                                         value={this.state.age_verification}
                                         itemTextStyle="bold"
@@ -1651,16 +1610,15 @@ export default class AddNewItem extends React.Component {
                 {/* </KeyboardAwareScrollView> */}
                 
             </View>
-            </SafeAreaView>
+            </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
     logocontainer: {
-        display:"flex",
-        width: '80%',
-        backgroundColor: 'white',
+        width: '95%',
+        backgroundColor: '#fff',
         marginHorizontal: 10,
         flexDirection: 'row',
         height: 45,
@@ -1706,7 +1664,7 @@ const styles = StyleSheet.create({
         flexDirection: "row"
     },
     MainContainer: {
-        // flex: 1,
+        flex: 1,
 
         // Set content's vertical alignment.
         justifyContent: "center",
@@ -1829,7 +1787,7 @@ const styles = StyleSheet.create({
         flexDirection: "row"
     },
     btncontainer: {
-        backgroundColor: "#f15a2c",
+        backgroundColor: "#3386D6",
 
         borderRadius: 10,
         // mirginTop: 10,

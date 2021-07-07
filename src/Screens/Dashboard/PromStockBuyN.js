@@ -882,29 +882,24 @@ export default class PromStockBuyN extends React.Component {
         return (
             <View style={styles.MainContainer}>
             {/* <KeyboardAwareScrollView> */}
-            <View style={{width: '100%'}}>
+            <View style={{width: '100%',marginTop:100}}>
         <ImageBackground
           source={require('../../assets/images/header.jpeg')}
           style={{position: 'relative', height: 100, paddingTop: 20}}>
-          <View
-            style={{
-              // display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              // paddingVertical: 10,
-              paddingHorizontal: 20,
-            }}>
-            <Text
-              style={{color: 'white', marginTop: 10}}
-              onPress={() =>
-                this.props.navigation.navigate('Promotions')
-              }>
-              Promotions
-            </Text>
-          </View>
+         <View
+                  style={{
+                    // display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'flex-start',
+                    paddingVertical: 10,
+                    paddingHorizontal:20
+                  }}>
+                                      <FontAwesome style={{marginRight:10}} name="caret-left" color={'#fff'} size={26} onPress={()=>this.props.navigation.navigate('Promotions')} />
+                  <Text style={{color: 'white',fontSize:15,paddingVertical:3}} onPress={()=>this.props.navigation.navigate('Promotions')}>Promotions</Text>
+                  </View>
         </ImageBackground>
       </View>
+      <View style={{marginTop:10}}>
                 <ScrollView>
                     <View style={styles.logocontainer}>
                         <View
@@ -1018,9 +1013,10 @@ export default class PromStockBuyN extends React.Component {
                     <View style={styles.logocontainer}>
                         <View
                            style={{
-                            alignItems: 'flex-end',
-                            paddingHorizontal: 5,
-                            paddingVertical: 10,
+                               width:'40%'
+                            // alignItems: 'flex-end',
+                            // paddingHorizontal: 5,
+                            // paddingVertical: 10,
                           }}
                         >
                             <Text style={styles.setDepartmentTextSize}>Promotion Type</Text>
@@ -1030,9 +1026,10 @@ export default class PromStockBuyN extends React.Component {
                                 return (
                                     <View
                                     style={{
-                                        alignItems: 'flex-end',
-                                        paddingHorizontal: 30,
-                                        paddingVertical: 10,
+                                        width:'60%'
+                                        // alignItems: 'flex-end',
+                                        // paddingHorizontal: 30,
+                                        // paddingVertical: 10,
                                       }}
                                     >
                                         <Dropdown
@@ -1044,8 +1041,8 @@ export default class PromStockBuyN extends React.Component {
                                             labelFontSize={16}
                                             fontSize={16}
                                             shadeOpacity="2.0"
-                                            dropdownOffset={{ top: 8, left: 25 }}
-                                            // containerStyle={styles.inputt1}
+                                            dropdownOffset={{ top: 5, left: 25 }}
+                                            containerStyle={styles.inputt}
 
 
                                         //    onChangeText={(value, index) => this.getCategoryList(value, index)}
@@ -1060,9 +1057,10 @@ export default class PromStockBuyN extends React.Component {
                                 return (
                                     <View
                                     style={{
-                                        alignItems: 'flex-end',
-                                        paddingHorizontal: 30,
-                                        paddingVertical: 10,
+                                        width:'60%'
+                                        // alignItems: 'flex-end',
+                                        // paddingHorizontal: 30,
+                                        // paddingVertical: 10,
                                       }}
                                     >
                                         <Dropdown
@@ -1104,6 +1102,7 @@ export default class PromStockBuyN extends React.Component {
                                 style={{ width: "90%", paddingTop: 0 }}
                                 date={this.state.fromDate}
                                 minDate={new Date}
+                                showIcon={false}
                                 
                                 mode="date"
                                 androidMode="spinner"
@@ -1113,18 +1112,7 @@ export default class PromStockBuyN extends React.Component {
                                 // maxDate="2016-06-01"
                                 confirmBtnText="Confirm"
                                 cancelBtnText="Cancel"
-                                customStyles={{
-                                    dateIcon: {
-                                        position: 'absolute',
-                                        left: 0,
-                                        height:20,
-                                        top: 4,
-                                        marginLeft: 0
-                                    },
-                                    dateInput: {
-                                        marginLeft: 36
-                                    }
-                                }}
+                               
                                 onDateChange={fromDate =>
                                     this.setState({
                                         fromDate,
@@ -1154,7 +1142,7 @@ export default class PromStockBuyN extends React.Component {
                                 date={this.state.toDate}
                                 mode="date"
                                 minDate={new Date}
-                                
+                                showIcon={false}
                                 androidMode="spinner"
                                 placeholder="select time"
                                 format="MM-DD-YYYY"
@@ -1162,19 +1150,19 @@ export default class PromStockBuyN extends React.Component {
                                 // maxDate="2016-06-01"
                                 confirmBtnText="Confirm"
                                 cancelBtnText="Cancel"
-                                customStyles={{
-                                    dateIcon: {
-                                        position: 'absolute',
-                                        left: 0,
-                                        height:20,
-                                        top: 4,
-                                        marginLeft: 0
-                                    },
-                                    dateInput: {
-                                        marginLeft: 36
-                                    }
-                                    // ... You can check the source to find the other keys.
-                                }}
+                                // customStyles={{
+                                //     dateIcon: {
+                                //         position: 'absolute',
+                                //         left: 0,
+                                //         height:20,
+                                //         top: 4,
+                                //         marginLeft: 0
+                                //     },
+                                //     dateInput: {
+                                //         marginLeft: 36
+                                //     }
+                                //     // ... You can check the source to find the other keys.
+                                // }}
                                 onDateChange={toDate =>
                                     this.setState({
                                         toDate,
@@ -1443,9 +1431,7 @@ export default class PromStockBuyN extends React.Component {
                                     </View>
                                     <View
                                       style={{
-                                        alignItems: 'flex-end',
-                                        paddingHorizontal: 30,
-                                        paddingVertical: 10,
+                                     width:'60%'
                                       }}
                                     >
 
@@ -1550,7 +1536,7 @@ export default class PromStockBuyN extends React.Component {
                             />
                         </View>
                     </View>
-                    <View style={styles.taxContainer}>
+                    {/* <View style={styles.taxContainer}>
                         <View
                             style={{
                                 alignItems: 'flex-end',
@@ -1595,7 +1581,7 @@ export default class PromStockBuyN extends React.Component {
                                 />
                             </View>
                         </View>
-                    </View>
+                    </View> */}
                     <View style={styles.logocontainer}>
                         <View
                            style={{
@@ -1778,6 +1764,7 @@ export default class PromStockBuyN extends React.Component {
                         })()}
                     </View> */}
                 </ScrollView>
+                </View>
                 <Loading ref="loading" />
             {/* </KeyboardAwareScrollView> */}
         </View>
@@ -1787,7 +1774,7 @@ export default class PromStockBuyN extends React.Component {
 
 const styles = StyleSheet.create({
     logocontainer: {
-        width: '80%',
+        width: '95%',
         backgroundColor: 'grey',
         marginHorizontal: 10,
         flexDirection: 'row',
@@ -1991,7 +1978,7 @@ const styles = StyleSheet.create({
         flexDirection: "row"
     },
     btncontainer: {
-        backgroundColor: "#f15a2c",
+        backgroundColor: "#3386D6",
 
         borderRadius: 0,
         // mirginTop: 10,

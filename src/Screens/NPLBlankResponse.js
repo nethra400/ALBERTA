@@ -31,7 +31,7 @@ export default class NPLBlankResponse extends React.Component {
            
     //            headerRight: (<View  style={{ marginRight: 0 }}>
     //       <TouchableOpacity onPress={()=>params.onPressMethod()}>
-    //       <MaterialIcons name="save" size={40} color="#f15a2c" />  
+    //       <MaterialIcons name="save" size={40} color="#3386D6" />  
     //       </TouchableOpacity>
            
     //        </View>)
@@ -968,7 +968,7 @@ export default class NPLBlankResponse extends React.Component {
                                 <View flexDirection="row">
                                     <CheckBox
                                         checkedIcon={
-                                            <Entypo name="checksquare" size={15} color="#f15a2c">
+                                            <Entypo name="checksquare" size={15} color="#3386D6">
 
                                             </Entypo>
                                         }
@@ -992,7 +992,7 @@ export default class NPLBlankResponse extends React.Component {
                                             <Entypo
                                                 name="checksquare"
                                                 size={15}
-                                                color="#f15a2c"
+                                                color="#3386D6"
                                                 marginLeft="0%"
                                                 marginTop="0%"
                                             />
@@ -1016,7 +1016,7 @@ export default class NPLBlankResponse extends React.Component {
                                                     <Entypo
                                                         name="checksquare"
                                                         size={15}
-                                                        color="#f15a2c"
+                                                        color="#3386D6"
                                                         marginLeft="0%"
                                                         marginEnd="1%"
                                                     />
@@ -1372,7 +1372,7 @@ const styles = StyleSheet.create({
         flexDirection: "row"
     },
     btncontainer: {
-        backgroundColor: "#f15a2c",
+        backgroundColor: "#3386D6",
 
         borderRadius: 10,
         // mirginTop: 10,

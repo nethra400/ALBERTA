@@ -8,6 +8,7 @@ import { RNCamera } from 'react-native-camera';
 import Loading from 'react-native-whc-loading'
 // import { NavigationEvents } from 'react-navigation'
 import AsyncStorage from '@react-native-community/async-storage';
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 import SearchableDropdown from 'react-native-searchable-dropdown';
 
 class UpdateQty extends Component {
@@ -407,19 +408,20 @@ class UpdateQty extends Component {
               style={{position: 'relative', height: 100, paddingTop: 20}}>
               <View
                 style={{
-                  // display: 'flex',
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  // paddingVertical: 10,
-                  paddingHorizontal: 20,
+                     // display: 'flex',
+                     flexDirection: 'row',
+                     justifyContent: 'flex-start',
+                     paddingVertical: 10,
+                     paddingHorizontal:20,
+                     marginTop:15
                 }}>
+                   <FontAwesome style={{marginRight:10}} name="caret-left" color={'#fff'} size={26} onPress={()=>this.props.navigation.navigate('Items')} />
                 <Text
-                  style={{color: 'white', marginTop: 10}}
+                  style={{color: 'white', marginTop: 0}}
                   onPress={() =>
                     this.props.navigation.navigate('Items')
                   }>
-                 Update Quantity
+                  Update Quantity
                 </Text>
               </View>
             </ImageBackground>

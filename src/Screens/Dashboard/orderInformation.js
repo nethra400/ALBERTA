@@ -829,7 +829,7 @@ const styles = StyleSheet.create({
     height: 70,
   },
   btncontainer: {
-    backgroundColor: '#f15a2c',
+    backgroundColor: '#3386D6',
 
     borderRadius: 10,
     // mirginTop: 10,
@@ -842,7 +842,7 @@ const styles = StyleSheet.create({
     // marginBottom: 30
   },
   btncontainer1: {
-    backgroundColor: '#f15a2c',
+    backgroundColor: '#3386D6',
 
     borderRadius: 10,
     // mirginTop: 10,
@@ -855,7 +855,7 @@ const styles = StyleSheet.create({
     marginBottom: 70,
   },
   btncontainer2: {
-    backgroundColor: '#f15a2c',
+    backgroundColor: '#3386D6',
 
     borderRadius: 10,
     // mirginTop: 10,

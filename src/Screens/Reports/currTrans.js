@@ -4,6 +4,7 @@ import {
   Text,
   SafeAreaView,
   ImageBackground,
+  ScrollView,
   StyleSheet,
 } from 'react-native';
 import {ListItem} from 'react-native-elements';
@@ -139,19 +140,27 @@ export default class currTrans extends Component {
 
   render() {
     return (
-      <SafeAreaView>
+      <View>
         <View style={{width: '100%'}}>
           <ImageBackground
             source={require('../../assets/images/header.jpeg')}
             style={{position: 'relative', height: 80, paddingTop: 20}}>
-            <Text
-              style={{color: '#fff', paddingHorizontal: 40}}
-              onPress={() => this.props.navigation.navigate('Dashboard')}>
-              Currrent Transactions
-            </Text>
+                <View
+                            style={{
+                               // display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'flex-start',
+                    paddingVertical: 10,
+                    paddingHorizontal:20,
+                    marginTop:15
+                            }}>
+                            <FontAwesome style={{marginRight:10}} name="caret-left" color={'#fff'} size={26} onPress={()=>this.props.navigation.navigate('Items')} />
+                            <Text style={{color: 'white',fontSize:15,paddingVertical:3}}  onPress={()=>this.props.navigation.navigate('Dashboard')}>Currrent Transactions</Text>
+                        </View>
+           
           </ImageBackground>
         </View>
-        <View>
+        <ScrollView>
           {this.state.data.map((val, index) => {
             return (
               <View>
@@ -164,7 +173,7 @@ export default class currTrans extends Component {
                       containerStyle={{
                         borderRadius: 35,
                         marginHorizontal: 10,
-                        marginVertical: 10,
+                        marginVertical: 4,
                       }}>
                       <View
                         style={{
@@ -211,7 +220,7 @@ export default class currTrans extends Component {
               </View>
             );
           })}
-        </View>
+        </ScrollView>
         <Dialog
           flex="1"
           height={700}
@@ -255,6 +264,7 @@ export default class currTrans extends Component {
                     shadowRadius: 2,
                     elevation: 3,
                     shadowRadius: 2,
+                    marginBottom:10
                   }}>
                   <View
                     style={{justifyContent: 'center', alignItems: 'center'}}>
@@ -342,6 +352,7 @@ export default class currTrans extends Component {
                     shadowRadius: 2,
                     elevation: 3,
                     shadowRadius: 2,
+                    marginBottom:10
                   }}>
                   <View
                     style={{justifyContent: 'center', alignItems: 'center'}}>
@@ -352,6 +363,7 @@ export default class currTrans extends Component {
                             style={{
                               justifyContent: 'space-between',
                               flexDirection: 'row',
+                              paddingVertical:2
                             }}>
                             <Text style={{marginRight: 20, fontSize: 12}}>
                               {"Register"}
@@ -362,6 +374,7 @@ export default class currTrans extends Component {
                             style={{
                               justifyContent: 'space-between',
                               flexDirection: 'row',
+                              paddingVertical:2
                             }}>
                             <Text style={{marginRight: 20, fontSize: 12}}>
                               {"Sub Total"}
@@ -372,6 +385,7 @@ export default class currTrans extends Component {
                             style={{
                               justifyContent: 'space-between',
                               flexDirection: 'row',
+                              paddingVertical:2
                             }}>
                             <Text style={{marginRight: 20, fontSize: 12}}>
                               {"Tax"}
@@ -382,6 +396,7 @@ export default class currTrans extends Component {
                             style={{
                               justifyContent: 'space-between',
                               flexDirection: 'row',
+                              paddingVertical:2
                             }}>
                             <Text style={{marginRight: 20, fontSize: 12}}>
                               {"Total"}
@@ -414,6 +429,7 @@ export default class currTrans extends Component {
                             style={{
                               justifyContent: 'space-between',
                               flexDirection: 'row',
+                              paddingVertical:2
                             }}>
                             <Text style={{marginRight: 20, fontSize: 12}}>
                             Grand Total
@@ -424,6 +440,7 @@ export default class currTrans extends Component {
                             style={{
                               justifyContent: 'space-between',
                               flexDirection: 'row',
+                              paddingVertical:2
                             }}>
                             <Text style={{marginRight: 20, fontSize: 12}}>
                             Cash
@@ -434,6 +451,7 @@ export default class currTrans extends Component {
                             style={{
                               justifyContent: 'space-between',
                               flexDirection: 'row',
+                              paddingVertical:2
                             }}>
                             <Text style={{marginRight: 20, fontSize: 12}}>
                             Credit
@@ -444,6 +462,7 @@ export default class currTrans extends Component {
                             style={{
                               justifyContent: 'space-between',
                               flexDirection: 'row',
+                              paddingVertical:2
                             }}>
                             <Text style={{marginRight: 20, fontSize: 12}}>
                             Change
@@ -458,7 +477,7 @@ export default class currTrans extends Component {
             </View>
           </DialogContent>
         </Dialog>
-      </SafeAreaView>
+      </View>
     );
   }
 }

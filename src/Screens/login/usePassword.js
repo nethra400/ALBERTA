@@ -118,7 +118,7 @@ export default class saveUsername extends Component {
           this.setState({ msg: responseJson.error});
          
         } else if (responseJson.token) {
-          alert(responseJson.token)
+          // alert(responseJson.token)
           // alert('hello')
           // this.props.navigation.navigate('Dashboard')
           AsyncStorage.setItem("token", responseJson.token);

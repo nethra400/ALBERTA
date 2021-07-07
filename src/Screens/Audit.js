@@ -113,8 +113,18 @@ export default class Audit extends Component {
         <View style={{width: '100%'}}>
           <ImageBackground
             source={require('../assets/images/header.jpeg')}
-            style={{position: 'relative', height: 160, paddingTop: 20}}>
-                <Text style={{color:'#fff',paddingHorizontal:40}} onPress={()=>this.props.navigation.navigate('Dashboard')}>Loss Prevention</Text>
+            style={{position: 'relative', height: 160, paddingTop: 2}}>
+                <View
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'flex-start',
+                    paddingVertical: 10,
+                    paddingHorizontal:20
+                  }}>
+                 <FontAwesome style={{marginRight:0}} name="caret-left" color={'#fff'} size={26} onPress={()=>this.props.navigation.navigate('Dashboard')} />
+                  <Text style={{color: 'white',fontSize:15,paddingHorizontal:8,paddingVertical:3}} onPress={()=>this.props.navigation.navigate('Dashboard')}>Loss Prevention</Text>
+                </View>
             <View
               style={{
                 flexDirection: 'row',

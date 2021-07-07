@@ -65,8 +65,8 @@ export default class Reports extends Component{
                     paddingVertical: 10,
                     paddingHorizontal:20
                   }}>
-                  <Text style={{color: 'white'}} onPress={()=>this.props.navigation.navigate('Dashboard')}>Weekly/Monthly/Yearly Report</Text>
-                  
+                 <FontAwesome style={{marginRight:0}} name="caret-left" color={'#fff'} size={26} onPress={()=>this.props.navigation.navigate('Dashboard')} />
+                  <Text style={{color: 'white',fontSize:15,paddingHorizontal:8,paddingVertical:3}} onPress={()=>this.props.navigation.navigate('Dashboard')}>Reports</Text>
                 </View>
               </ImageBackground>
             </View>

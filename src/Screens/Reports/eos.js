@@ -21,13 +21,13 @@ import { Cell, Section, TableView } from "react-native-tableview-simple";
 
 const CustomSectionHeader1 = props => (
   <View>
-    <Text style={{ fontSize: 15, fontWeight: '500', color: '#f15a2c', alignSelf: 'center', bottom: 4 }}> {props.header} </Text>
+    <Text style={{ fontSize: 15, fontWeight: '500', color: '#3386D6', alignSelf: 'center', bottom: 4 }}> {props.header} </Text>
   </View>
 );
 
 const CustomSectionHeader2 = props => (
   <View>
-    <Text style={{ fontSize: 15, fontWeight: '500', color: '#f15a2c', alignSelf: 'center', bottom: 2 }}> {props.header} </Text>
+    <Text style={{ fontSize: 15, fontWeight: '500', color: '#3386D6', alignSelf: 'center', bottom: 2 }}> {props.header} </Text>
   </View>
 );
 

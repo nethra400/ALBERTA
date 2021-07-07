@@ -75,15 +75,15 @@ openBtnClicked = () => {
                 style={{position: 'relative', height: 80, paddingTop: 20}}>
                 <View
                   style={{
-                    display: 'flex',
+                    // display: 'flex',
                     flexDirection: 'row',
                     justifyContent: 'flex-start',
                     paddingVertical: 10,
                     paddingHorizontal:20
                   }}>
-                  <Text style={{color: 'white'}} onPress={()=>this.props.navigation.navigate('Dashboard')}>Promotions</Text>
-                  
-                </View>
+                                      <FontAwesome style={{marginRight:10}} name="caret-left" color={'#fff'} size={26} onPress={()=>this.props.navigation.navigate('Promotions')} />
+                  <Text style={{color: 'white',fontSize:15,paddingVertical:3}} onPress={()=>this.props.navigation.navigate('Promotions')}>Promotions</Text>
+                  </View>
               </ImageBackground>
             </View>
             <View style={{display: 'flex'}}>

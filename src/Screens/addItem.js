@@ -688,13 +688,8 @@ export default class AddItem extends Component {
                 // paddingVertical: 10,
                 paddingHorizontal: 20,
               }}>
-              <Text
-                style={{color: 'white', marginTop: 10}}
-                onPress={() =>
-                  this.props.navigation.navigate('Items')
-                }>
-                Add/Edit Item
-              </Text>
+             <FontAwesome style={{marginRight:0}} name="caret-left" color={'#fff'} size={26} onPress={()=>this.props.navigation.navigate('Items')} />
+                  <Text style={{color: 'white',fontSize:15,paddingHorizontal:8,paddingVertical:3}} onPress={()=>this.props.navigation.navigate('Items')}>Add/Edit Item</Text>
             </View>
           </ImageBackground>
         </View>
@@ -801,7 +796,7 @@ export default class AddItem extends Component {
             barcodeFinderWidth={280}
             barcodeFinderHeight={220}
             barcodeFinderBorderColor="green"
-            barcodeFinderBorderWidth={2}
+            barcodeFinderBorderWidth={5}
             defaultTouchToFocus
             flashMode={this.state.camera.flashMode}
             mirrorImage={false}

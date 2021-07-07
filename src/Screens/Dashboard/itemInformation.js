@@ -855,7 +855,7 @@ const styles = StyleSheet.create({
   },
   btncontainer: {
     flex: 1,
-    backgroundColor: '#f15a2c',
+    backgroundColor: '#3386D6',
     paddingVertical: 15,
     borderRadius: 10,
     height: 50,
@@ -868,7 +868,7 @@ const styles = StyleSheet.create({
   },
   btncontainer1: {
     flex: 1,
-    backgroundColor: '#f15a2c',
+    backgroundColor: '#3386D6',
     paddingVertical: 15,
     borderRadius: 10,
     height: 50,

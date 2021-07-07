@@ -179,7 +179,7 @@ export default class PromStockItemList extends Component {
                         // marginTop: 5, borderRightWidth: 0,
                         // marginBottom: 2,
                         // borderBottomWidth: 1,
-                        // borderBottomColor: '#f15a2c'
+                        // borderBottomColor: '#3386D6'
                         marginTop: 3,
                         borderBottomWidth: 0.3,
                         borderBottomColor: "#3386D6",
@@ -222,7 +222,7 @@ export default class PromStockItemList extends Component {
                                     <MaterialCommunityIcons
                                         name="delete-forever"
                                         size={25}
-                                        color="#f15a2c"
+                                        color="#3386D6"
                                     />
 
                                 </TouchableOpacity>
@@ -354,7 +354,7 @@ export default class PromStockItemList extends Component {
                     }}
                 >
                     Item List
-                    {/* <Text style={{ color: '#f15a2c', fontSize: 16, fontWeight: "bold" ,marginLeft : 10}}>({this.state.promotion_name} )</Text> */}
+                    {/* <Text style={{ color: '#3386D6', fontSize: 16, fontWeight: "bold" ,marginLeft : 10}}>({this.state.promotion_name} )</Text> */}
 
                 </Text>
 
@@ -521,7 +521,7 @@ const styles = StyleSheet.create({
 
     },
     btncontainer2: {
-        backgroundColor: "#f15a2c",
+        backgroundColor: "#3386D6",
         marginStart: "28%",
         // marginBottom: '20%',
 

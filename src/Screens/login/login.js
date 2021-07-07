@@ -39,20 +39,25 @@ export default class welcome extends Component {
     };
   }
 
-  forceUpdate() {
-    AsyncStorage.getItem('savedPassword').then((save) => {
+  // forceUpdate() {
+  //   AsyncStorage.getItem('savedPassword').then((save) => {
+  //     if (save) {
+  //       this.props.navigation.navigate('saveUsername');
+  //     }
+  //   });
+  // }
+
+  componentDidMount() {
+    // this.navigationSubscription =
+    // this.props.navigation.addListener('focus', (payload) => {
+    //   this.forceUpdate();
+    // });
+      AsyncStorage.getItem('savedPassword').then((save) => {
       if (save) {
         this.props.navigation.navigate('saveUsername');
       }
     });
   }
-
-  // componentDidMount() {
-  //   // this.navigationSubscription =
-  //   this.props.navigation.addListener('focus', (payload) => {
-  //     this.forceUpdate();
-  //   });
-  // }
 
   //   componentWillUnmount() {
   //     this.navigationSubscription.remove();
@@ -311,7 +316,7 @@ export default class welcome extends Component {
             style={{width: '100%', height: 150, resizeMode: 'contain'}}
           />
         </View>
-        <View style={{display: 'flex', flex: 1}}>
+        <View >
           <Text
             style={{
               alignSelf: 'center',
@@ -333,7 +338,7 @@ export default class welcome extends Component {
               // returnKeyType="next"
               keyboardType="default"
               autoCapitalize="none"
-              autoCorrect={true}
+              autoCorrect={false}
               onChangeText={(email) => this.setState({email, emailError: ''})}
             />
             <View style={styles.PhoneNumberView}>

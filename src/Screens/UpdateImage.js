@@ -58,7 +58,7 @@ export default class UpadteImage extends React.Component {
 
   //            headerRight: (<View  style={{ marginRight: 0 }}>
   //       <TouchableOpacity onPress={()=>params.onPressMethod()}>
-  //       <MaterialIcons name="save" size={40} color="#f15a2c" />
+  //       <MaterialIcons name="save" size={40} color="#3386D6" />
   //       </TouchableOpacity>
 
   //        </View>)
@@ -481,7 +481,7 @@ const styles = StyleSheet.create({
   },
   btncontainer: {
     flex: 1,
-    backgroundColor: '#f15a2c',
+    backgroundColor: '#3386D6',
     paddingVertical: 15,
     borderRadius: 10,
     height: 50,

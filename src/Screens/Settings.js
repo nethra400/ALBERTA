@@ -4,6 +4,7 @@ import {ListItem} from 'react-native-elements';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {Button} from 'react-native-elements';
+import AsyncStorage from "@react-native-community/async-storage";
 
 export default class Settings extends Component{
     state={
@@ -17,6 +18,11 @@ export default class Settings extends Component{
             name:"Barcode Settings"
         }
     ]
+    }
+
+    handleLogout = () =>{
+      AsyncStorage.removeItem('savedPassword');
+      this.props.navigation.navigate('login')
     }
     render(){
         return(
@@ -34,7 +40,8 @@ export default class Settings extends Component{
                     paddingVertical: 10,
                     paddingHorizontal:20
                   }}>
-                  <Text style={{color: 'white'}} onPress={()=>this.props.navigation.navigate('Dashboard')}>Settings</Text>
+                 <FontAwesome style={{marginRight:0}} name="caret-left" color={'#fff'} size={26} onPress={()=>this.props.navigation.navigate('Dashboard')} />
+                  <Text style={{color: 'white',fontSize:15,paddingHorizontal:8,paddingVertical:3}} onPress={()=>this.props.navigation.navigate('Dashboard')}>Settings</Text>
                   
                 </View>
               </ImageBackground>
@@ -86,9 +93,7 @@ export default class Settings extends Component{
                 containerStyle={{margin: 20}}
                 //type="outline"
                 title="Logout"
-                onPress={() => {
-                  this.props.navigation.navigate('Dashboard');
-                }}
+                onPress={() => this.handleLogout()}
               />
             </View>
            

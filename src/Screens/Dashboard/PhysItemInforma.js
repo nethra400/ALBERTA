@@ -408,7 +408,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   ipiidText:{
-    color: '#f15a2c',
+    color: '#3386D6',
     fontSize: 16, 
     fontWeight: "bold",
     marginTop:15
@@ -481,7 +481,7 @@ const styles = StyleSheet.create({
   },
   btncontainer: {
     flex: 1,
-    backgroundColor: '#f15a2c',
+    backgroundColor: '#3386D6',
     paddingVertical: 15,
     borderRadius: 10,
     height: 50,

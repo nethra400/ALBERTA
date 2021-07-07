@@ -24,7 +24,7 @@ export default class UpdateQuantity extends React.Component {
        
   //          headerRight: (<View  style={{ marginRight: 0 }}>
   //     <TouchableOpacity onPress={()=>params.onPressMethod()}>
-  //     <MaterialIcons name="save" size={40} color="#f15a2c" />  
+  //     <MaterialIcons name="save" size={40} color="#3386D6" />  
   //     </TouchableOpacity>
        
   //      </View>)
@@ -219,13 +219,14 @@ export default class UpdateQuantity extends React.Component {
               style={{position: 'relative', height: 100, paddingTop: 20,marginBottom:10}}>
               <View
                 style={{
-                  // display: 'flex',
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  // paddingVertical: 10,
-                  paddingHorizontal: 20,
+                     // display: 'flex',
+                     flexDirection: 'row',
+                     justifyContent: 'flex-start',
+                     paddingVertical: 10,
+                     paddingHorizontal:20,
+                     marginTop:15
                 }}>
+                   <FontAwesome style={{marginRight:10}} name="caret-left" color={'#fff'} size={26} onPress={()=>this.props.navigation.navigate('Items')} />
                 <Text
                   style={{color: 'white', marginTop: 10}}
                   onPress={() =>
@@ -338,14 +339,14 @@ export default class UpdateQuantity extends React.Component {
 
           </View>
 
-          <View style={styles.logocontainer}>
+          <View style={styles.logocontainer1}>
             <View  style={{
                 alignItems: 'flex-end',
                 paddingHorizontal: 5,
                 paddingVertical: 10,
               }}>
 
-              <Text style={styles.setTextSize}>QOH</Text>
+              <Text style={styles.setTextSize1}>QOH</Text>
             </View>
             <View style={{
                 alignItems: 'flex-end',
@@ -354,7 +355,7 @@ export default class UpdateQuantity extends React.Component {
               }}>
 
               <TextInput
-              style={{color:"white"}}
+              style={{color:"grey"}}
 
                 // style={styles.input1}
                 value={this.state.qoh}
@@ -451,6 +452,35 @@ const styles = StyleSheet.create({
 
   },
 
+  logocontainer1: {
+    width: '95%',
+    backgroundColor: 'white',
+    marginHorizontal: 10,
+    flexDirection: 'row',
+    height: 45,
+    // backgroundColor: 'red',
+    // paddingRight: 8,
+    paddingLeft: 28,
+    // width: '100%',
+    borderTopWidth: 0.4,
+    borderBottomWidth: 0,
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.1,
+    shadowRadius: 1,
+    elevation: 2,
+    // backgroundColor: '#fff',
+    marginBottom: 8,
+    borderTopLeftRadius: 20,
+    borderBottomLeftRadius: 20,
+    borderTopRightRadius: 20,
+    borderBottomRightRadius: 20,
+    borderColor: '#ccc',
+    justifyContent: 'space-between',
+
+
+  },
+
   btncontainerr: {
 
     marginLeft: 50,
@@ -492,6 +522,14 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '300',
     color: 'white',
+
+
+
+  },
+  setTextSize1: {
+    fontSize: 18,
+    fontWeight: '300',
+    color: 'grey',
 
 
 
@@ -552,7 +590,7 @@ const styles = StyleSheet.create({
   },
   btncontainer: {
     flex: 1,
-    backgroundColor: '#f15a2c',
+    backgroundColor: '#3386D6',
     paddingVertical: 15,
     borderRadius: 10,
     height: 50,

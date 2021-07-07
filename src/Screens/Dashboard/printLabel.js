@@ -191,7 +191,7 @@ export default class PrintLabel extends Component {
   //         {
   //             text: 'Delect',
   //             fontWeight: 'bold',
-  //             backgroundColor: "#f15a2c",
+  //             backgroundColor: "#3386D6",
   //             // borderRadius: 40,
   //             onPress: () => {
 
@@ -232,7 +232,7 @@ export default class PrintLabel extends Component {
   //                         // marginTop: 5, borderRightWidth: 0,
   //                         // marginBottom: 2,
   //                         // borderBottomWidth: 1,
-  //                         // borderBottomColor: '#f15a2c'
+  //                         // borderBottomColor: '#3386D6'
   //                         marginTop: 3,
   //                         borderBottomWidth: 0.3,
   //                         borderBottomColor: "#3386D6",
@@ -468,7 +468,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   btncontainer2: {
-    backgroundColor: '#f15a2c',
+    backgroundColor: '#3386D6',
     marginStart: '28%',
     // marginBottom: '20%',
 

@@ -6,6 +6,7 @@ import { TouchableOpacity } from 'react-native';
 import Loading from "react-native-whc-loading";
 import { ScrollView } from 'react-native-gesture-handler';
 import AsyncStorage from '@react-native-community/async-storage';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 // import { NavigationEvents } from 'react-navigation'
 // import Modal from "react-native-modal";
 
@@ -300,10 +301,11 @@ export default class Promotions extends Component {
                     flexDirection: 'row',
                     justifyContent: 'space-between',
                     alignItems:'center',
-                    // paddingVertical: 10,
-                    paddingHorizontal:20
+                    paddingVertical: 10,
+                    paddingHorizontal:10
                   }}>
-                  <Text style={{color: 'white',marginTop:10,}} onPress={()=>this.props.navigation.navigate('Dashboard')}>Promotions</Text>
+                                      <FontAwesome style={{marginRight:0}} name="caret-left" color={'#fff'} size={26} onPress={()=>this.props.navigation.navigate('Promotions')} />
+                  <Text style={{color: 'white',fontSize:15,paddingVertical:3,marginLeft:-150}} onPress={()=>this.props.navigation.navigate('Promotions')}>Promotions</Text>
                   <View >
               <Button
               style={{marginTop:10,}}
@@ -392,7 +394,7 @@ export default class Promotions extends Component {
                             width: '35%', alignItems: 'center', justifyContent: 'center',
                             backgroundColor: "#3386D6", height: 60
                         }}>
-                            <Text style={{ fontWeight: '300', fontSize: 18, color: '#fff', fontWeight: "bold" }}>Promotion Name
+                            <Text style={{ fontWeight: '300', fontSize: 16, color: '#fff', fontWeight: "bold" }}>Promotion Name
 </Text>
                         </View>
 
@@ -401,7 +403,7 @@ export default class Promotions extends Component {
                             width: '20%', alignItems: 'center', justifyContent: 'center',
                             backgroundColor: "#3386D6", height: 60,
                         }}>
-                            <Text style={{ fontWeight: '300', fontSize: 18, color: '#fff', flexDirection: 'row', fontWeight: "bold" }}>Type
+                            <Text style={{ fontWeight: '300', fontSize: 16, color: '#fff', flexDirection: 'row', fontWeight: "bold" }}>Type
 </Text>
                         </View>
 
@@ -409,7 +411,7 @@ export default class Promotions extends Component {
                             width: '20%', alignItems: 'center', justifyContent: 'center',
                             backgroundColor: "#3386D6", height: 60,
                         }}>
-                            <Text style={{ fontWeight: '300', fontSize: 18, color: '#fff', flexDirection: 'row', fontWeight: "bold" }}>Status
+                            <Text style={{ fontWeight: '300', fontSize: 16, color: '#fff', flexDirection: 'row', fontWeight: "bold" }}>Status
                         </Text>
                         </View>
 
@@ -417,7 +419,7 @@ export default class Promotions extends Component {
                             width: '25%', alignItems: 'center', justifyContent: 'center',
                             backgroundColor: "#3386D6", height: 60,
                         }}>
-                            <Text style={{ fontWeight: '300', fontSize: 18, color: '#fff', flexDirection: 'row', fontWeight: "bold" }}>Category
+                            <Text style={{ fontWeight: '300', fontSize: 16, color: '#fff', flexDirection: 'row', fontWeight: "bold" }}>Category
                         </Text>
                         </View>
 
@@ -437,7 +439,7 @@ export default class Promotions extends Component {
                         marginHorizontal: 5,
                         marginVertical: 10,
                       }}>
-                      <View style={{flexDirection: 'row'}}>
+                      <View style={{flexDirection: 'row',fontSize:14}}>
                           
                       <Text style={{width:100}}>{val.promotion_name}</Text>
                       <Text style={{width:100}}>{val.promotion_type}</Text>
@@ -494,7 +496,8 @@ const styles = StyleSheet.create({
         marginTop: 5,
         marginBottom: "10%",
 
-        height: '80%'
+        height: '80%',
+        // fontSize:15
 
 
 

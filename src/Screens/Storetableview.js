@@ -72,42 +72,41 @@ export default class Storetableview extends Component {
 
   }
 
-  GetListViewItem = (name, voids, sales, deletes, SID, tax, paid_out, returns, No_Sales, isnewdatabase)=> {
+   GetListViewItem = async(name, voids, sales, deletes, SID, tax, paid_out, returns, No_Sales, isnewdatabase)=> {
+            
+    const selectedStoreDetails ={
+      'Storename':name,
+      'void':voids,
+      'Sid':SID,
+      'sales':sales,
+      'deletes':deletes,
+      'tax':tax,
+      'paid_out':paid_out,
+      'returns':returns,
+      'No_Sales':No_Sales,
+
+    }
+
+    AsyncStorage.setItem('selectedStoreDetails',JSON.stringify(selectedStoreDetails))
 
 
+    // let x= await AsyncStorage.getItem("Sid")
+    // const { Storename } = x.storeDetails;
 
-             
-
-              const storeDetails = {
-                "Storename": name,
-                "Sid": SID,
-                "void": voids,
-                "deletes": deletes,
-                "sales": sales,
-                "tax":tax,
-                "paid_out":paid_out,
-                'returns':returns
-              }
-
-              const userAndStoreDetails = {
-                storeDetails
-              }
-
-              AsyncStorage.setItem('user_and_store_details', JSON.stringify(userAndStoreDetails))
-              AsyncStorage.setItem('Sid', JSON.stringify(storeDetails.Sid))
-            //   AsyncStorage.setItem('userid',JSON.stringify(userDetails.userid))
-
-    //alert(name + voids + sales + deletes);
-    AsyncStorage.setItem('Storename', name);
-    AsyncStorage.setItem('void', JSON.stringify(voids));
+    // console.log(JSON.stringify(x));
+ 
+    // AsyncStorage.setItem("Storename",name);
+    // AsyncStorage.setItem('void', JSON.stringify(voids));
     // AsyncStorage.setItem('Sid', JSON.stringify(SID));
-    AsyncStorage.setItem('sales', sales);
-    AsyncStorage.setItem('deletes', JSON.stringify(deletes));
-    AsyncStorage.setItem('tax', tax);
-    AsyncStorage.setItem('paid_out', paid_out);
-    AsyncStorage.setItem('returns', returns);
-    AsyncStorage.setItem('No_Sales', No_Sales);
-    showcategary = isnewdatabase
+    // AsyncStorage.setItem('sales', sales);
+    // AsyncStorage.setItem('deletes', JSON.stringify(deletes));
+    // AsyncStorage.setItem('tax', tax);
+    // AsyncStorage.setItem('paid_out', paid_out);
+    // AsyncStorage.setItem('returns', returns);
+    // AsyncStorage.setItem('No_Sales', No_Sales);
+    showcategary = isnewdatabase;
+
+    // console.log(AsyncStorage.getItem("Sid"))
     //alert(tax)
     //getReactNativeHost().getReactInstanceManager().getDevSupportManager().handleReloadJS();
     this.props.navigation.navigate('Dashboard');

@@ -26,8 +26,6 @@ export default class Items extends Component{
       const {data} = this.state
       let data1=JSON.stringify(item);
       let data2=JSON.parse(data1);
-      // alert("hello")
-      // alert(data2)
       if(data2.name == "Add/Edit Item"){
         this.props.navigation.navigate("AddItem")
       }
@@ -59,7 +57,8 @@ export default class Items extends Component{
                     paddingVertical: 10,
                     paddingHorizontal:20
                   }}>
-                  <Text style={{color: 'white'}} onPress={()=>this.props.navigation.navigate('Dashboard')}>Items</Text>
+                    <FontAwesome style={{marginRight:0}} name="caret-left" color={'#fff'} size={26} onPress={()=>this.props.navigation.navigate('Dashboard')} />
+                  <Text style={{color: 'white',fontSize:15,paddingHorizontal:8,paddingVertical:3}} onPress={()=>this.props.navigation.navigate('Dashboard')}>Items</Text>
                   
                 </View>
               </ImageBackground>
@@ -97,6 +96,7 @@ export default class Items extends Component{
                               return(
                                 <TouchableOpacity onPress={()=>this.handlePress(val)}>
                                 <ListItem
+                                 keyExtractor={(item, index) => index.toString()}
                                 // key = {index}
                                 keyExtractor={(item, index) => index.toString()}
                                   bottomDivider

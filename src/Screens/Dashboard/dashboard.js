@@ -130,24 +130,26 @@ class Dashboard extends React.Component {
     
   }
 
-  componentDidMount(){
-  
+  async componentDidMount(){
+    const selectStoreDetails = await AsyncStorage.getItem('selectedStoreDetails')
+    const userStoreDetails = await AsyncStorage.getItem("user_and_store_details")
+    const storeInfo = JSON.parse(selectStoreDetails)
 
-    AsyncStorage.getItem("user_and_store_details")
-      .then((userAndStoreDetails) => {
+    
         const {userDetails,
-          storeDetails} = JSON.parse(userAndStoreDetails);
+          storeDetails} = JSON.parse(userStoreDetails)
           // alert(userAndStoreDetails)
           const {id} = userDetails
         
-          const { tax,Sid ,Storename,sales,deletes }  = storeDetails;
+          const { tax,Sid ,Storename,sales,deletes, }  = storeDetails;
         // alert(sDetails)
         this.setState({
           stax:tax,
           sid:Sid,
           sname:Storename,
           noSales:sales,
-          sdelete:deletes
+          sdelete:deletes,
+         
           
         })
 
@@ -167,7 +169,7 @@ class Dashboard extends React.Component {
       })
 
        
-      })
+      
     
     AsyncStorage.getItem('id').then(id => {
       AsyncStorage.getItem('Sid').then(Sid => {
@@ -327,17 +329,10 @@ class Dashboard extends React.Component {
   
     return (
       // <View >
-      <View style={{width:'100%',height:'100%'}}>
+      <ScrollView style={{width:'100%',height:'100%'}}>
          <View>
         
           <View>
-         
-            {/* <View><Text>{'hello'}</Text></View> */}
-
-            {/* <Button 
-          title="cancel"
-          onPress={()=>this.handleCancel()}
-            /> */}
 
             <View style={{width: '100%'}}>
               <ImageBackground
@@ -355,24 +350,7 @@ class Dashboard extends React.Component {
                 </View>
               </ImageBackground>
             </View>
-            {/* <View style={{height:130,width:200,backgroundColor:'#3386D6',marginLeft:100,}}>
-                <Text style={{color:'white'}}>Hello</Text>
-                <Text style={{color:'white'}}>Sales</Text>
-                <Text style={{color:'white'}}>$00,000.00</Text>
-                <View style={{flexDirection:'row',justifyContent:'space-around'}}>
-                  <Text style={{color:'white'}}>Tax</Text>
-                  <Text style={{color:'white'}}>Transactions</Text>
-                </View>
-                <View style={{flexDirection:'row',justifyContent:'space-around'}}>
-                  <Text style={{color:'white'}}>$000.00</Text>
-                  <Text style={{color:'white'}}>0,000</Text>
-                </View>
-                <View style={{justifyContent:'center',alignItems:'center'}}>
-                  <Text style={{color:'white'}}>All Registers</Text>
-                </View>
-                
-
-            </View> */}
+            
             <LinearGradient
               start={{x: 0, y: 0}}
               end={{x: 0.8, y: 0.8}}
@@ -486,7 +464,7 @@ class Dashboard extends React.Component {
           </View>
           </View>
        
-      </View>
+      </ScrollView>
       // </View>
     );
   }

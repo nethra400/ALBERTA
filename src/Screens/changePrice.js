@@ -45,7 +45,7 @@ export default class ChangePrice extends React.Component {
        
   //          headerRight: (<View  style={{ marginRight: 0 }}>
   //     <TouchableOpacity onPress={()=>params.onPressMethod()}>
-  //     <MaterialIcons name="save" size={35} color="#f15a2c" />  
+  //     <MaterialIcons name="save" size={35} color="#3386D6" />  
   //     </TouchableOpacity>
        
   //      </View>)
@@ -266,13 +266,13 @@ export default class ChangePrice extends React.Component {
               </TextInput>
             </View>
           </View>
-          <View style={styles.logocontainer}>
+          <View style={styles.logocontainer1}>
             <View style={{
                 alignItems: 'flex-end',
                 paddingHorizontal: 5,
                 paddingVertical: 10,
               }}>
-              <Text style={styles.setTextSize}> Price</Text>
+              <Text style={styles.setTextSize1}> Price</Text>
             </View>
             <View style={{
                 alignItems: 'flex-end',
@@ -280,7 +280,7 @@ export default class ChangePrice extends React.Component {
                 paddingVertical: 10,
               }}>
               <TextInput
-              style={{color:'white'}}
+              style={{color:'grey'}}
                 // style={styles.input1}
                 value={this.state.salesPrice}
                 // underlineColorAndroid="transparent"
@@ -303,13 +303,13 @@ export default class ChangePrice extends React.Component {
             </View>
           </View>
 
-          <View style={styles.logocontainer}>
+          <View style={styles.logocontainer1}>
             <View style={{
                 alignItems: 'flex-end',
                 paddingHorizontal: 5,
                 paddingVertical: 10,
               }}>
-              <Text style={styles.setTextSize}>Gross profit</Text>
+              <Text style={styles.setTextSize1}>Gross profit</Text>
             </View>
             <View style={{
                 alignItems: 'flex-end',
@@ -317,7 +317,7 @@ export default class ChangePrice extends React.Component {
                 paddingVertical: 10,
               }}>
               <TextInput
-              style={{color:'white'}}
+              style={{color:'grey'}}
                 // style={styles.input1}
                 value={this.state.grossvalue}
                 underlineColorAndroid="transparent"
@@ -387,6 +387,33 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
 
+  logocontainer1: {
+    width: '95%',
+    backgroundColor: 'white',
+    marginHorizontal: 10,
+    flexDirection: 'row',
+    height: 45,
+    // backgroundColor: 'red',
+    // paddingRight: 8,
+    paddingLeft: 28,
+    // width: '100%',
+    borderTopWidth: 0.4,
+    borderBottomWidth: 0,
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.1,
+    shadowRadius: 1,
+    elevation: 2,
+    // backgroundColor: '#fff',
+    marginBottom: 8,
+    borderTopLeftRadius: 20,
+    borderBottomLeftRadius: 20,
+    borderTopRightRadius: 20,
+    borderBottomRightRadius: 20,
+    borderColor: '#ccc',
+    justifyContent: 'space-between',
+  },
+
   btncontainerr: {
 
     marginLeft: 50,
@@ -402,6 +429,11 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '300',
     color: "#fff",
+  },
+  setTextSize1: {
+    fontSize: 18,
+    fontWeight: '300',
+    color: "grey",
   },
   setStarTextSize: {
     fontSize: 18,
@@ -455,7 +487,7 @@ const styles = StyleSheet.create({
   },
   btncontainer: {
     flex: 1,
-    backgroundColor: '#f15a2c',
+    backgroundColor: '#3386D6',
     paddingVertical: 15,
     borderRadius: 10,
     height: 50,

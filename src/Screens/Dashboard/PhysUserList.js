@@ -415,7 +415,7 @@ const styles = StyleSheet.create({
 
 
     btncontainer1: {
-        backgroundColor: "#f15a2c",
+        backgroundColor: "#3386D6",
 
         borderRadius: 10,
         // mirginTop: 10,
@@ -428,7 +428,7 @@ const styles = StyleSheet.create({
         marginBottom: 70
     },
     btncontainer2: {
-        backgroundColor: "#f15a2c",
+        backgroundColor: "#3386D6",
 
         borderRadius: 10,
 

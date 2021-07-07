@@ -32,7 +32,7 @@ export default class NPLAddItem extends React.Component {
        
   //          headerRight: (<View  style={{ marginRight: 0 }}>
   //     <TouchableOpacity onPress={()=>params.onPressMethod()}>
-  //     <MaterialIcons name="save" size={40} color="#f15a2c" />  
+  //     <MaterialIcons name="save" size={40} color="#3386D6" />  
   //     </TouchableOpacity>
        
   //      </View>)
@@ -923,7 +923,7 @@ export default class NPLAddItem extends React.Component {
                 <View flexDirection="row">
                   <CheckBox
                     checkedIcon={
-                      <Entypo name="checksquare" size={25} color="#f15a2c">
+                      <Entypo name="checksquare" size={25} color="#3386D6">
 
                       </Entypo>
                     }
@@ -947,7 +947,7 @@ export default class NPLAddItem extends React.Component {
                       <Entypo
                         name="checksquare"
                         size={25}
-                        color="#f15a2c"
+                        color="#3386D6"
                         marginLeft="10"
                         marginTop="0"
                       />
@@ -1223,7 +1223,7 @@ const styles = StyleSheet.create({
     flexDirection: "row"
   },
   btncontainer: {
-    backgroundColor: "#f15a2c",
+    backgroundColor: "#3386D6",
 
     borderRadius: 10,
     // mirginTop: 10,

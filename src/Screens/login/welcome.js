@@ -12,6 +12,7 @@ import {
   SafeAreaView
 } from 'react-native';
 import {Button} from 'react-native-elements';
+import { WebView } from 'react-native-webview'
 import {
   PrimaryButton,
   SecondaryButton,
@@ -23,6 +24,7 @@ import Twitter from '../../components/reusableComponents/Twitter';
 import Instagram from '../../components/reusableComponents/Insta';
 import LinkedIn from '../../components/reusableComponents/Linked';
 import Youtube from '../../components/reusableComponents/Youtube';
+import MyWebComponent from "../../components/reusableComponents/webview";
 
 Icon.loadFont();
 
@@ -54,6 +56,16 @@ export default class welcome extends Component {
     );
   };
 
+  // handleFacebook = () =>{
+  //   this.props.navigation.navigate('web',)
+  //   // alert('hello')
+  //   // <MyWebComponent />
+ 
+  // //  <MyWebComponent
+  // //  uri={'https://www.facebook.com/albertapayments'}
+  // //  />
+  // }
+
   render() {
     return (
       <SafeAreaView style={{backgroundColor: '#3386D6'}}>
@@ -64,7 +76,7 @@ export default class welcome extends Component {
             <Text style={styles.welcomeText1}>Mangage Your Business! </Text>
             <View style={{display: 'flex'}}>
               <Button
-              style={{marginTop:50}}
+                style={{marginTop:50}}
                 titleStyle={{color: '#3386D6', fontSize: 14}}
                 buttonStyle={{
                   padding: 12,
@@ -72,7 +84,6 @@ export default class welcome extends Component {
                   borderRadius: 25,
                 }}
                 containerStyle={{margin: 20}}
-                //type="outline"
                 title="Login"
                 onPress={() => {
                   this.props.navigation.navigate('login');
@@ -111,6 +122,10 @@ export default class welcome extends Component {
                 color="white"
                 size={24}
                 textstyle={{alignItems: 'center', alignContent: 'center'}}
+                // onPress={()=>this.props.navigation.navigate('https://www.facebook.com/albertapayments')}
+                onPress={()=>this.props.navigation.navigate('web', {
+                  myUrl: "https://www.facebook.com/albertapayments"
+              })}
               />
               </View>
               <View style={{marginLeft:10}}>
@@ -118,6 +133,9 @@ export default class welcome extends Component {
                 size={24}
                 color="white"
                 textstyle={{alignItems: 'center', alignContent: 'center'}}
+                onPress={()=>this.props.navigation.navigate('web', {
+                  myUrl: "https://www.instagram.com/alberta.payments/"
+              })}
               />
               </View>
               <View style={{marginLeft:10}}>
@@ -125,6 +143,9 @@ export default class welcome extends Component {
                 size={24}
                 color="white"
                 textstyle={{alignItems: 'center', alignContent: 'center'}}
+                onPress={()=>this.props.navigation.navigate('web', {
+                  myUrl: "https://twitter.com/AlbertaPayments"
+              })}
               />
               </View>
                <View style={{marginLeft:10}}>
@@ -132,6 +153,9 @@ export default class welcome extends Component {
                 size={24}
                 color="white"
                 textstyle={{alignItems: 'center', alignContent: 'center'}}
+                onPress={()=>this.props.navigation.navigate('web', {
+                  myUrl: "https://www.youtube.com/channel/UC1cA4 B72v5xv3i-RSEKnrTw"
+              })}
               />
               </View>
                <View style={{marginLeft:10}}>
@@ -139,6 +163,9 @@ export default class welcome extends Component {
                 size={24}
                 color="white"
                 textstyle={{alignItems: 'center', alignContent: 'center'}}
+                onPress={()=>this.props.navigation.navigate('web', {
+                  myUrl: "https://www.linkedin.com/company/alberta- paymentstech/"
+              })}
               />
               </View>
 
@@ -157,6 +184,7 @@ export default class welcome extends Component {
 
 const styles = StyleSheet.create({
   welcomeTextView: {
+    // backgroundColor:'red',
     marginTop: 80,
   },
 
