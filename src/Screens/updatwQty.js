@@ -138,7 +138,7 @@ class UpdateQty extends Component {
   constructor(props) {
     super(props);
     let { width } = Dimensions.get('window');
-    this.maskLength = (width * 85) / 100;
+    // this.maskLength = (width * 85) / 100;
     this.camera = null;
     this.barcodeCodes = [];
 
@@ -403,30 +403,24 @@ class UpdateQty extends Component {
           <Text style={{ fontSize: 25, fontWeight: '700', color: '#3386D6' }}>Update Quantity</Text>
         </View> */}
          <View style={{width: '100%'}}>
-            <ImageBackground
-              source={require('../assets/images/header.jpeg')}
-              style={{position: 'relative', height: 100, paddingTop: 20}}>
-              <View
-                style={{
-                     // display: 'flex',
-                     flexDirection: 'row',
-                     justifyContent: 'flex-start',
-                     paddingVertical: 10,
-                     paddingHorizontal:20,
-                     marginTop:15
-                }}>
-                   <FontAwesome style={{marginRight:10}} name="caret-left" color={'#fff'} size={26} onPress={()=>this.props.navigation.navigate('Items')} />
-                <Text
-                  style={{color: 'white', marginTop: 0}}
-                  onPress={() =>
-                    this.props.navigation.navigate('Items')
-                  }>
-                  Update Quantity
-                </Text>
-              </View>
-            </ImageBackground>
-          </View>
-        <View style={{ margin: 5 }}>
+              <ImageBackground
+                source={require('../assets/images/header.jpeg')}
+                style={{position: 'relative', height: 80, paddingTop: 20}}>
+                <View
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'flex-start',
+                    paddingVertical: 10,
+                    paddingHorizontal:20
+                  }}>
+                    <FontAwesome style={{marginRight:0}} name="caret-left" color={'#fff'} size={26} onPress={()=>this.props.navigation.navigate('Items')} />
+                  <Text style={{color: 'white',fontSize:15,paddingHorizontal:8,paddingVertical:3}} onPress={()=>this.props.navigation.navigate('Items')}>Update Quantity</Text>
+                  
+                </View>
+              </ImageBackground>
+            </View>
+        <View style={{ margin: 5 ,marginTop:10}}>
 
 
           <SearchableDropdown
@@ -563,7 +557,7 @@ const styles = {
     backgroundColor: '#fff'
   },
   preview: {
-    width: this.maskLength,
+    // width: this.maskLength,
     height: 200,
     alignItems: 'center'
   },

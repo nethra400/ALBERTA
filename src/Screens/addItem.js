@@ -57,7 +57,7 @@ export default class AddItem extends Component {
   constructor(props) {
     super(props);
     let { width } = Dimensions.get('window');
-    this.maskLength = (width * 85) / 100;
+    // this.maskLength = (width * 85) / 100;
     this.camera = null;
     this.barcodeCodes = [];
 
@@ -673,26 +673,27 @@ export default class AddItem extends Component {
 
   render() {
     return (
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView >
         {/* <NavigationEvents onDidFocus={() => this.componentDidMount()} /> */}
         <View style={{width: '100%'}}>
-          <ImageBackground
-            source={require('../assets/images/header.jpeg')}
-            style={{position: 'relative', height: 100, paddingTop: 20}}>
-            <View
-              style={{
-                // display: 'flex',
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                // paddingVertical: 10,
-                paddingHorizontal: 20,
-              }}>
-             <FontAwesome style={{marginRight:0}} name="caret-left" color={'#fff'} size={26} onPress={()=>this.props.navigation.navigate('Items')} />
+              <ImageBackground
+                source={require('../assets/images/header.jpeg')}
+                style={{position: 'relative', height: 80, paddingTop: 20}}>
+                <View
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'flex-start',
+                    paddingVertical: 10,
+                    paddingHorizontal:20
+                  }}>
+                    <FontAwesome style={{marginRight:0}} name="caret-left" color={'#fff'} size={26} onPress={()=>this.props.navigation.navigate('Items')} />
                   <Text style={{color: 'white',fontSize:15,paddingHorizontal:8,paddingVertical:3}} onPress={()=>this.props.navigation.navigate('Items')}>Add/Edit Item</Text>
+                  
+                </View>
+              </ImageBackground>
             </View>
-          </ImageBackground>
-        </View>
+       
 
 <View style={{marginTop:10}}>
           <SearchableDropdown
@@ -745,7 +746,7 @@ export default class AddItem extends Component {
             //mapping of item array
             defaultIndex={0}
             //default selected item index
-            placeholder="Enter Item Name"
+            placeholder="Enter Items Name"
             placeholderTextColor="gray"
             //place holder for the search input
             resetValue={true}
@@ -837,7 +838,7 @@ const styles = {
     backgroundColor: '#fff'
   },
   preview: {
-    width: this.maskLength,
+    // width: this.maskLength,
     height: 200,
     alignItems: 'center'
   },

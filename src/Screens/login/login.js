@@ -72,8 +72,7 @@ export default class welcome extends Component {
 
   handleLogin = () => {
     const {email, password, emailError} = this.state;
-    // alert('hello')
-    // alert(this.state.password);
+  
     Keyboard.dismiss();
 
     let errors = true;
@@ -89,9 +88,6 @@ export default class welcome extends Component {
       errors = false;
     }
 
-    // if((this.state.AUTH && this.state.isSwitchEnabled)){
-    //   alert("Please Select One")
-    // }
 
     if (!errors) {
       this.setState({
@@ -159,7 +155,7 @@ export default class welcome extends Component {
   };
 
   loginWithToken = () => {
-    console.log(AsyncStorage.getItem('token'))
+    // console.log(AsyncStorage.getItem('token'))
     const {AUTH, isSwitchEnabled} = this.state;
     if (AUTH) {
       // AsyncStorage.setItem('AUTH','1')

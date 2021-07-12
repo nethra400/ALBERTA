@@ -65,7 +65,7 @@ export default class ItemChangePrice extends Component {
   constructor(props) {
     super(props);
     let { width } = Dimensions.get('window');
-    this.maskLength = (width * 85) / 100;
+    // this.maskLength = (width * 85) / 100;
     this.camera = null;
     this.barcodeCodes = [];
 
@@ -457,28 +457,23 @@ export default class ItemChangePrice extends Component {
           <Text style={{ fontSize: 25, fontWeight: '700', color: '#3386D6' }}>Change Price</Text>
         </View> */}
         <View style={{width: '100%'}}>
-            <ImageBackground
-              source={require('../assets/images/header.jpeg')}
-              style={{position: 'relative', height: 100, paddingTop: 20}}>
-              <View
-                style={{
-                  // display: 'flex',
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  // paddingVertical: 10,
-                  paddingHorizontal: 20,
-                }}>
-                <Text
-                  style={{color: 'white', marginTop: 10}}
-                  onPress={() =>
-                    this.props.navigation.navigate('Items')
-                  }>
-                 Change Price
-                </Text>
-              </View>
-            </ImageBackground>
-          </View>
+              <ImageBackground
+                source={require('../assets/images/header.jpeg')}
+                style={{position: 'relative', height: 80, paddingTop: 20}}>
+                <View
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'flex-start',
+                    paddingVertical: 10,
+                    paddingHorizontal:20
+                  }}>
+                    <FontAwesome style={{marginRight:0}} name="caret-left" color={'#fff'} size={26} onPress={()=>this.props.navigation.navigate('Items')} />
+                  <Text style={{color: 'white',fontSize:15,paddingHorizontal:8,paddingVertical:3}} onPress={()=>this.props.navigation.navigate('Items')}>change Price</Text>
+                  
+                </View>
+              </ImageBackground>
+            </View>
         <View style={{ margin: 5 }}>
 
 
@@ -618,7 +613,7 @@ const styles = {
     backgroundColor: '#fff'
   },
   preview: {
-    width: this.maskLength,
+    // width: this.maskLength,
     height: 200,
     alignItems: 'center'
   },

@@ -66,7 +66,7 @@ export default class PhysChooseItem extends Component {
   constructor(props) {
     super(props);
     let { width } = Dimensions.get('window');
-    this.maskLength = (width * 85) / 100;
+    // this.maskLength = (width * 85) / 100;
     this.camera = null;
     this.barcodeCodes = [];
 
@@ -604,7 +604,7 @@ const styles = {
     backgroundColor: '#fff'
   },
   preview: {
-    width: this.maskLength,
+    // width: this.maskLength,
     height: 200,
     alignItems: 'center'
   },

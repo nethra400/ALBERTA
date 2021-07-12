@@ -96,8 +96,10 @@ export default class welcome extends Component {
                 style={{width: 250, height: 250, alignSelf: 'center',marginTop:30}}
               />
             </View>
-
-            <View>
+                <TouchableOpacity onPress={()=>this.props.navigation.navigate('web', {
+                  myUrl: "https://albertapayments.com/"
+              })}>
+            <View >
               <Image
                 source={require('../../assets/images/promologo.png')}
                 style={{
@@ -108,6 +110,7 @@ export default class welcome extends Component {
                 }}
               />
             </View>
+            </TouchableOpacity>
 
             {/* <Image
               source={require('/Users/apple/AlbertaAdmin/src/assets/images/Promologo.png')}
@@ -185,7 +188,7 @@ export default class welcome extends Component {
 const styles = StyleSheet.create({
   welcomeTextView: {
     // backgroundColor:'red',
-    marginTop: 80,
+    marginTop: 90,
   },
 
   welcomeText: {

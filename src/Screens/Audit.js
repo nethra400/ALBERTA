@@ -23,9 +23,9 @@ export default class Audit extends Component {
     }
 
     handlenoSale= () =>{
-      const {data1} = this.state
+      const {data3} = this.state
       this.setState({
-        data:data1
+        data:data3
       })
     }
 
@@ -43,9 +43,15 @@ export default class Audit extends Component {
             .then(responseJson => {
               this.setState({ isLoading: false });
   
-              this.setState({ data1: responseJson.delete,
-              data2:responseJson.void,
-            data3:responseJson.no_sale, });
+              this.setState({ 
+                data1: responseJson.delete,
+                data2:responseJson.void,
+                data3:responseJson.no_sale,
+                // data4:responseJson.non_scanned,
+                // data5:responseJson.high_total,
+                // data6:responseJson.discounted,
+
+               });
             })
             .catch(error => {
               alert("Sommething went  wrong! Please try again later!");

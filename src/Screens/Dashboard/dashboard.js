@@ -133,7 +133,7 @@ class Dashboard extends React.Component {
   async componentDidMount(){
     const selectStoreDetails = await AsyncStorage.getItem('selectedStoreDetails')
     const userStoreDetails = await AsyncStorage.getItem("user_and_store_details")
-    const storeInfo = JSON.parse(selectStoreDetails)
+    // const storeInfo = JSON.parse(selectStoreDetails)
 
     
         const {userDetails,
@@ -160,7 +160,7 @@ class Dashboard extends React.Component {
         // console.log(JSON.stringify(res));
         this.setState({
           dataSource:responseJson.data.data,
-          
+          selectStoreDetails
         })
         // alert(this.state.dataSource)
       })
@@ -329,7 +329,7 @@ class Dashboard extends React.Component {
   
     return (
       // <View >
-      <ScrollView style={{width:'100%',height:'100%'}}>
+      <View style={{width:'100%',height:'100%'}}>
          <View>
         
           <View>
@@ -464,7 +464,7 @@ class Dashboard extends React.Component {
           </View>
           </View>
        
-      </ScrollView>
+      </View>
       // </View>
     );
   }

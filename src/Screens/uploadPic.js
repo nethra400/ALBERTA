@@ -19,6 +19,7 @@ import { RNCamera } from "react-native-camera";
 // import { NavigationEvents } from 'react-navigation'
 import SearchableDropdown from 'react-native-searchable-dropdown';
 import AsyncStorage from '@react-native-community/async-storage';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import Loading from 'react-native-whc-loading'
 
 
@@ -171,7 +172,7 @@ export default class UploadPic extends Component {
     constructor(props) {
         super(props);
         let { width } = Dimensions.get('window');
-        this.maskLength = (width * 85) / 100;
+        // this.maskLength = (width * 85) / 100;
         this.camera = null;
         this.barcodeCodes = [];
 
@@ -428,7 +429,7 @@ export default class UploadPic extends Component {
     render() {
         return (
 
-            <View style={styles.container}>
+            <SafeAreaView style={styles.container}>
                 {/* <NavigationEvents onDidFocus={() => this.componentDidMount()} /> */}
 
                 {/* <View style={{ marginTop: 5, alignContent: 'center', alignItems: 'center' }}>
@@ -436,28 +437,23 @@ export default class UploadPic extends Component {
                 </View> */}
 
 <View style={{width: '100%'}}>
-            <ImageBackground
-              source={require('../assets/images/header.jpeg')}
-              style={{position: 'relative', height: 100, paddingTop: 20,marginBottom:10}}>
-              <View
-                style={{
-                  // display: 'flex',
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  // paddingVertical: 10,
-                  paddingHorizontal: 20,
-                }}>
-                <Text
-                  style={{color: 'white', marginTop: 10}}
-                  onPress={() =>
-                    this.props.navigation.navigate('Items')
-                  }>
-                  Upload Picture
-                </Text>
-              </View>
-            </ImageBackground>
-          </View>
+              <ImageBackground
+                source={require('../assets/images/header.jpeg')}
+                style={{position: 'relative', height: 80, paddingTop: 20}}>
+                <View
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'flex-start',
+                    paddingVertical: 10,
+                    paddingHorizontal:20
+                  }}>
+                    <FontAwesome style={{marginRight:0}} name="caret-left" color={'#fff'} size={26} onPress={()=>this.props.navigation.navigate('Items')} />
+                  <Text style={{color: 'white',fontSize:15,paddingHorizontal:8,paddingVertical:3}} onPress={()=>this.props.navigation.navigate('Items')}>Upload Picture</Text>
+                  
+                </View>
+              </ImageBackground>
+            </View>
                 <View style={{ margin: 5 }}>
 
 
@@ -582,7 +578,7 @@ export default class UploadPic extends Component {
                 </CardView>
 
                 <Loading ref="loading" />
-            </View>
+            </SafeAreaView>
             // </ScrollView>
         );
 
@@ -598,7 +594,7 @@ const styles = {
         backgroundColor: '#fff'
     },
     preview: {
-        width: this.maskLength,
+        // width: this.maskLength,
         height: 200,
         alignItems: 'center'
     },

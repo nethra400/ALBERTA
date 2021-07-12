@@ -127,6 +127,7 @@ export default class Eos extends Component {
         if (batchID) {
 
           this.setState({ batch: batchID })
+         
 
 
           return fetch(API_BASE_URL + `admin/z_report?sid=${SID}&batch=${batchID}&token=${data}`)
@@ -205,42 +206,42 @@ export default class Eos extends Component {
   }
 
 
-  getTendorDetails = (batchID) => {
+  // getTendorDetails = (batchID) => {
 
 
-    AsyncStorage.getItem('token').then((data) => {
-      AsyncStorage.getItem('Sid').then((SID) => {
-        if (batchID) {
+  //   AsyncStorage.getItem('token').then((data) => {
+  //     AsyncStorage.getItem('Sid').then((SID) => {
+  //       if (batchID) {
 
-          this.setState({ batch: batchID })
+  //         this.setState({ batch: batchID })
 
-          return fetch(API_BASE_URL + `admin/zreport_detail?sid=${SID}&batch=${batchID}&token=${data}`)
+  //         return fetch(API_BASE_URL + `admin/zreport_detail?sid=${SID}&batch=${batchID}&token=${data}`)
 
-            .then((response) => response.json())
-            .then((responseJson) => {
-
-
+  //           .then((response) => response.json())
+  //           .then((responseJson) => {
 
 
-              const tenderType = responseJson.filter(item => item.Type === 'Tender')
-              const libailityType = responseJson.filter(item => item.Type === 'Liability')
 
-              this.setState({
-                visibleDetails: true,
 
-                TenderTotal: responseJson,
-                libailityType,
-                tenderType
-              });
+  //             const tenderType = responseJson.filter(item => item.Type === 'Tender')
+  //             const libailityType = responseJson.filter(item => item.Type === 'Liability')
 
-            })
-            .catch(error => {
-              console.error(error);
-            });
-        }
-      });
-    })
-  }
+  //             this.setState({
+  //               visibleDetails: true,
+
+  //               TenderTotal: responseJson,
+  //               libailityType,
+  //               tenderType
+  //             });
+
+  //           })
+  //           .catch(error => {
+  //             console.error(error);
+  //           });
+  //       }
+  //     });
+  //   })
+  // }
 
   getBatches = (date) => {
     this.refs.loading.show();
@@ -367,7 +368,7 @@ export default class Eos extends Component {
                   itemTextStyle={{
                     padding: 2,
                     // marginTop: 2,
-                    backgroundColor: 'blue',
+                    // backgroundColor: 'blue',
                     borderColor: '#bbb',
                     borderWidth: 1,}}
                 onChangeText={(value) => {
@@ -472,14 +473,14 @@ export default class Eos extends Component {
                       <Text>TAXABLE SALES</Text>
                     <Text>${this.state.salestaxed}</Text>
                   </View>
-                  <View
+                  {/* <View
                     style={{
                       flexDirection: 'row',
                       justifyContent: 'space-between',
                     }}>
                       <Text>TAXABLE SALES</Text>
                     <Text>${this.state.salestaxed}</Text>
-                  </View>
+                  </View> */}
                   <View
                     style={{
                       flexDirection: 'row',

@@ -213,32 +213,26 @@ export default class UpdateQuantity extends React.Component {
           {/* <View style={{ marginTop: 5, marginBottom: 10, alignContent: 'center', alignItems: 'center' }}>
             <Text style={{ fontSize: 25, fontWeight: '700', color: '#3386D6' }}>Update Quantity</Text>
           </View> */}
-          <View style={{width: '100%'}}>
-            <ImageBackground
-              source={require('../assets/images/header.jpeg')}
-              style={{position: 'relative', height: 100, paddingTop: 20,marginBottom:10}}>
-              <View
-                style={{
-                     // display: 'flex',
-                     flexDirection: 'row',
-                     justifyContent: 'flex-start',
-                     paddingVertical: 10,
-                     paddingHorizontal:20,
-                     marginTop:15
-                }}>
-                   <FontAwesome style={{marginRight:10}} name="caret-left" color={'#fff'} size={26} onPress={()=>this.props.navigation.navigate('Items')} />
-                <Text
-                  style={{color: 'white', marginTop: 10}}
-                  onPress={() =>
-                    this.props.navigation.navigate('Items')
-                  }>
-                  Update Quantity
-                </Text>
-              </View>
-            </ImageBackground>
-          </View>
+            <View style={{width: '100%'}}>
+              <ImageBackground
+                source={require('../assets/images/header.jpeg')}
+                style={{position: 'relative', height: 80, paddingTop: 20}}>
+                <View
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'flex-start',
+                    paddingVertical: 10,
+                    paddingHorizontal:20
+                  }}>
+                    <FontAwesome style={{marginRight:0}} name="caret-left" color={'#fff'} size={26} onPress={()=>this.props.navigation.navigate('Items')} />
+                  <Text style={{color: 'white',fontSize:15,paddingHorizontal:8,paddingVertical:3}} onPress={()=>this.props.navigation.navigate('Items')}>Update Quantity</Text>
+                  
+                </View>
+              </ImageBackground>
+            </View>
 
-
+<View style={{marginTop:10}}>
           <View style={styles.logocontainer}>
 
 
@@ -407,6 +401,7 @@ export default class UpdateQuantity extends React.Component {
           />
         </View>
 
+        </View>
         </View>
         <Loading ref="loading" />
       </SafeAreaView>
