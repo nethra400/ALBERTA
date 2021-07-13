@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import {
   Platform, StyleSheet, Text, View,
-  TouchableOpacity, Image, TextInput, AsyncStorage, Vibration, Dimensions, Alert,ImageBackground,SafeAreaView
+  TouchableOpacity, Image, TextInput, AsyncStorage, Vibration, Dimensions, Alert, ImageBackground, SafeAreaView
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import CardView from 'react-native-cardview';
 import Loading from 'react-native-whc-loading'
-import { RNCamera } from 'react-native-camera';
+// import { RNCamera } from 'react-native-camera';
 import { ScrollView } from 'react-native-gesture-handler';
 // import { NavigationEvents } from 'react-navigation'
 import SearchableDropdown from 'react-native-searchable-dropdown';
@@ -40,61 +40,61 @@ export default class ItemMov extends Component {
   render() {
     return (
       <SafeAreaView>
-      <View style={styles.container}>
-       
+        <View style={styles.container}>
 
-      
-        <View style={{width: '100%'}}>
-              <ImageBackground
-                source={require('../../assets/images/header.jpeg')}
-                style={{position: 'relative', height: 80, paddingTop: 20}}>
-                <View
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    justifyContent: 'flex-start',
-                    paddingVertical: 10,
-                    paddingHorizontal:20
-                  }}>
-                  <Text style={{color: 'white'}} onPress={()=>this.props.navigation.navigate('Reports')}>Item Movement</Text>
-                  
-                </View>
-              </ImageBackground>
+
+
+          <View style={{ width: '100%' }}>
+            <ImageBackground
+              source={require('../../assets/images/header.jpeg')}
+              style={{ position: 'relative', height: 80, paddingTop: 20 }}>
+              <View
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'flex-start',
+                  paddingVertical: 10,
+                  paddingHorizontal: 20
+                }}>
+                <Text style={{ color: 'white' }} onPress={() => this.props.navigation.navigate('Reports')}>Item Movement</Text>
+
+              </View>
+            </ImageBackground>
+          </View>
+
+          <View style={{ marginTop: 20 }}>
+            <View >
+              <TextInput
+                style={styles.textBox1}
+                underlineColorAndroid="transparent"
+                placeholder="Email"
+                placeholderTextColor="#ccc"
+                // returnKeyType="next"
+                keyboardType="default"
+                autoCapitalize="none"
+                autoCorrect={true}
+                onChangeText={(email) => this.setState({ email, emailError: '' })}
+              />
+
             </View>
-       
-       <View style={{marginTop:20}}>
-       <View >
-            <TextInput
-              style={styles.textBox1}
-              underlineColorAndroid="transparent"
-              placeholder="Email"
-              placeholderTextColor="#ccc"
-              // returnKeyType="next"
-              keyboardType="default"
-              autoCapitalize="none"
-              autoCorrect={true}
-              onChangeText={(email) => this.setState({email, emailError: ''})}
-            />
-           
+            <View >
+              <TextInput
+                style={styles.textBox1}
+                underlineColorAndroid="transparent"
+                placeholder="Barcode"
+                placeholderTextColor="#ccc"
+                // returnKeyType="next"
+                keyboardType="default"
+                autoCapitalize="none"
+                autoCorrect={true}
+                onChangeText={(email) => this.setState({ email, emailError: '' })}
+              />
+
+            </View>
           </View>
-          <View >
-            <TextInput
-              style={styles.textBox1}
-              underlineColorAndroid="transparent"
-              placeholder="Barcode"
-              placeholderTextColor="#ccc"
-              // returnKeyType="next"
-              keyboardType="default"
-              autoCapitalize="none"
-              autoCorrect={true}
-              onChangeText={(email) => this.setState({email, emailError: ''})}
-            />
-           
-          </View>
-       </View>
 
 
-        {/* <View style={{ margin: 5 }}>
+          {/* <View style={{ margin: 5 }}>
           <TextInput
             ref={input => { this.barcode = input }}
             style={styles.input}
@@ -107,52 +107,52 @@ export default class ItemMov extends Component {
 
         </View> */}
 
-        <CardView
-          cardElevation={6}
-          cardMaxElevation={1}
-          cornerRadius={3}
-          style={{ margin: 10 }}>
+          <CardView
+            cardElevation={6}
+            cardMaxElevation={1}
+            cornerRadius={3}
+            style={{ margin: 10 }}>
 
-          {/* <RNCamera
+            {/* <RNCamera
             barCodeTypes={[RNCamera.Constants.BarCodeType]}
             onBarCodeRead={() => alert("barcode read")}
             ref={ref => {
               this.camera = ref;
             }} */}
-                 <RNCamera
-            ref={ref => {
-              this.camera = ref;
-            }}
-            barcodeFinderVisible={this.state.camera.barcodeFinderVisible}
-            barcodeFinderWidth={280}
-            barcodeFinderHeight={220}
-            barcodeFinderBorderColor="green"
-            barcodeFinderBorderWidth={2}
-            defaultTouchToFocus
-            flashMode={this.state.camera.flashMode}
-            mirrorImage={false}
-            // onBarCodeRead={this.onBarCodeRead.bind(this)}
-            onFocusChanged={() => { }}
-            onZoomChanged={() => { }}
-            permissionDialogTitle={'Permission to use camera'}
-            permissionDialogMessage={'We need your permission to use your camera phone'}
-            style={styles.preview}
-            type={this.state.camera.type}>
-            <View style={styles.overlay} />
-            <View style={[styles.contentRow, { height: 190 }]}>
+            <RNCamera
+              ref={ref => {
+                this.camera = ref;
+              }}
+              barcodeFinderVisible={this.state.camera.barcodeFinderVisible}
+              barcodeFinderWidth={280}
+              barcodeFinderHeight={220}
+              barcodeFinderBorderColor="green"
+              barcodeFinderBorderWidth={2}
+              defaultTouchToFocus
+              flashMode={this.state.camera.flashMode}
+              mirrorImage={false}
+              // onBarCodeRead={this.onBarCodeRead.bind(this)}
+              onFocusChanged={() => { }}
+              onZoomChanged={() => { }}
+              permissionDialogTitle={'Permission to use camera'}
+              permissionDialogMessage={'We need your permission to use your camera phone'}
+              style={styles.preview}
+              type={this.state.camera.type}>
               <View style={styles.overlay} />
-              <View style={[styles.content, { width: 300, height: 190 }]} />
+              <View style={[styles.contentRow, { height: 190 }]}>
+                <View style={styles.overlay} />
+                <View style={[styles.content, { width: 300, height: 190 }]} />
+                <View style={styles.overlay} />
+              </View>
               <View style={styles.overlay} />
-            </View>
-            <View style={styles.overlay} />
 
-          </RNCamera>
+            </RNCamera>
 
 
-        </CardView>
+          </CardView>
 
-        <Loading ref="loading" />
-      </View>
+          <Loading ref="loading" />
+        </View>
       </SafeAreaView>
       // </ScrollView>
     );
@@ -229,7 +229,7 @@ const styles = {
     width: '90%',
     borderBottomWidth: 0,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 1,
     elevation: 2,
@@ -239,6 +239,6 @@ const styles = {
     borderBottomLeftRadius: 20,
     borderTopRightRadius: 20,
     borderBottomRightRadius: 20,
-    marginLeft:20
+    marginLeft: 20
   },
 };

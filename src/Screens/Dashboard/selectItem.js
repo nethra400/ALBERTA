@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   Platform,
   StyleSheet,
@@ -17,9 +17,9 @@ import {
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import CardView from 'react-native-cardview';
-import Camera from 'react-native-camera';
+// import Camera from 'react-native-camera';
 import Loading from 'react-native-whc-loading';
-import {RNCamera} from 'react-native-camera';
+// import { RNCamera } from 'react-native-camera';
 // import { NavigationEvents } from 'react-navigation'
 import SearchableDropdown from 'react-native-searchable-dropdown';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -29,7 +29,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 export default class SelectItem extends Component {
   constructor(props) {
     super(props);
-    let {width} = Dimensions.get('window');
+    let { width } = Dimensions.get('window');
     // this.maskLength = (width * 85) / 100;
     this.camera = null;
     this.barcodeCodes = [];
@@ -73,9 +73,9 @@ export default class SelectItem extends Component {
     this.barcode.clear();
     this.state.itemname = '';
 
-    this.setState({vendorItemCode: ''});
+    this.setState({ vendorItemCode: '' });
 
-    this.setState({barcode: ''});
+    this.setState({ barcode: '' });
     this.state.barCodeScanned = true;
 
     AsyncStorage.getItem('token').then((data) => {
@@ -106,11 +106,11 @@ export default class SelectItem extends Component {
   }
 
   cancelAlert = () => {
-    (this.state.barCodeScanned = true), this.setState({vendorItemCode: ''});
-    this.setState({barcode: ''});
+    (this.state.barCodeScanned = true), this.setState({ vendorItemCode: '' });
+    this.setState({ barcode: '' });
   };
 
-  a = () => {};
+  a = () => { };
 
   session = () => {
     AsyncStorage.removeItem('savedPassword');
@@ -140,9 +140,9 @@ export default class SelectItem extends Component {
   // };
 
   screen = () => {
-    const {barcode} = this.state;
+    const { barcode } = this.state;
     if (barcode == '') {
-      Alert.alert('', 'Barcode missing Please check', [{text: 'OK'}]);
+      Alert.alert('', 'Barcode missing Please check', [{ text: 'OK' }]);
     } else {
       this.Nextscreen();
     }
@@ -162,7 +162,7 @@ export default class SelectItem extends Component {
 
           fetch(
             API_BASE_URL +
-              `admin/get_itemdetails_with_barcode?sid=${SID}&barcode=${this.state.barcode}&token=${data}`,
+            `admin/get_itemdetails_with_barcode?sid=${SID}&barcode=${this.state.barcode}&token=${data}`,
             {
               method: 'GET',
             },
@@ -211,7 +211,7 @@ export default class SelectItem extends Component {
                 Alert.alert(
                   '',
                   'Item Not found ! Add Item to continue or proceed with next item',
-                  [{text: 'OK', onPress: () => this.cancelAlert()}],
+                  [{ text: 'OK', onPress: () => this.cancelAlert() }],
                 );
                 return;
               } else if (responseJson.error == 'Token is Invalid') {
@@ -229,7 +229,7 @@ export default class SelectItem extends Component {
 
   vendorItemCodeMethod = () => {
     if (this.state.vendorItemCode == '') {
-      Alert.alert('', 'Vendor code missing Please check', [{text: 'OK'}]);
+      Alert.alert('', 'Vendor code missing Please check', [{ text: 'OK' }]);
       return;
     }
     // this.props.navigation.navigate('ItemInformation')
@@ -238,7 +238,7 @@ export default class SelectItem extends Component {
         if (data) {
           fetch(
             API_BASE_URL +
-              `admin/get_item_with_vendoritemcode?sid=${SID}&vendoritemcode=${this.state.vendorItemCode}&token=${data}`,
+            `admin/get_item_with_vendoritemcode?sid=${SID}&vendoritemcode=${this.state.vendorItemCode}&token=${data}`,
             {
               method: 'GET',
             },
@@ -282,7 +282,7 @@ export default class SelectItem extends Component {
                 //this.refs.loading.show(false);
 
                 Alert.alert('', 'Vendor Item code not found', [
-                  {text: 'OK', onPress: () => this.cancelAlert()},
+                  { text: 'OK', onPress: () => this.cancelAlert() },
                 ]);
                 return;
               } else if (responseJson.error == 'Token is Invalid') {
@@ -301,7 +301,7 @@ export default class SelectItem extends Component {
   itemNameSearch = () => {
     fetch(
       API_BASE_URL +
-        `get_item_with_name?sid=1001&keyword=${this.state.searchItemName}`,
+      `get_item_with_name?sid=1001&keyword=${this.state.searchItemName}`,
       {
         method: 'GET',
       },
@@ -317,7 +317,7 @@ export default class SelectItem extends Component {
           Alert.alert(
             '',
             'Item Not found ! Add Item to continue or proceed with next item',
-            [{text: 'OK', onPress: () => this.cancelAlert()}],
+            [{ text: 'OK', onPress: () => this.cancelAlert() }],
           );
           return;
         } else if (responseJson.error == 'Token is Invalid') {
@@ -344,7 +344,7 @@ export default class SelectItem extends Component {
 
           fetch(
             API_BASE_URL +
-              `convertupce2upca?upc=${encodeURIComponent(scanResult.data)}`,
+            `convertupce2upca?upc=${encodeURIComponent(scanResult.data)}`,
             {
               method: 'GET',
             },
@@ -386,7 +386,7 @@ export default class SelectItem extends Component {
                         });
                         //if (this.state.barcode != '') this.Nextscreen();
                       } else {
-                        this.setState({barcode: responseJson.data});
+                        this.setState({ barcode: responseJson.data });
                         //if (this.state.barcode != '') this.Nextscreen();
                       }
                       //if (this.state.barcode != '') this.Nextscreen();
@@ -396,7 +396,7 @@ export default class SelectItem extends Component {
               } else if (responseJson.status == 'error') {
                 //this.setState({'barcode' : responseJson.data})
                 Alert.alert('', responseJson.message, [
-                  {text: 'OK', onPress: () => this.cancelAlert()},
+                  { text: 'OK', onPress: () => this.cancelAlert() },
                 ]);
               }
             })
@@ -416,7 +416,7 @@ export default class SelectItem extends Component {
                   });
                   //if (this.state.barcode != '') this.Nextscreen();
                 } else {
-                  this.setState({barcode: scanResult.data.substring(1)});
+                  this.setState({ barcode: scanResult.data.substring(1) });
                   //if (this.state.barcode != '') this.Nextscreen();
                 }
               });
@@ -431,7 +431,7 @@ export default class SelectItem extends Component {
                   });
                   //if (this.state.barcode != '') this.Nextscreen();
                 } else {
-                  this.setState({barcode: scanResult.data});
+                  this.setState({ barcode: scanResult.data });
                   //if (this.state.barcode != '') this.Nextscreen();
                 }
               });
@@ -456,9 +456,9 @@ export default class SelectItem extends Component {
 
           fetch(
             API_BASE_URL +
-              `convertupca2upce?upc=${encodeURIComponent(
-                ScannedBarcodeResult,
-              )}`,
+            `convertupca2upce?upc=${encodeURIComponent(
+              ScannedBarcodeResult,
+            )}`,
             {
               method: 'GET',
             },
@@ -496,7 +496,7 @@ export default class SelectItem extends Component {
                         });
                         if (this.state.barcode != '') this.Nextscreen();
                       } else {
-                        this.setState({barcode: responseJson.data});
+                        this.setState({ barcode: responseJson.data });
                         if (this.state.barcode != '') this.Nextscreen();
                       }
                     });
@@ -505,7 +505,7 @@ export default class SelectItem extends Component {
               } else if (responseJson.status == 'error') {
                 //this.setState({'barcode' : responseJson.data})
                 Alert.alert('', responseJson.message, [
-                  {text: 'OK', onPress: () => this.cancelAlert()},
+                  { text: 'OK', onPress: () => this.cancelAlert() },
                 ]);
               }
             })
@@ -525,7 +525,7 @@ export default class SelectItem extends Component {
                   });
                   if (this.state.barcode != '') this.Nextscreen();
                 } else {
-                  this.setState({barcode: ScannedBarcodeResult.substring(1)});
+                  this.setState({ barcode: ScannedBarcodeResult.substring(1) });
                   if (this.state.barcode != '') this.Nextscreen();
                 }
               });
@@ -540,7 +540,7 @@ export default class SelectItem extends Component {
                   });
                   if (this.state.barcode != '') this.Nextscreen();
                 } else {
-                  this.setState({barcode: ScannedBarcodeResult});
+                  this.setState({ barcode: ScannedBarcodeResult });
                   if (this.state.barcode != '') this.Nextscreen();
                 }
               });
@@ -555,14 +555,14 @@ export default class SelectItem extends Component {
 
   render() {
     return (
-      <SafeAreaView style={{flex:1}}>
+      <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.container}>
           {/* <NavigationEvents onDidFocus={() => this.componentDidMount()} /> */}
 
-          <View style={{width: '100%'}}>
+          <View style={{ width: '100%' }}>
             <ImageBackground
               source={require('../../assets/images/header.jpeg')}
-              style={{position: 'relative', height: 100, paddingTop: 20}}>
+              style={{ position: 'relative', height: 100, paddingTop: 20 }}>
               <View
                 style={{
                   // display: 'flex',
@@ -573,7 +573,7 @@ export default class SelectItem extends Component {
                   paddingHorizontal: 20,
                 }}>
                 <Text
-                  style={{color: 'white', marginTop: 10}}
+                  style={{ color: 'white', marginTop: 10 }}
                   onPress={() =>
                     this.props.navigation.navigate('AddNewReceivingOrder')
                   }>
@@ -583,139 +583,139 @@ export default class SelectItem extends Component {
             </ImageBackground>
           </View>
 
-<View stye={{marginTop:30}}>
-          <View style={{margin: 5}}>
-            <SearchableDropdown
-              // onTextChange={qoh => this.setState({ qoh })}
+          <View stye={{ marginTop: 30 }}>
+            <View style={{ margin: 5 }}>
+              <SearchableDropdown
+                // onTextChange={qoh => this.setState({ qoh })}
 
-              onTextChange={(qoh) => this.setState({qoh})}
-              onItemSelect={(item) => {
-                (this.state.barcode = item.vbarcode),
-                  (this.state.itemname = item.name),
-                  (resetValue = true),
-                  this.Nextscreen();
-              }}
-              containerStyle={{padding: 0}}
-              //suggestion container style
-              textInputStyle={{
-                //inserted text style
-                padding: 15,
-                borderWidth: 1,
-                borderColor: '#fff',
-                backgroundColor: '#fff',
-                borderRadius: 30,
+                onTextChange={(qoh) => this.setState({ qoh })}
+                onItemSelect={(item) => {
+                  (this.state.barcode = item.vbarcode),
+                    (this.state.itemname = item.name),
+                    (resetValue = true),
+                    this.Nextscreen();
+                }}
+                containerStyle={{ padding: 0 }}
+                //suggestion container style
+                textInputStyle={{
+                  //inserted text style
+                  padding: 15,
+                  borderWidth: 1,
+                  borderColor: '#fff',
+                  backgroundColor: '#fff',
+                  borderRadius: 30,
 
-                shadowColor: '#000',
-                shadowOffset: {width: 0, height: 2},
-                shadowOpacity: 0.1,
-                shadowRadius: 0.2,
-                elevation: 2,
-                // backgroundColor: '#FAF7F6',
-              }}
-              itemStyle={{
-                //single dropdown item style
-                padding: 10,
-                marginTop: 2,
-                backgroundColor: '#FAF9F8',
-                borderColor: '#bbb',
-                borderWidth: 1,
-              }}
-              itemTextStyle={{
-                //text style of a single dropdown item
-                color: '#222',
-              }}
-              itemsContainerStyle={{
-                //items container style you can pass maxHeight
-                //to restrict the items dropdown hieght
-                maxHeight: '80%',
-              }}
-              items={this.state.serverData}
-              //mapping of item array
-              defaultIndex={0}
-              //default selected item index
-              placeholder="Enter Item Name"
-              // placeholderTextColor=""
-              //place holder for the search input
-              resetValue={true}
-              //reset textInput Value with true and false state
-              underlineColorAndroid="transparent"
+                  shadowColor: '#000',
+                  shadowOffset: { width: 0, height: 2 },
+                  shadowOpacity: 0.1,
+                  shadowRadius: 0.2,
+                  elevation: 2,
+                  // backgroundColor: '#FAF7F6',
+                }}
+                itemStyle={{
+                  //single dropdown item style
+                  padding: 10,
+                  marginTop: 2,
+                  backgroundColor: '#FAF9F8',
+                  borderColor: '#bbb',
+                  borderWidth: 1,
+                }}
+                itemTextStyle={{
+                  //text style of a single dropdown item
+                  color: '#222',
+                }}
+                itemsContainerStyle={{
+                  //items container style you can pass maxHeight
+                  //to restrict the items dropdown hieght
+                  maxHeight: '80%',
+                }}
+                items={this.state.serverData}
+                //mapping of item array
+                defaultIndex={0}
+                //default selected item index
+                placeholder="Enter Item Name"
+                // placeholderTextColor=""
+                //place holder for the search input
+                resetValue={true}
+                //reset textInput Value with true and false state
+                underlineColorAndroid="transparent"
 
               //To remove the underline from the android input
-            />
-          </View>
+              />
+            </View>
 
-          <View style={{margin: 5}}>
-            <TextInput
-              style={styles.textBox1}
-              // ref={input => { this.vendorItemCode = input }}
-              value={this.state.vendorItemCode}
-              placeholder="Enter Vendor Code"
-              placeholderTextColor="Black"
-              returnKeyType="done"
-              keyboardType="default"
-              autoCapitalize="none"
-              autoCorrect={false}
-              onChangeText={(vendorItemCode) => this.setState({vendorItemCode})}
-              onSubmitEditing={() => this.vendorItemCodeMethod()}
-            />
-          </View>
+            <View style={{ margin: 5 }}>
+              <TextInput
+                style={styles.textBox1}
+                // ref={input => { this.vendorItemCode = input }}
+                value={this.state.vendorItemCode}
+                placeholder="Enter Vendor Code"
+                placeholderTextColor="Black"
+                returnKeyType="done"
+                keyboardType="default"
+                autoCapitalize="none"
+                autoCorrect={false}
+                onChangeText={(vendorItemCode) => this.setState({ vendorItemCode })}
+                onSubmitEditing={() => this.vendorItemCodeMethod()}
+              />
+            </View>
 
-          <View style={{margin: 5}}>
-            <TextInput
-              style={styles.textBox1}
-              ref={(input) => {
-                this.barcode = input;
-              }}
-              // style={styles.input}
-              placeholder="Enter Barcode"
-              placeholderTextColor="Black"
-              returnKeyType="done"
-              keyboardType="default"
-              autoCapitalize="none"
-              autoCorrect={false}
-              value={this.state.barcode}
-              onChangeText={(barcode) => this.setState({barcode})}
-              onSubmitEditing={() => this.screen()}
-            />
-          </View>
+            <View style={{ margin: 5 }}>
+              <TextInput
+                style={styles.textBox1}
+                ref={(input) => {
+                  this.barcode = input;
+                }}
+                // style={styles.input}
+                placeholder="Enter Barcode"
+                placeholderTextColor="Black"
+                returnKeyType="done"
+                keyboardType="default"
+                autoCapitalize="none"
+                autoCorrect={false}
+                value={this.state.barcode}
+                onChangeText={(barcode) => this.setState({ barcode })}
+                onSubmitEditing={() => this.screen()}
+              />
+            </View>
 
-          <CardView
-            cardElevation={6}
-            cardMaxElevation={1}
-            cornerRadius={3}
-            style={{margin: 10}}>
-            <RNCamera
-              ref={(ref) => {
-                this.camera = ref;
-              }}
-              barcodeFinderVisible={this.state.camera.barcodeFinderVisible}
-              barcodeFinderWidth={280}
-              barcodeFinderHeight={220}
-              barcodeFinderBorderColor="green"
-              barcodeFinderBorderWidth={2}
-              defaultTouchToFocus
-              flashMode={this.state.camera.flashMode}
-              mirrorImage={false}
-              onBarCodeRead={this.onBarCodeRead.bind(this)}
-              onFocusChanged={() => {}}
-              onZoomChanged={() => {}}
-              permissionDialogTitle={'Permission to use camera'}
-              permissionDialogMessage={
-                'We need your permission to use your camera phone'
-              }
-              style={styles.preview}
-              type={this.state.camera.type}>
-              <View style={styles.overlay} />
-              <View style={[styles.contentRow, {height: 190}]}>
+            <CardView
+              cardElevation={6}
+              cardMaxElevation={1}
+              cornerRadius={3}
+              style={{ margin: 10 }}>
+              <RNCamera
+                ref={(ref) => {
+                  this.camera = ref;
+                }}
+                barcodeFinderVisible={this.state.camera.barcodeFinderVisible}
+                barcodeFinderWidth={280}
+                barcodeFinderHeight={220}
+                barcodeFinderBorderColor="green"
+                barcodeFinderBorderWidth={2}
+                defaultTouchToFocus
+                flashMode={this.state.camera.flashMode}
+                mirrorImage={false}
+                onBarCodeRead={this.onBarCodeRead.bind(this)}
+                onFocusChanged={() => { }}
+                onZoomChanged={() => { }}
+                permissionDialogTitle={'Permission to use camera'}
+                permissionDialogMessage={
+                  'We need your permission to use your camera phone'
+                }
+                style={styles.preview}
+                type={this.state.camera.type}>
                 <View style={styles.overlay} />
-                <View style={[styles.content, {width: 300, height: 190}]} />
+                <View style={[styles.contentRow, { height: 190 }]}>
+                  <View style={styles.overlay} />
+                  <View style={[styles.content, { width: 300, height: 190 }]} />
+                  <View style={styles.overlay} />
+                </View>
                 <View style={styles.overlay} />
-              </View>
-              <View style={styles.overlay} />
-            </RNCamera>
-          </CardView>
-          <Loading ref="loading" />
-          <Loading show={true / false} />
+              </RNCamera>
+            </CardView>
+            <Loading ref="loading" />
+            <Loading show={true / false} />
           </View>
         </View>
       </SafeAreaView>
@@ -805,7 +805,7 @@ const styles = {
     width: '100%',
     borderBottomWidth: 0,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 1,
     elevation: 2,

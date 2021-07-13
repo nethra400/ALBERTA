@@ -6,7 +6,7 @@ import {
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import CardView from 'react-native-cardview';
 import Loading from 'react-native-whc-loading'
-import { RNCamera } from 'react-native-camera';
+// import { RNCamera } from 'react-native-camera';
 import { ScrollView } from 'react-native-gesture-handler';
 // import { NavigationEvents } from 'react-navigation'
 import AsyncStorage from "@react-native-community/async-storage";
@@ -17,7 +17,7 @@ export default class PhysChooseItem extends Component {
 
 
   // static navigationOptions = ({ navigate, navigation }) => ({
- 
+
   //   headerTitle: (
   //     <View style={{ flex: 1, alignItems: "center", marginStart: 20 }}>
   //       <Image source={require('../images/poslogo.jpg')}
@@ -44,7 +44,7 @@ export default class PhysChooseItem extends Component {
                 .then(responseJson => {
                   this.refs.loading.show(false);
                   //Successful response from the API Call
-                  
+
 
                   this.setState({
                     serverData: [...responseJson.item_data],
@@ -480,7 +480,7 @@ export default class PhysChooseItem extends Component {
                 resetValue = true,
                 this.Nextscreen()
             }}
-            containerStyle={{padding: 0}}
+            containerStyle={{ padding: 0 }}
             //suggestion container style
             textInputStyle={{
               //inserted text style
@@ -491,7 +491,7 @@ export default class PhysChooseItem extends Component {
               borderRadius: 30,
 
               shadowColor: '#000',
-              shadowOffset: {width: 0, height: 2},
+              shadowOffset: { width: 0, height: 2 },
               shadowOpacity: 0.1,
               shadowRadius: 0.2,
               elevation: 2,

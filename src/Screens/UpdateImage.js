@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   Platform,
   StyleSheet,
@@ -15,13 +15,13 @@ import {
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import CardView from 'react-native-cardview';
-import Camera from 'react-native-camera';
-import {RNCamera} from 'react-native-camera';
+// import Camera from 'react-native-camera';
+// import {RNCamera} from 'react-native-camera';
 import PhotoUpload from 'react-native-photo-upload';
 // import { NavigationEvents } from 'react-navigation'
 import SearchableDropdown from 'react-native-searchable-dropdown';
 import AsyncStorage from '@react-native-community/async-storage';
-import {Button} from 'react-native-elements';
+import { Button } from 'react-native-elements';
 import Loading from 'react-native-whc-loading';
 
 export default class UpadteImage extends React.Component {
@@ -86,22 +86,22 @@ export default class UpadteImage extends React.Component {
     Alert.alert(
       '',
       'Image Uploaded succesfully',
-      [{text: 'OK', onPress: () => this.Backscreen()}],
-      {cancelable: false},
+      [{ text: 'OK', onPress: () => this.Backscreen() }],
+      { cancelable: false },
     );
   };
   errorClickded = () => {
     this.refs.loading.show(false);
     Alert.alert('', 'Sorry, this barcode not prasent in the database', [
-      {text: 'OK', onPress: () => this.Backscreen()},
+      { text: 'OK', onPress: () => this.Backscreen() },
     ]);
   };
 
   componentDidMount() {
-    this.props.navigation.setParams({onPressMethod: this.saveNPLItemDetails});
+    this.props.navigation.setParams({ onPressMethod: this.saveNPLItemDetails });
     SKU = this.props.route.params.sku;
     if (SKU) {
-      this.setState({SKU: SKU});
+      this.setState({ SKU: SKU });
       AsyncStorage.getItem('Sid').then(data => {
         if (data) {
           this.refs.loading.show();
@@ -189,7 +189,7 @@ export default class UpadteImage extends React.Component {
   render() {
     return (
       <View style={styles.MainContainer}>
-        <View style={{width: '100%'}}>
+        <View style={{ width: '100%' }}>
           <ImageBackground
             source={require('../assets/images/header.jpeg')}
             style={{
@@ -208,7 +208,7 @@ export default class UpadteImage extends React.Component {
                 paddingHorizontal: 20,
               }}>
               <Text
-                style={{color: 'white', marginTop: 10}}
+                style={{ color: 'white', marginTop: 10 }}
                 onPress={() => this.props.navigation.navigate('Items')}>
                 Upload Picture
               </Text>
@@ -232,10 +232,10 @@ export default class UpadteImage extends React.Component {
                 paddingVertical: 10,
               }}>
               <TextInput
-               style={{color:"white"}}
+                style={{ color: "white" }}
                 value={this.state.vitemname}
                 editable={false}
-                // style={styles.input}
+              // style={styles.input}
               />
             </View>
           </View>
@@ -256,7 +256,7 @@ export default class UpadteImage extends React.Component {
                 paddingVertical: 10,
               }}>
               <TextInput
-               style={{color:"white"}}
+                style={{ color: "white" }}
                 // style={styles.input}
                 value={this.state.dcostprice}
                 editable={false}
@@ -284,7 +284,7 @@ export default class UpadteImage extends React.Component {
                 paddingVertical: 10,
               }}>
               <TextInput
-               style={{color:"white"}}
+                style={{ color: "white" }}
                 // style={styles.input}
                 value={this.state.nsaleprice}
                 editable={false}
@@ -295,14 +295,14 @@ export default class UpadteImage extends React.Component {
               />
             </View>
           </View>
-          <Text style={{textAlign: 'center'}}>
+          <Text style={{ textAlign: 'center' }}>
             Tap on image to select Photo
           </Text>
           <View style={styles.log}>
             <PhotoUpload
               onPhotoSelect={avatar => {
                 if (avatar) {
-                  this.setState({uploadedImage: avatar});
+                  this.setState({ uploadedImage: avatar });
                   // console.log('Image base64 string: ', "data:image/jpg;base64,"+avatar)
                 }
               }}>
@@ -339,16 +339,16 @@ export default class UpadteImage extends React.Component {
                             <Text style={styles.btnText}>Cancel</Text>
                         </TouchableOpacity>
                     </View> */}
-          <View style={{display: 'flex'}}>
+          <View style={{ display: 'flex' }}>
             <Button
-              style={{marginTop: 10}}
-              titleStyle={{color: '#fff', fontSize: 16}}
+              style={{ marginTop: 10 }}
+              titleStyle={{ color: '#fff', fontSize: 16 }}
               buttonStyle={{
                 padding: 12,
                 backgroundColor: '#3386D6',
                 borderRadius: 25,
               }}
-              containerStyle={{margin: 20}}
+              containerStyle={{ margin: 20 }}
               //type="outline"
               title="Save"
               onPress={() => this.saveNPLItemDetails()}
@@ -375,7 +375,7 @@ const styles = StyleSheet.create({
     borderTopWidth: 0.4,
     borderBottomWidth: 0,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 1,
     elevation: 2,

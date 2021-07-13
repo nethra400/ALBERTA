@@ -6,7 +6,7 @@ import {
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import CardView from 'react-native-cardview';
 import Loading from 'react-native-whc-loading'
-import { RNCamera } from 'react-native-camera';
+// import { RNCamera } from 'react-native-camera';
 import { ScrollView } from 'react-native-gesture-handler';
 // import { NavigationEvents } from 'react-navigation'
 import AsyncStorage from '@react-native-community/async-storage';
@@ -56,7 +56,7 @@ export default class PromStockAddItem extends Component {
   //   //   <FontAwesome name="chevron-right" size={20} color="#16a0db"/></TouchableOpacity>,
   // })
 
-  
+
 
   componentDidMount() {
     this.barcode.clear()
@@ -85,7 +85,7 @@ export default class PromStockAddItem extends Component {
         }
       })
     })
-    
+
   }
 
 

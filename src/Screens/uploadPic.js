@@ -14,8 +14,8 @@ import {
 } from "react-native";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import CardView from "react-native-cardview";
-import Camera from "react-native-camera";
-import { RNCamera } from "react-native-camera";
+// import Camera from "react-native-camera";
+// import { RNCamera } from "react-native-camera";
 // import { NavigationEvents } from 'react-navigation'
 import SearchableDropdown from 'react-native-searchable-dropdown';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -436,24 +436,24 @@ export default class UploadPic extends Component {
                     <Text style={{ fontSize: 25, fontWeight: '700', color: '#3386D6' }}>Upload Picture</Text>
                 </View> */}
 
-<View style={{width: '100%'}}>
-              <ImageBackground
-                source={require('../assets/images/header.jpeg')}
-                style={{position: 'relative', height: 80, paddingTop: 20}}>
-                <View
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    justifyContent: 'flex-start',
-                    paddingVertical: 10,
-                    paddingHorizontal:20
-                  }}>
-                    <FontAwesome style={{marginRight:0}} name="caret-left" color={'#fff'} size={26} onPress={()=>this.props.navigation.navigate('Items')} />
-                  <Text style={{color: 'white',fontSize:15,paddingHorizontal:8,paddingVertical:3}} onPress={()=>this.props.navigation.navigate('Items')}>Upload Picture</Text>
-                  
+                <View style={{ width: '100%' }}>
+                    <ImageBackground
+                        source={require('../assets/images/header.jpeg')}
+                        style={{ position: 'relative', height: 80, paddingTop: 20 }}>
+                        <View
+                            style={{
+                                display: 'flex',
+                                flexDirection: 'row',
+                                justifyContent: 'flex-start',
+                                paddingVertical: 10,
+                                paddingHorizontal: 20
+                            }}>
+                            <FontAwesome style={{ marginRight: 0 }} name="caret-left" color={'#fff'} size={26} onPress={() => this.props.navigation.navigate('Items')} />
+                            <Text style={{ color: 'white', fontSize: 15, paddingHorizontal: 8, paddingVertical: 3 }} onPress={() => this.props.navigation.navigate('Items')}>Upload Picture</Text>
+
+                        </View>
+                    </ImageBackground>
                 </View>
-              </ImageBackground>
-            </View>
                 <View style={{ margin: 5 }}>
 
 
@@ -469,39 +469,39 @@ export default class UploadPic extends Component {
                                 this.Nextscreen()
                         }}
 
-                        containerStyle={{padding: 0}}
+                        containerStyle={{ padding: 0 }}
                         //suggestion container style
                         textInputStyle={{
-                          //inserted text style
-                          padding: 15,
-                          borderWidth: 1,
-                          borderColor: '#ccc',
-                          backgroundColor: '#fff',
-                          borderRadius: 30,
-            
-                          shadowColor: '#000',
-                          shadowOffset: {width: 0, height: 2},
-                          shadowOpacity: 0.1,
-                          shadowRadius: 0.2,
-                          elevation: 2,
-                          // backgroundColor: '#FAF7F6',
+                            //inserted text style
+                            padding: 15,
+                            borderWidth: 1,
+                            borderColor: '#ccc',
+                            backgroundColor: '#fff',
+                            borderRadius: 30,
+
+                            shadowColor: '#000',
+                            shadowOffset: { width: 0, height: 2 },
+                            shadowOpacity: 0.1,
+                            shadowRadius: 0.2,
+                            elevation: 2,
+                            // backgroundColor: '#FAF7F6',
                         }}
                         itemStyle={{
-                          //single dropdown item style
-                          padding: 10,
-                          marginTop: 2,
-                          backgroundColor: '#FAF9F8',
-                          borderColor: '#bbb',
-                          borderWidth: 1,
+                            //single dropdown item style
+                            padding: 10,
+                            marginTop: 2,
+                            backgroundColor: '#FAF9F8',
+                            borderColor: '#bbb',
+                            borderWidth: 1,
                         }}
                         itemTextStyle={{
-                          //text style of a single dropdown item
-                          color: '#222',
+                            //text style of a single dropdown item
+                            color: '#222',
                         }}
                         itemsContainerStyle={{
-                          //items container style you can pass maxHeight
-                          //to restrict the items dropdown hieght
-                          maxHeight: '80%',
+                            //items container style you can pass maxHeight
+                            //to restrict the items dropdown hieght
+                            maxHeight: '80%',
                         }}
                         items={this.state.serverData}
                         //mapping of item array
@@ -524,7 +524,7 @@ export default class UploadPic extends Component {
 
                 <View style={{ margin: 5 }}>
                     <TextInput
-                    style={styles.textBox1}
+                        style={styles.textBox1}
                         ref={input => { this.barcode = input }}
                         // style={styles.input}
                         placeholder="Enter Barcode"
@@ -654,7 +654,7 @@ const styles = {
         width: '100%',
         borderBottomWidth: 0,
         shadowColor: '#000',
-        shadowOffset: {width: 0, height: 2},
+        shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.1,
         shadowRadius: 1,
         elevation: 2,
@@ -664,5 +664,5 @@ const styles = {
         borderBottomLeftRadius: 20,
         borderTopRightRadius: 20,
         borderBottomRightRadius: 20,
-      },
+    },
 };

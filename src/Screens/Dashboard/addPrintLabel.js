@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import {
     Platform, StyleSheet, Text, View, TouchableOpacity, Image, Keyboard,
-    TextInput, Dimensions, Vibration, ScrollView, Alert, ActivityIndicator,ImageBackground,SafeAreaView
+    TextInput, Dimensions, Vibration, ScrollView, Alert, ActivityIndicator, ImageBackground, SafeAreaView
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import CardView from 'react-native-cardview';
-import Camera from 'react-native-camera';
+// import Camera from 'react-native-camera';
 import Loading from 'react-native-whc-loading'
-import { RNCamera } from 'react-native-camera';
+// import { RNCamera } from 'react-native-camera';
 // import { NavigationEvents } from 'react-navigation'
 import AsyncStorage from '@react-native-community/async-storage';
 import SearchableDropdown from 'react-native-searchable-dropdown';
@@ -30,37 +30,37 @@ export default class AddPrintLabel extends Component {
     componentDidMount() {
         this.barcode.clear();
         this.state.itemname = '';
-    
-        this.setState({vendorItemCode: ''});
-    
-        this.setState({barcode: ''});
+
+        this.setState({ vendorItemCode: '' });
+
+        this.setState({ barcode: '' });
         this.state.barCodeScanned = true;
-    
+
         AsyncStorage.getItem('token').then((data) => {
-          // alert(data)
-          AsyncStorage.getItem('Sid').then((datasid) => {
-            // alert(datasid)
-            if (data) {
-              // this.refs.loading.show(true);
-              const url = API_BASE_URL + 'admin/new_get_item_with_name?sid=';
-              fetch(url + datasid + '&token=' + data)
-                .then((response) => response.json())
-                .then((responseJson) => {
-                  // this.refs.loading.show(false);
-                  // alert(JSON.stringify(responseJson))
-                  //Successful response from the API Call
-                  this.setState({
-                    serverData: responseJson.item_data,
-                    //adding the new data in Data Source of the SearchableDropdown
-                  });
-                //   alert(JSON.stringify(this.state.serverData));
-                //   this.props.navigation.navigate('PrintLabel')
-                })
-                .catch((error) => {
-                  console.error(error);
-                });
-            }
-          });
+            // alert(data)
+            AsyncStorage.getItem('Sid').then((datasid) => {
+                // alert(datasid)
+                if (data) {
+                    // this.refs.loading.show(true);
+                    const url = API_BASE_URL + 'admin/new_get_item_with_name?sid=';
+                    fetch(url + datasid + '&token=' + data)
+                        .then((response) => response.json())
+                        .then((responseJson) => {
+                            // this.refs.loading.show(false);
+                            // alert(JSON.stringify(responseJson))
+                            //Successful response from the API Call
+                            this.setState({
+                                serverData: responseJson.item_data,
+                                //adding the new data in Data Source of the SearchableDropdown
+                            });
+                            //   alert(JSON.stringify(this.state.serverData));
+                            //   this.props.navigation.navigate('PrintLabel')
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                        });
+                }
+            });
         });
 
     }
@@ -274,7 +274,7 @@ export default class AddPrintLabel extends Component {
                                                         }
                                                     }
                                                     //if (this.state.barcode != '') this.Nextscreen();
-                                                    
+
                                                 )
                                                 //if (this.state.barcode != '') this.Nextscreen();
                                                 // this.props.navigation.navigate('PrintLabel')
@@ -345,7 +345,7 @@ export default class AddPrintLabel extends Component {
                                                 //if (this.state.barcode != '') this.Nextscreen();
                                             }
                                         }
-                                        
+
                                     )
                                     // this.props.navigation.navigate('PrintLabel')
 
@@ -491,165 +491,165 @@ export default class AddPrintLabel extends Component {
 
             <SafeAreaView style={styles.container}>
 
-            <View >
+                <View >
 
-                {/* <NavigationEvents onDidFocus={() => this.componentDidMount()} /> */}
+                    {/* <NavigationEvents onDidFocus={() => this.componentDidMount()} /> */}
 
-                <View style={{width: '100%'}}>
-          <ImageBackground
-            source={require('../../assets/images/header.jpeg')}
-            style={{position: 'relative', height: 80, paddingTop: 20}}>
-            <View
-              style={{
-                display: 'flex',
-                flexDirection: 'row',
-                justifyContent: 'flex-start',
-                paddingVertical: 10,
-                paddingHorizontal: 20,
-              }}>
-              <Text
-                style={{color: 'white'}}
-                onPress={() => this.props.navigation.navigate('PrintLabel')}>
-                Print Label
-              </Text>
-            </View>
-          </ImageBackground>
-        </View>
-        <View style={{marginTop:10}}>
+                    <View style={{ width: '100%' }}>
+                        <ImageBackground
+                            source={require('../../assets/images/header.jpeg')}
+                            style={{ position: 'relative', height: 80, paddingTop: 20 }}>
+                            <View
+                                style={{
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    justifyContent: 'flex-start',
+                                    paddingVertical: 10,
+                                    paddingHorizontal: 20,
+                                }}>
+                                <Text
+                                    style={{ color: 'white' }}
+                                    onPress={() => this.props.navigation.navigate('PrintLabel')}>
+                                    Print Label
+                                </Text>
+                            </View>
+                        </ImageBackground>
+                    </View>
+                    <View style={{ marginTop: 10 }}>
 
-                <View style={{ margin: 10 }}>
-
-
-                    <SearchableDropdown
-                        // onTextChange={qoh => this.setState({ qoh })}
-
-                        onTextChange={qoh => this.setState({ qoh })}
-
-                        onItemSelect={(item) => {
-                            this.state.barcode = item.vbarcode,
-                                this.state.itemname = item.name,
-                                resetValue = true,
-
-                                this.Nextscreen()
+                        <View style={{ margin: 10 }}>
 
 
+                            <SearchableDropdown
+                                // onTextChange={qoh => this.setState({ qoh })}
+
+                                onTextChange={qoh => this.setState({ qoh })}
+
+                                onItemSelect={(item) => {
+                                    this.state.barcode = item.vbarcode,
+                                        this.state.itemname = item.name,
+                                        resetValue = true,
+
+                                        this.Nextscreen()
 
 
-                        }
-
-                        }
 
 
-                        containerStyle={{padding: 0}}
-                        //suggestion container style
-                        textInputStyle={{
-                          //inserted text style
-                          padding: 15,
-                          borderWidth: 1,
-                          borderColor: '#ccc',
-                          backgroundColor: '#fff',
-                          borderRadius: 30,
-            
-                          shadowColor: '#000',
-                          shadowOffset: {width: 0, height: 2},
-                          shadowOpacity: 0.1,
-                          shadowRadius: 0.2,
-                          elevation: 2,
-                          // backgroundColor: '#FAF7F6',
-                        }}
-                        itemStyle={{
-                          //single dropdown item style
-                          padding: 10,
-                          marginTop: 2,
-                          backgroundColor: '#FAF9F8',
-                          borderColor: '#bbb',
-                          borderWidth: 1,
-                        }}
-                        itemTextStyle={{
-                          //text style of a single dropdown item
-                          color: '#222',
-                        }}
-                        itemsContainerStyle={{
-                          //items container style you can pass maxHeight
-                          //to restrict the items dropdown hieght
-                          maxHeight: '80%',
-                        }}
-                        items={this.state.serverData}
-                        //mapping of item array
-                        defaultIndex={0}
-                        //default selected item index
-                        placeholder="Vendor"
-                        //place holder for the search input
-                        resetValue={false}
-                        //reset textInput Value with true and false state
-                        underlineColorAndroid="transparent"
-                        //To remove the underline from the android input
+                                }
+
+                                }
 
 
-                    //To remove the underline from the android input
-                    />
+                                containerStyle={{ padding: 0 }}
+                                //suggestion container style
+                                textInputStyle={{
+                                    //inserted text style
+                                    padding: 15,
+                                    borderWidth: 1,
+                                    borderColor: '#ccc',
+                                    backgroundColor: '#fff',
+                                    borderRadius: 30,
 
-                </View>
+                                    shadowColor: '#000',
+                                    shadowOffset: { width: 0, height: 2 },
+                                    shadowOpacity: 0.1,
+                                    shadowRadius: 0.2,
+                                    elevation: 2,
+                                    // backgroundColor: '#FAF7F6',
+                                }}
+                                itemStyle={{
+                                    //single dropdown item style
+                                    padding: 10,
+                                    marginTop: 2,
+                                    backgroundColor: '#FAF9F8',
+                                    borderColor: '#bbb',
+                                    borderWidth: 1,
+                                }}
+                                itemTextStyle={{
+                                    //text style of a single dropdown item
+                                    color: '#222',
+                                }}
+                                itemsContainerStyle={{
+                                    //items container style you can pass maxHeight
+                                    //to restrict the items dropdown hieght
+                                    maxHeight: '80%',
+                                }}
+                                items={this.state.serverData}
+                                //mapping of item array
+                                defaultIndex={0}
+                                //default selected item index
+                                placeholder="Vendor"
+                                //place holder for the search input
+                                resetValue={false}
+                                //reset textInput Value with true and false state
+                                underlineColorAndroid="transparent"
+                            //To remove the underline from the android input
 
 
-                <View style={{ margin: 5 }}>
-                    <TextInput
-                     style={styles.textBox1}
-                     returnKeyType="done"
-                     keyboardType="default"
-                     autoCapitalize="none"
-                     editable={true}
-                     placeholder="Enter Barcode"
-                     value={this.state.invoiceNo}
-                     autoCorrect={false}
-                        ref={input => { this.barcode = input }}
-                        
-                        value={this.state.barcode}
-                        onChangeText={barcode => this.setState({ barcode })}
-                        onSubmitEditing={() => this.screen()} />
+                            //To remove the underline from the android input
+                            />
 
-                </View>
-                <CardView
-                    cardElevation={6}
-                    cardMaxElevation={1}
-                    cornerRadius={3}
-                    style={{ margin: 10 }}>
-
-                    <RNCamera
-                        ref={ref => {
-                            this.camera = ref;
-                        }}
-                        barcodeFinderVisible={this.state.camera.barcodeFinderVisible}
-                        barcodeFinderWidth={280}
-                        barcodeFinderHeight={220}
-                        barcodeFinderBorderColor="green"
-                        barcodeFinderBorderWidth={2}
-                        defaultTouchToFocus
-                        flashMode={this.state.camera.flashMode}
-                        mirrorImage={false}
-                        onBarCodeRead={this.onBarCodeRead.bind(this)}
-                        onFocusChanged={() => { }}
-                        onZoomChanged={() => { }}
-                        permissionDialogTitle={'Permission to use camera'}
-                        permissionDialogMessage={'We need your permission to use your camera phone'}
-                        style={styles.preview}
-                        type={this.state.camera.type}>
-                        <View style={styles.overlay} />
-                        <View style={[styles.contentRow, { height: 190 }]}>
-                            <View style={styles.overlay} />
-                            <View style={[styles.content, { width: 300, height: 190 }]} />
-                            <View style={styles.overlay} />
                         </View>
-                        <View style={styles.overlay} />
-
-                    </RNCamera>
 
 
-                </CardView>
+                        <View style={{ margin: 5 }}>
+                            <TextInput
+                                style={styles.textBox1}
+                                returnKeyType="done"
+                                keyboardType="default"
+                                autoCapitalize="none"
+                                editable={true}
+                                placeholder="Enter Barcode"
+                                value={this.state.invoiceNo}
+                                autoCorrect={false}
+                                ref={input => { this.barcode = input }}
+
+                                value={this.state.barcode}
+                                onChangeText={barcode => this.setState({ barcode })}
+                                onSubmitEditing={() => this.screen()} />
+
+                        </View>
+                        <CardView
+                            cardElevation={6}
+                            cardMaxElevation={1}
+                            cornerRadius={3}
+                            style={{ margin: 10 }}>
+
+                            <RNCamera
+                                ref={ref => {
+                                    this.camera = ref;
+                                }}
+                                barcodeFinderVisible={this.state.camera.barcodeFinderVisible}
+                                barcodeFinderWidth={280}
+                                barcodeFinderHeight={220}
+                                barcodeFinderBorderColor="green"
+                                barcodeFinderBorderWidth={2}
+                                defaultTouchToFocus
+                                flashMode={this.state.camera.flashMode}
+                                mirrorImage={false}
+                                onBarCodeRead={this.onBarCodeRead.bind(this)}
+                                onFocusChanged={() => { }}
+                                onZoomChanged={() => { }}
+                                permissionDialogTitle={'Permission to use camera'}
+                                permissionDialogMessage={'We need your permission to use your camera phone'}
+                                style={styles.preview}
+                                type={this.state.camera.type}>
+                                <View style={styles.overlay} />
+                                <View style={[styles.contentRow, { height: 190 }]}>
+                                    <View style={styles.overlay} />
+                                    <View style={[styles.content, { width: 300, height: 190 }]} />
+                                    <View style={styles.overlay} />
+                                </View>
+                                <View style={styles.overlay} />
+
+                            </RNCamera>
+
+
+                        </CardView>
+                    </View>
+
+                    <Loading ref="loading" />
                 </View>
-
-                <Loading ref="loading" />
-            </View>
             </SafeAreaView>
 
         );
@@ -751,7 +751,7 @@ const styles = {
         width: '100%',
         borderWidth: 0.8,
         shadowColor: '#000',
-        shadowOffset: {width: 0, height: 2},
+        shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.1,
         shadowRadius: 1,
         elevation: 2,
@@ -761,8 +761,8 @@ const styles = {
         borderBottomLeftRadius: 20,
         borderTopRightRadius: 20,
         borderBottomRightRadius: 20,
-        borderColor:'#bbb'
-      },
+        borderColor: '#bbb'
+    },
 };
 
 

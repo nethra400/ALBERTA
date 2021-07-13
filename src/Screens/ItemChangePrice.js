@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import {
-  Platform, StyleSheet, Text, View, TouchableOpacity, Image, Keyboard,SafeAreaView,
-  TextInput, Dimensions, Vibration, ScrollView, Alert,ImageBackground
+  Platform, StyleSheet, Text, View, TouchableOpacity, Image, Keyboard, SafeAreaView,
+  TextInput, Dimensions, Vibration, ScrollView, Alert, ImageBackground
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import CardView from 'react-native-cardview';
-import Camera from 'react-native-camera';
+// import Camera from 'react-native-camera';
 import Loading from 'react-native-whc-loading'
-import { RNCamera } from 'react-native-camera';
+// import { RNCamera } from 'react-native-camera';
 // import { NavigationEvents } from 'react-navigation'
 import AsyncStorage from '@react-native-community/async-storage';
 import SearchableDropdown from 'react-native-searchable-dropdown';
@@ -456,24 +456,24 @@ export default class ItemChangePrice extends Component {
         {/* <View style={{ marginTop: 5, alignContent: 'center', alignItems: 'center' }}>
           <Text style={{ fontSize: 25, fontWeight: '700', color: '#3386D6' }}>Change Price</Text>
         </View> */}
-        <View style={{width: '100%'}}>
-              <ImageBackground
-                source={require('../assets/images/header.jpeg')}
-                style={{position: 'relative', height: 80, paddingTop: 20}}>
-                <View
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    justifyContent: 'flex-start',
-                    paddingVertical: 10,
-                    paddingHorizontal:20
-                  }}>
-                    <FontAwesome style={{marginRight:0}} name="caret-left" color={'#fff'} size={26} onPress={()=>this.props.navigation.navigate('Items')} />
-                  <Text style={{color: 'white',fontSize:15,paddingHorizontal:8,paddingVertical:3}} onPress={()=>this.props.navigation.navigate('Items')}>change Price</Text>
-                  
-                </View>
-              </ImageBackground>
+        <View style={{ width: '100%' }}>
+          <ImageBackground
+            source={require('../assets/images/header.jpeg')}
+            style={{ position: 'relative', height: 80, paddingTop: 20 }}>
+            <View
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'flex-start',
+                paddingVertical: 10,
+                paddingHorizontal: 20
+              }}>
+              <FontAwesome style={{ marginRight: 0 }} name="caret-left" color={'#fff'} size={26} onPress={() => this.props.navigation.navigate('Items')} />
+              <Text style={{ color: 'white', fontSize: 15, paddingHorizontal: 8, paddingVertical: 3 }} onPress={() => this.props.navigation.navigate('Items')}>change Price</Text>
+
             </View>
+          </ImageBackground>
+        </View>
         <View style={{ margin: 5 }}>
 
 
@@ -489,7 +489,7 @@ export default class ItemChangePrice extends Component {
                 this.Nextscreen()
             }}
 
-            containerStyle={{padding: 0}}
+            containerStyle={{ padding: 0 }}
             //suggestion container style
             textInputStyle={{
               //inserted text style
@@ -500,7 +500,7 @@ export default class ItemChangePrice extends Component {
               borderRadius: 30,
 
               shadowColor: '#000',
-              shadowOffset: {width: 0, height: 2},
+              shadowOffset: { width: 0, height: 2 },
               shadowOpacity: 0.1,
               shadowRadius: 0.2,
               elevation: 2,
@@ -544,7 +544,7 @@ export default class ItemChangePrice extends Component {
 
         <View style={{ margin: 5 }}>
           <TextInput
-          style={styles.textBox1}
+            style={styles.textBox1}
             ref={input => { this.barcode = input }}
             // style={styles.input}
             placeholder="Enter Barcode"
@@ -673,7 +673,7 @@ const styles = {
     width: '100%',
     borderBottomWidth: 0,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 1,
     elevation: 2,

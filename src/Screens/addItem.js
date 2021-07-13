@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import {
   Platform, StyleSheet, Text, View,
-  TouchableOpacity, Image, TextInput, Vibration, Dimensions, Alert,ImageBackground,SafeAreaView
+  TouchableOpacity, Image, TextInput, Vibration, Dimensions, Alert, ImageBackground, SafeAreaView
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import CardView from 'react-native-cardview';
 import Loading from 'react-native-whc-loading'
-import { RNCamera } from 'react-native-camera';
+// import { RNCamera } from 'react-native-camera';
 import { ScrollView } from 'react-native-gesture-handler';
 // import { NavigationEvents } from 'react-navigation'
 import AsyncStorage from '@react-native-community/async-storage';
@@ -675,27 +675,27 @@ export default class AddItem extends Component {
     return (
       <SafeAreaView >
         {/* <NavigationEvents onDidFocus={() => this.componentDidMount()} /> */}
-        <View style={{width: '100%'}}>
-              <ImageBackground
-                source={require('../assets/images/header.jpeg')}
-                style={{position: 'relative', height: 80, paddingTop: 20}}>
-                <View
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    justifyContent: 'flex-start',
-                    paddingVertical: 10,
-                    paddingHorizontal:20
-                  }}>
-                    <FontAwesome style={{marginRight:0}} name="caret-left" color={'#fff'} size={26} onPress={()=>this.props.navigation.navigate('Items')} />
-                  <Text style={{color: 'white',fontSize:15,paddingHorizontal:8,paddingVertical:3}} onPress={()=>this.props.navigation.navigate('Items')}>Add/Edit Item</Text>
-                  
-                </View>
-              </ImageBackground>
-            </View>
-       
+        <View style={{ width: '100%' }}>
+          <ImageBackground
+            source={require('../assets/images/header.jpeg')}
+            style={{ position: 'relative', height: 80, paddingTop: 20 }}>
+            <View
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'flex-start',
+                paddingVertical: 10,
+                paddingHorizontal: 20
+              }}>
+              <FontAwesome style={{ marginRight: 0 }} name="caret-left" color={'#fff'} size={26} onPress={() => this.props.navigation.navigate('Items')} />
+              <Text style={{ color: 'white', fontSize: 15, paddingHorizontal: 8, paddingVertical: 3 }} onPress={() => this.props.navigation.navigate('Items')}>Add/Edit Item</Text>
 
-<View style={{marginTop:10}}>
+            </View>
+          </ImageBackground>
+        </View>
+
+
+        <View style={{ marginTop: 10 }}>
           <SearchableDropdown
             // onTextChange={qoh => this.setState({ qoh })}
 
@@ -708,7 +708,7 @@ export default class AddItem extends Component {
                 this.Nextscreen()
             }}
 
-            containerStyle={{padding: 0}}
+            containerStyle={{ padding: 0 }}
             //suggestion container style
             textInputStyle={{
               //inserted text style
@@ -719,7 +719,7 @@ export default class AddItem extends Component {
               borderRadius: 30,
 
               shadowColor: '#000',
-              shadowOffset: {width: 0, height: 2},
+              shadowOffset: { width: 0, height: 2 },
               shadowOpacity: 0.1,
               shadowRadius: 0.2,
               elevation: 2,
@@ -789,7 +789,7 @@ export default class AddItem extends Component {
             ref={ref => {
               this.camera = ref;
             }} */}
-                 <RNCamera
+          <RNCamera
             ref={ref => {
               this.camera = ref;
             }}
@@ -866,7 +866,7 @@ const styles = {
     width: '100%',
     borderBottomWidth: 0,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 1,
     elevation: 2,
