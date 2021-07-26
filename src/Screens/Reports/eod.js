@@ -131,6 +131,7 @@ export default class Eod extends Component {
     this.props.navigation.navigate('Dashboard');
   }
 
+  
   componentDidMount() {
 
     this.setState({ visibleDetails: false })
@@ -412,11 +413,13 @@ export default class Eod extends Component {
                 paddingVertical: 10,
                 paddingHorizontal: 20,
               }}>
-              <Text
+              {/* <Text
                 style={{color: 'white'}}
                 onPress={() => this.props.navigation.navigate('Reports')}>
                 End of Day report
-              </Text>
+              </Text> */}
+              <FontAwesome style={{marginRight:0}} name="caret-left" color={'#fff'} size={26} onPress={()=>this.props.navigation.push('Dashboard')} />
+                  <Text style={{color: 'white',fontSize:15,paddingHorizontal:8,paddingVertical:3}} onPress={()=>this.props.navigation.push('Dashboard')}>Dashboard</Text>
             </View>
           </ImageBackground>
         </View>

@@ -105,7 +105,9 @@ class ReceivingOrder extends Component{
                     // paddingVertical: 10,
                     paddingHorizontal:20
                   }}>
-                  <Text style={{color: 'white',marginTop:10,}} onPress={()=>this.props.navigation.navigate('Dashboard')}>Receiving Order</Text>
+                  {/* <Text style={{color: 'white',marginTop:10,}} onPress={()=>this.props.navigation.navigate('Dashboard')}>Receiving Order</Text> */}
+                  <FontAwesome style={{marginRight:0}} name="caret-left" color={'#fff'} size={26} onPress={()=>this.props.navigation.push('Dashboard')} />
+                  <Text style={{color: 'white',fontSize:15,paddingHorizontal:8,paddingVertical:3}} onPress={()=>this.props.navigation.push('Dashboard')}>Dashboard</Text>
                   <View >
               <Button
               style={{marginTop:10,}}

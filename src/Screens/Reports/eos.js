@@ -307,11 +307,13 @@ export default class Eos extends Component {
                 paddingVertical: 10,
                 paddingHorizontal: 20,
               }}>
-              <Text
+              {/* <Text
                 style={{color: 'white'}}
                 onPress={() => this.props.navigation.navigate('Reports')}>
                 End of shift report
-              </Text>
+              </Text> */}
+              <FontAwesome style={{marginRight:0}} name="caret-left" color={'#fff'} size={26} onPress={()=>this.props.navigation.push('Dashboard')} />
+                  <Text style={{color: 'white',fontSize:15,paddingHorizontal:8,paddingVertical:3}} onPress={()=>this.props.navigation.push('Dashboard')}>Dashboard</Text>
             </View>
           </ImageBackground>
         </View>
